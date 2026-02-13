@@ -1,0 +1,668 @@
+---
+title: "Nöjdhet, kostnader och intäkter"
+lang: sv 
+bibliography: references.bib
+link-citations: true
+reference-section-title: "Källor"
+format: 
+  html:
+    self-contained: true
+    include-after-body: contact-widget.html # Knapp för kontakt
+    language: sv 
+    toc: true  # Innehållsförteckning
+    toc_float: 
+      collapsed: false  # Visa ToC utvidgad från start
+      smooth_scroll: true  # Mjuk scroll
+    toc-title: "Innehåll"  # Rubrik för ToC
+    page-layout: full
+execute:
+  echo: false
+  warning: false
+  message: false
+  error: false
+editor: visual
+---
+
+```{r setup, include = FALSE, message=FALSE, warnings=FALSE}
+# använd paket(plus några extra som har testas)
+source("Script/install_load_packages.R")
+install_and_load()
+# Ställer in rätt typsnitt
+try(font_add_google("Source Sans Pro", "sourcesanspro"), silent = TRUE)
+font_add("Arial", "path/to/arial.ttf") # Specify the path if Arial is not system-default
+showtext_auto()
+
+source("Script/create_save_plots.R")
+source("Script/create_tables.R")
+```
+
+# Inledning
+
+Denna rapport redovisar i länet och dess utveckling.
+
+Alla interaktiva grafer kan laddas ned genom att trycka på ![Nerladdningsknapp](Figurer/download_graph.png){width="120px"}. Då sparas just den bild som visas, med exempelvis den valda regionen. Genom att dubbelklicka på kommunnamn i grafens legend så zoomas den kommunen in för en mer detaljerad vy(flera kan väljas samtidigt).
+
+```{r}
+#| fig-cap: "Musikstudio"
+#| label: fig-Musikstudio
+#| out.width: "50%"
+#| fig-alt: "Dekorativ bild"
+
+image_read("Mediabank/Musikstudio.png") %>% 
+  image_ggplot(interpolate = TRUE)
+```
+
+# Nöjdhet med kultur- och nöjesliv
+
+Invånarnas upplevelse av det lokala kultur- och nöjeslivet är en central indikator för kulturpolitikens framgång och kultursektorns relevans. Detta avsnitt redovisar andelen invånare som har svarat ”Mycket bra” eller ”Ganska bra” på frågan ”Vad tycker du om det lokala kultur- och nöjeslivet i kommunen (t.ex. konstutställningar, teater, konserter etc.)?” i SCB:s medborgarundersökning. Svarsalternativen ”Vet inte” och ”Ingen åsikt” har exkluderats från beräkningarna.
+
+Resultaten baseras på en urvalsundersökning och redovisas som punktskattningar. Detta innebär att de uppskattade andelarna är behäftade med statistisk osäkerhet och inte nödvändigtvis är fullt representativa för hela populationen i respektive kommun. Med hjälp av osäkerhetsintervall kring skattningarna kan det med hög sannolikhet antas att den sanna andelen ligger inom det redovisade intervallet.
+
+Data är hämtat från @kolada som hänvisar till @scb_medborgarundersokningen. För kommuner där uppgifter saknas för flera år redovisas resultaten endast för det år då data finns tillgänglig, i form av stapeldiagram i stället för tidsserier.
+
+::: panel-tabset
+```{r, results='asis'}
+
+for(r in sort(kommuner)){
+
+  cat("## ", r, "\n", sep = "")
+  filename_svg <- paste0("Figurer/medborgarund_kultur_", r, ".svg")
+  
+  filename_png <- paste0("Figurer/medborgarund_kultur_", r, ".png")
+  
+  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar andelen män och kvinnor som svarat mycket eller ganska bra angående kommunens kulutur och nöjesliv. Beroende på hur mycket data som finns så presenteras vissa kommuner som tidsserie och andra som stapeldiagram. Alla figurer har tillhörande osäkerhetsintervall."), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  
+  cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
+  
+}
+
+```
+:::
+
+I flera kommuner och år kan det vid en första anblick se ut som andelen skiljer sig mellan könen, men det är inte en statistiskt signifikant skillnad mellan könen i någon kommun. Detta framgår tydligt då osäkerhetsintervallen alltid överlappar inom varje år. Överlappande intervall innebär att de observerade skillnaderna kan förklaras av slumpmässig variation i urvalet snarare än av verkliga skillnader.
+
+Uppsala kommun har högst andel av de svarande som svarat "Mycket bra" eller "Ganska bra" på över 75 %. Det syns också att osäkerhetsintervallen är mindre för Uppsala kommun än de övriga kommunerna i länet, vilket troligtvis beror på ett mycket större antal individer som svarat på undersökningen och/eller att bortfallet är lägre. Större urval ger mer precisa skattningar och smalare konfidensintervall, vilket gör resultaten mer tillförlitliga.
+
+Lägst andel hittas i Håbo, där det högsta värdet för perioden är 25 %, vilket gäller män år 2024. För mindre kommuner kan begränsade resurser, färre invånare och större geografiska avstånd till kulturinstitutioner bidra till lägre nöjdhet. 
+
+# Deltagande
+
+Detta avsnitt undersöker det faktiska deltagandet i olika kulturaktiviteter.
+Deltagande i kultur redovisas som ett sammanvägt mått baserat på genomsnittligt deltagande i följande aktiviteter:
+
+-   Deltagande i konstutställning och/eller museum
+
+-   Teater eller bio
+
+-   Sportevenemang
+
+För varje aktivitet avser uppgifterna den genomsnittliga andelen av befolkningen i åldern 16–84 år som deltagit under perioden år $T$, $T-1$ och $T-2$. Det innebär att varje värde representerar ett glidande medelvärde över tre år, vilket bidrar till att minska slumpmässiga variationer mellan enskilda år.
+
+Data är hämtat från @kolada som hänvisar till @Folkhalsomyndigheten.
+
+```{r}
+#| fig-cap: ""
+#| label: fig-deltagande
+#| fig-alt: "Figuren visar deltagarandelen i kultur över tid för varje kommun i länet."
+
+
+knitr::include_graphics("Figurer/deltagande.svg")
+
+```
+
+```{=html}
+<div style="margin-top:0.5rem;">
+  <div class="download-dropdown">
+    <span class="download-btn">Ladda ner</span>
+    <div class="download-menu">
+      <a href="Figurer/deltagande.svg" download>Som SVG</a>
+      <a href="Figurer/deltagande.png" download>Som PNG</a>
+    </div>
+  </div>
+</div>
+```
+
+**Notera** att y-axeln i grafen är begränsad till 50 procent, vilket kan ge intryck av att skillnaderna är större än de faktiskt är och framför allt att andelen är högre än den faktiskt är. Avgränsningen är gjord för att möjliggöra en närmare granskning av utvecklingen över tid och för att tydligare synliggöra de relativt små skillnaderna mellan regionerna.
+
+De flesta regionerna uppvisar liknande deltagandenivåer, vilket tyder på en relativt jämn spridning av kulturdeltagande över landet. De två regionerna som sticker ut mest är Stockholm och Uppsala, som har en något högre genomsnittlig deltagarandel än övriga regioner. 
+
+Vid 2022 syns en tydlig minskning av andelen för samtliga regioner, och det är troligt att covid-19-pandemin ligger bakom denna nedgång. Nedstängningar, restriktioner och rädsla för smitta påverkade möjligheterna att delta i kulturaktiviteter dramatiskt under denna period. Intressant nog ser andelen år 2021 inte ut att vara lika påverkad av pandemin. Detta beror på att varje datapunkt baseras på ett glidande medelvärde av de två senaste år då mätdata finns tillgänglig. Därmed innehåller värdet för 2021 även observationer från perioden före pandemin, vilket dämpar pandemins genomslag i resultaten. 
+
+## Elever i musik- eller kulturskola
+
+Detta avsnitt redovisar andelen barn och unga som deltar i kommunal musik- eller kulturskoleverksamhet. Andelen beräknas som antalet unika individer inskrivna i musik- eller kulturskola dividerat med den totala befolkningen i motsvarande åldersgrupp. Redovisningen omfattar både åldersgruppen 6–19 år samt 6–15 år.
+
+Av sekretesskäl har Statistiska centralbyrån avrundat de könsuppdelade uppgifterna om antal unika deltagare till närmaste femtal. Detta kan medföra mindre avvikelser, där summan av kvinnor och män inte alltid överensstämmer exakt med de totalt redovisade värdena.
+
+Data är hämtat från @kolada som hänvisar till @scb_statistikdatabasen och @kulturradet.
+
+Antal unika individer totalt som går i musik- eller kulturskola, baserat på enkätfråga. Data är hämtat från @kolada som hänvisar till @kulturradet.
+
+::: panel-tabset
+```{r, results='asis'}
+
+# Läser in data till tabell
+df <- read.csv("Data/df_elever.csv") %>% 
+    filter(title == "Elever i musik- eller kulturskola totalt, antal",
+           year >= 2018)
+
+value_range <- range(df$value, na.rm = TRUE)
+
+# Gör åren till kolumner
+df_wide <- df %>% pivot_wider(id_cols = c(municipality),
+                              names_from=year,
+                              values_from = value)
+
+colnames(df_wide)[1] <- "Kommun"
+# Fixar ordningen
+df_wide <- df_wide %>% arrange(Kommun)
+# variabel som skiljer graferna
+text <- c("6-15", "6-19")
+
+
+
+
+for(r in text){
+
+  cat("## ", str_to_sentence(r), "\n", sep = "")
+  filename_svg <- paste0("Figurer/elever_mk_", r, ".svg")
+  
+  filename_png <- paste0("Figurer/elever_mk_", r, ".png")
+  
+  cat('<img src="', filename_svg, '" alt= "',paste0("Figuren visar utvecklingen av andeler elever i musik- och kulturskola för de kommunerna med data för åldrarna",r), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  
+  cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
+  
+  cat("\n")
+  # printar tabell
+
+}
+
+```
+:::
+
+```{r}
+#| tbl-cap: "Antal unika individer totalt som går i musik- eller kulturskola, baserat på enkätfråga."
+#| label: tbl-antal_deltagare
+
+# printar tabell
+df_wide %>%
+  gt() %>%
+
+  # Centrering (motsvarar align = "c")
+  cols_align(
+    align = "center",
+    everything()
+  ) %>%
+
+  # Bold kolumnrubriker
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels(everything())
+  ) %>%
+
+  # Tabellutseende (samma som tidigare)
+  tab_options(table.width = pct(100),
+    table.border.top.color = "black",
+    table.border.bottom.color = "black",
+    table.font.size = 16,
+    table.align = "center",
+    data_row.padding = px(6)
+  ) %>%
+
+  # Färgskala med FAST domain baserad på alla värden
+    data_color(
+      columns = where(is.numeric),
+      colors = col_numeric(
+        palette = c("#F4DCE8", "#B81867"),
+        domain = value_range  # Använd det fasta intervallet!
+      )
+    )   %>%
+
+  # Källa (motsvarar footnote)
+  tab_source_note(
+    source_note = "Källa: Kulturrådet"
+  )
+```
+
+Samtliga kommuner uppvisar en lägre andel elever i musik- eller kulturskola när de äldre åldrarna inkluderas. I Östhammar ses en minskning med runt 5 procentenheter för respektive år mellan åldersgrupperna 6–15 och 6–19. Detta mönster är väntat och speglar att deltagandet i kulturskolan tenderar att avta när eleverna når gymnasieåldern, då andra aktiviteter, studier och arbete konkurrerar om deras tid.
+
+Av de kommuner som har data för år 2024 ligger andelarna mycket nära varandra, mellan 10 och 15 procent. Denna relativa homogenitet tyder på att kulturskolans räckvidd är förhållandevis jämn mellan kommunerna
+
+Att Östhammar har en andel på 0 år 2023 för åldersgruppen 6-19 är troligtvis pga att data saknas och har blivit registrerad som 0 av kolada. Knivsta och Älvkarleby saknar data för åren som presenteras ovan och har därav exkluderas från figurerna.
+
+## Könsfördelning i kulturskola
+
+Detta kapitel redovisar könsfördelningen bland elever i kulturskolan i åldersgruppen 6–19 år, uttryckt som andelen flickor av det totala antalet elever. Syftet är att belysa hur deltagandet i kulturskolans verksamhet fördelar sig mellan könen över tid och mellan kommuner.
+
+Data är hämtat från @kolada som hänvisar till @kulturradet
+
+```{r}
+#| tbl-cap: "Andelen flickor i kulturskolan (6-19 år)."
+#| label: tbl-konsfordelning_skola
+
+
+
+konsfordelning_skola()
+```
+
+Flickor utgör en tydlig majoritet av eleverna i kulturskolan. Endast vid ett tillfälle under hela perioden var pojkarna fler - i Håbo år 2017. I övrigt ligger andelen flickor över 50 procent i samtliga kommuner och år med tillgängliga data. För de kommuner som har aktuell data (de senaste två åren) ligger andelen flickor generellt högt. Uppsala kommun är den enda kommunen under 60 procent med 59,72 procent flickor senaste året.
+
+Den högsta andelen under perioden finns i Älvkarleby år 2017 med 91,68 procent flickor, vilket också är det senaste året med data för kommunen. Året innan, 2016, var andelen 68,54 procent, alltså en väldigt stor förändring. värt att notera är att i mindre kommuner med färre elever kan små förändringar i absoluta tal ge stora utslag i procentandelar.
+
+Data saknas för vissa kommuner under flera år i perioden, vilket försvårar jämförelser över tid.
+
+## Elevavgift
+
+Detta kapitel behandlar den genomsnittliga elevavgiften inom musik- och kulturskolan. Måttet definieras som kulturskolans totala intäkter från avgifter (i räkenskapssammandragen benämnda taxor och avgifter) dividerat med antalet unika elever i åldersgruppen 6–19 år. Syftet är att ge en översiktlig bild av hur avgiftsnivåerna varierar över tid och mellan kommuner.
+
+Data är hämtat från @kolada som hänvisar vidare till @sbcraken och @kulturradet.
+
+```{r}
+#| fig-cap: ""
+#| label: fig-elevkost
+#| fig-alt: "Figuren visar den genomsnittliga avgiften för elever på musik- och kulturskola i respektive kommun i länet över tid. "
+
+
+knitr::include_graphics("Figurer/genom_elevkost.svg")
+
+```
+
+```{=html}
+<div style="margin-top:0.5rem;">
+  <div class="download-dropdown">
+    <span class="download-btn">Ladda ner</span>
+    <div class="download-menu">
+      <a href="Figurer/genom_elevkost.svg" download>Som SVG</a>
+      <a href="Figurer/genom_elevkost.png" download>Som PNG</a>
+    </div>
+  </div>
+</div>
+```
+
+Den genomsnittliga elevavgiften för musik- eller kulturskola skiljer sig tydligt mellan kommunerna i länet, där Älvkarleby och Östhammar har lägst värden och ligger under 100 kr/elev för åren de har data.
+
+Högst avgift per elev hittas i Håbo, Knivsta och Uppsala kommun. Håbo och Uppsala kommun har en elevagift på över 1500 kr/elev för en stor del utav åren i perioden. Knivsta har endast data för ett utav åren och redovisar då en elevavgift på över 2500 kr/elev.
+
+Värt att tänka på är att utbudet av vilka kurser som erbjuds och i vilken omfattning i respektive kommun kan spela stor roll för den genomsnittliga avgiften. Samma kurs i två olika kommuner kan ha samma avgift trots att genomsnittet skiljer sig åt. 
+
+## Utbud i kulturskolan
+
+Kulturskolan erbjuder barn och unga möjlighet att utvecklas inom olika kulturella och konstnärliga uttryck. I detta kapitel redovisas vilka ämneskurser som erbjuds i landets kulturskolor.
+
+Elva ämnesområden undersöks: Musikal, Musik - ensemble/orkester/kör/musikgrupp, Dans, Teater/drama, Bild och form, Cirkus, Film/animation, Foto, Slöjd/hantverk, Skrivande/berättande samt Övriga ämnen.
+
+I de flesta kommuner driver kommunen själv kulturskolan. I ett mindre antal kommuner finns även andra huvudmän eller enbart annan huvudman än kommunen.
+
+Data är hämtat från @kolada som hänvisar till @kulturradet.
+
+::: panel-tabset
+```{r, results='asis'}
+
+df_oppen_skola <- read.csv("Data/df_oppen_skola.csv")
+
+
+
+for(r in sort(kommuner)){
+  
+  temp <- df_oppen_skola %>% filter(municipality== r)
+  temp <- temp %>% filter(year == max(year))
+
+  cat("## ", r, "\n", sep = "")
+  filename_svg <- paste0("Figurer/amneskurs_", r, ".svg")
+  
+  filename_png <- paste0("Figurer/amneskurs_", r, ".png")
+  
+  cat('<img src="', filename_svg, '" alt= "',paste("Figuren om kommunen erbjuder ämneskursen i kulturskolan i ",r,", över tid"), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  
+  cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
+  
+  
+  if(temp$value==1){
+    
+    cat("I", r, " finns förekomsten av kulturskola i form av öppen verksamhet år",temp$year,".")
+  }
+  if(temp$value==0){
+    
+    cat("I", r, " finns inte förekomsten av kulturskola i form av öppen verksamhet år",temp$year,".")
+  }
+  
+    cat("\n\n")
+  
+}
+
+```
+:::
+
+Ingen av kommunerna i länet inkluderar alla undersökta kategorier i sitt utbud. Flest ämneskurser har Knivsta, Tierp och Östhammar med sju ämnen vardera år 2023.
+
+Knivsta och Tierp har kraftigt utökat sitt utbud under perioden. Båda kommunerna erbjöd endast fyra ämnesområden år 2020, men har alltså nästan fördubblat antalet kurser på tre år.
+
+Slöjd/hantverk är nästan helt frånvarande i länet. Endast Knivsta erbjöd detta ämne, och då enbart år 2022. Foto finns bara i Östhammar, ingen annan kommun i länet har detta ämne.
+
+Teater/drama, musik – ensemble/orkester/kör/musikgrupp och dans erbjuds i samtliga kommuner, vilket gör dessa till de mest spridda ämnena i länet.
+
+# Kostnad och intäkt
+
+Detta avsnitt redovisar kostnader och intäkter för kommunal kulturverksamhet per invånare. Uppgifterna omfattar verksamhet oavsett driftform och avser samtliga kommuner i länet.
+
+I data ingår följande verksamheter:
+
+-   *Allmän kulturverksamhet* omfattar bland annat stöd till kulturella föreningar samt museiverksamhet.
+
+-   *Biblioteksverksamheten* inkluderar kostnader och intäkter för informationsförmedling och utlåning av medier, medan kulturverksamhet som bedrivs inom bibliotekens regi, såsom utställningar och teater, redovisas under allmän kulturverksamhet.
+
+-   *Musik- och kulturskola* avser kommunal kultur- och musikskoleundervisning, exempelvis kommunala musikskolor. Förskole- och grundskoleverksamhet med musikprofil eller annan kulturell specialisering, såsom musikdagis, ingår inte här utan redovisas i stället inom respektive pedagogisk verksamhet.
+
+-   *Stöd till studieorganisationer* avser samtliga bidrag, oavsett om verksamheten har kulturell inriktning eller inte.
+
+Data är hämtat från @kolada som hänvisar till @sbcraken.
+
+```{r}
+# Tar ut år till tabelltitel
+df <- read.csv("Data/df_Kostnad_intakt.csv") %>% filter(year==max(year))
+ar <- max(df$year)
+
+
+```
+
+```{r}
+#| tbl-cap: !expr glue::glue("Kostnad och intäkt per kulturverksamhetsområde år {ar}" )
+#| label: tbl-kostnad_intakt
+
+
+
+kostnad_intakt()
+```
+
+De kommunerna som har högst kostnad per invånare på kulturverksamhet är Uppsala och Östhammar på över 1450 kr per invånare år `r ar`. Högst intäkt per invånare för kulturverksamhet finns i Heby på 149,9 kr/invånare.
+
+Fördelningen av kostnader mellan verksamhetstyper varierar mellan kommunerna. Till exempel har Älvkarleby 61,5 % av kostnaden per invånare inom biblioteksverksamhet, medan motsvarande andel i Enköping är 34 %.
+
+Andelen intäkter i förhållande till kostnader kan skilja sig markant inom samma kommun. I Östhammar står musik- och kulturskola för 30,2 % av kostnaden, men genererar nästan 60 % av intäkterna. Liknande mönster för musik- och kulturskola ses även i Håbo och Knivsta.
+
+### Utvecklingen över tid
+
+För att följa utvecklingen av totala kostnader och intäkter över tid presenteras figurerna nedan.
+
+::: panel-tabset
+```{r, results='asis'}
+
+# variabel som skiljer graferna
+text <- c('kostnad', 'intäkt')
+
+for(r in text){
+
+  cat("## ", str_to_sentence(r), "\n", sep = "")
+  filename_svg <- paste0("Figurer/kostnad_intakt_", r, ".svg")
+  
+  filename_png <- paste0("Figurer/kostnad_intakt_", r, ".png")
+  
+  cat('<img src="', filename_svg, '" alt= "',paste0("Figuren visar utvecklingen av ",r,"en på kulturverksamhet för samtliga kommuner i länet."), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  
+  cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
+  
+}
+
+```
+:::
+
+Kostnaden för kulturverksamhet har ökat stadigt för samtliga kommuner under perioden, men i olika takt sett till kostnad per invånare. Tierp har haft en jämn och stabil ökning av kostnaderna, medan Heby upplevde en kraftig kostnadsökning fram till 2020, för att därefter minska något och sedan stabiliseras.
+
+Uppsala kommun har i början av perioden en intäkt per invånare som är långt över dagens nivåer för samtliga kommuner. Heby har gått från den kommun med lägst inkomst per invånare år 2010 till högst 2024.
+
+## Nettokostnad
+
+Detta avsnitt redovisar nettokostnaden för kommunal kulturverksamhet per invånare, beräknad som skillnaden mellan bruttokostnader och bruttointäkter dividerat med folkmängden den 31 december respektive år. Detta mått ger en mer direkt bild av kommunernas faktiska kostnadsbörda. Uppgifterna omfattar verksamhet oavsett driftform och avser samtliga kommuner i länet.
+
+Data är hämtat från @kolada som hänvisar till @sbcraken.
+
+```{r}
+#| fig-cap: ""
+#| label: fig-nettokostnad_kultur
+#| fig-alt: "Figuren visar nettokostnaden för koluturverksamheter, musik och kulturskola, bibliotek och stö till studieorganisationer över tid för kommunerna i länet."
+#| fig-height: 7
+
+nettokostnad_kultur()
+
+```
+
+Analysen visar att nettobördan för kulturverksamhet ökat i samtliga kommuner under perioden. Enköping sticker ut med den lägsta ökningen under perioden och har på grund av den gått från en av de högsta nettokostnaderna per invånare till en av de lägsta i länet. De tre kommuner med lägst nettokostnad per invånare är också de kommuner i @tbl-kostnad_intakt som visar lägst total kostnad på kulturverksamhet. Ordningen speglar kostnaden på kulturverksamhet väldigt bra.
+
+För allmän kulturverksamhet är skillnaderna mellan kommunerna större, där Knivsta och Älvkarleby har haft låga nivåer under hela perioden, medan Uppsala och Enköping har haft stadigt höga nivåer.
+
+För nettokostnaden av bibliotekets regi så har skillnaderna mellan kommunerna ökat under perioden, där Enköping och Håbo har liknande nivåer som i början av perioden. Medan Knivsta ökade snabbt mellan 2010 och 2013, men sedan dess ar nettokostnaden i kr/invånare minskat något för varje år. Övriga kommuner har ett högre värde 2024 än vid 2010.
+
+Nettokostnaden för musik- och kulturskola har stigit i samtliga kommuner, med Tierp som den kommun med högst kostnad per invånare.
+
+## Kostnader fördelade till kulturverksamhet
+
+Detta mått beskriver relationen mellan fördelade kommungemensamma kostnader och kostnaden för kulturverksamhetens eget åtagande. Syftet är att öka jämförbarheten mellan kommuner som redovisar gemensamma kostnader centralt och kommuner som belastar dessa kostnader direkt i verksamheten.
+
+::: callout-tip
+## Beräkning
+
+$$
+\frac{
+\text{Kostnad för kommungemensam verksamhet (fördelad enligt Kommunnyckel och SCB-nyckel)}
+}{
+\text{Kostnad för eget åtagande avseende kulturverksamhet}
+}
+$$
+:::
+
+Kostnad för eget åtagande definieras som bruttokostnad minus interna intäkter samt försäljning av verksamhet till andra kommuner och/eller regioner. De kommungemensamma kostnaderna omfattar samtliga tjänster, funktioner och varor som redovisas centralt i räkenskapssammandraget och därefter fördelas till kulturverksamheten, exempelvis ekonomiadministration, HR-funktioner och förbrukningsvaror.
+
+**Tolkning:**
+
+Andelen visar hur stor del av kulturverksamhetens egna kostnader som utgörs av påförda kommungemensamma kostnader.
+
+*Hög andel*
+
+-   Stor del av kostnaderna ligger centralt
+
+-   Kulturverksamheten ”bär” mycket overhead
+
+-   Kan tyda på:
+
+    -   hög grad av centralisering
+
+    -   eller att kärnverksamheten är relativt liten
+
+*Låg andel*
+
+-   Färre centrala kostnader belastar kultur
+
+-   Mer kostnader ligger direkt i verksamheten
+
+-   Alternativt: stark och kostnadstung kärnverksamhet
+
+::: callout-note
+## Exempel
+
+Om andelen uppgår till 10 % innebär det att:
+
+För varje 100 kronor som kommunen lägger på sin egen kulturverksamhet tillkommer 10 kronor i gemensamma, centrala kostnader.
+:::
+
+Negativa värden uppstår när kostnaden för eget åtagande är negativ, vilket kan inträffa om interna intäkter och försäljning överstiger bruttokostnaderna. I dessa fall blir kvoten svårtolkad och bör analyseras med försiktighet eller exkluderas vid jämförelser.
+
+Data är hämtat från @kolada som hänvisar till @sbcraken.
+
+```{r}
+#| fig-cap: ""
+#| label: fig-andel_kost
+#| fig-alt: "Figuren visar kostnadsfördelningen för kulturverksamhet för varje kommun i länet."
+
+
+knitr::include_graphics("Figurer/kost_andel.svg")
+
+```
+
+```{=html}
+<div style="margin-top:0.5rem;">
+  <div class="download-dropdown">
+    <span class="download-btn">Ladda ner</span>
+    <div class="download-menu">
+      <a href="Figurer/kost_andel.svg" download>Som SVG</a>
+      <a href="Figurer/kost_andel.png" download>Som PNG</a>
+    </div>
+  </div>
+</div>
+```
+
+**Notera** att y-axeln i figuren inte sträcker sig från 0 till 100 procent, utan är inzoomad för att möjliggöra en mer detaljerad jämförelse mellan kommunerna.
+
+Samtliga kommuner i länet uppvisar andelar under 10 procent under den studerade perioden. Uppsala kommun avviker från övriga genom att konsekvent ligga över 7,5 procent under de senaste 7 åren, vilket indikerar en relativt hög andel fördelade kommungemensamma kostnader inom kulturverksamheten jämfört med övriga kommuner i länet.
+
+För Enköpings kommun förekommer ett enskilt år med ett negativt värde. Detta tyder på att kostnaden för eget åtagande varit negativ, vilket kan uppstå när interna intäkter och försäljning överstiger bruttokostnaderna. Utfallet bör därför tolkas med försiktighet och betraktas som ett redovisningstekniskt särfall snarare än en faktisk minskning av kostnader.
+
+Vidare kan flera tydliga förändringar i andelen observeras för enskilda kommuner över tid. Dessa förändringar inträffar dock inte samtidigt mellan kommunerna, vilket talar emot förekomsten av gemensamma, länsövergripande strukturförändringar. Av de mest markanta förändringarna innebär fyra av fem en ökning i andelen, vilket kan indikera en ökad belastning av kommungemensamma kostnader i kulturverksamheten under dessa år.
+
+# Kommunens köp av kultur och fritid från olika aktörer
+
+I detta kapitel presenteras kommunernas köp av kultur- och fritidsverksamhet över tid, uppdelat efter typ av utförare.
+
+Figurerna visar andelen av kostnaden för kommunens eget åtagande inom kultur och fritid som utgörs av köp av verksamhet, totalt samt från offentliga utförare, privata utförare och privatägda företag. Med köp av verksamhet avses betalningar för offentliga uppdrag (kärnverksamhet) som kommunen har överlämnat till externa aktörer.
+
+Kostnaden för eget åtagande definieras som bruttokostnaden för kultur- och fritidsverksamhet, exklusive interna intäkter samt försäljning till andra kommuner och regioner. Varje figur redovisar utvecklingen över tid för en enskild kommun.
+
+::: callout-note
+# Exempel
+
+Exempel på hur andelar av köp av kultur- och fritidsverksamhet tolkas:
+
+| Kommun | Köp av verksamhet | Kostnad för eget åtagande | Andel (%) | Tolkning |
+|---------------|---------------|---------------|---------------|---------------|
+| A | 0,5 miljoner | 50 miljoner | 1 % | Nästan allt sköts i egen regi |
+| B | 5 miljoner | 50 miljoner | 10 % | Mer av verksamheten utförs externt |
+:::
+
+Data är hämtat från @kolada som hänvisar till @scb_statistikdatabasen.
+
+::: panel-tabset
+```{r, results='asis'}
+
+for(r in sort(kommuner)){
+
+  cat("## ", r, "\n", sep = "")
+  filename_svg <- paste0("Figurer/kop_kf_", r, ".svg")
+  
+  filename_png <- paste0("Figurer/kop_kf_", r, ".png")
+  
+  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar andelen av kommunens köp av kultur och fritids kostnad för eget åtagande, offentliga och privata utförare."), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  
+  cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
+  
+}
+
+```
+:::
+
+**Notera** att kategorierna privata utförare och privatägda företag delvis överlappar. Privata utförare omfattar även idéburna och andra icke-privatägda aktörer, medan privatägda företag utgör en undergrupp av privata utförare.
+
+De redovisade andelarna är genomgående låga och uppgår i många kommuner till omkring 2 procent eller lägre. Detta speglar att måttet avser köp av kärnverksamhet i relation till en omfattande kostnadsmassa, snarare än att köp av kultur- och fritidsverksamhet är av begränsad betydelse. Även relativt små procentuella förändringar kan därmed motsvara betydande belopp i absoluta termer.
+
+Uppsala kommun utmärker sig genom att ha den högsta andelen i länet. Andelen av kommunens köp från offentliga utförare överstiger 5 procent under samtliga år i perioden, med undantag för 2019. Uppsala är även den enda kommunen i länet där offentliga utförare genomgående utgör den största andelen av köpen under hela perioden.
+
+# Biosalonger
+
+Denna del redovisar statistik över biografverksamhet och biobesök på länsnivå. Underlaget baseras på data från @kulturanalys och omfattar bland annat besöksnivåer, antal salonger och visningar i relation till befolkningen. För mer detaljerade analyser, metodbeskrivningar och nationella jämförelser hänvisas till Kulturanalys tematiska genomgång av filmområdet: [Kulturanalys](https://kulturanalys.se/temaomraden/film/).
+
+```{r}
+#| fig-cap: ""
+#| label: fig-biosalonger
+#| fig-alt: "Figuren visar biosalongsdata för alla län i Sverige för det senaste året i datat "
+
+
+knitr::include_graphics("Figurer/biosalonger_region.svg")
+
+```
+
+```{=html}
+<div style="margin-top:0.5rem;">
+  <div class="download-dropdown">
+    <span class="download-btn">Ladda ner</span>
+    <div class="download-menu">
+      <a href="Figurer/biosalonger_region.svg" download>Som SVG</a>
+      <a href="Figurer/biosalonger_region.png" download>Som PNG</a>
+    </div>
+  </div>
+</div>
+```
+
+Uppsala län uppvisar relativt höga nivåer i flera centrala kategorier. Länet ligger bland de främsta i landet när det gäller besök per invånare, antal salonger per miljon invånare samt antal visningar per tusen invånare. Detta indikerar en hög tillgänglighet till biografutbud i kombination med ett aktivt publikdeltagande.
+
+När det gäller antal biografer per miljon invånare ligger Uppsala län däremot nära riksgenomsnittet, vilket tyder på att länets starka resultat i flera kategorier snarare drivs av användning och utbud än av ett exceptionellt stort antal biografanläggningar. Gotlands län har de högsta värdena i samtliga kategorier utom besök per invånare, där Stockholms län istället toppar med ett värde på 1,3.
+
+## Utveckling jämfört med riket
+
+Tabellerna nedan visar utvecklingen av antal biobesök per invånare respektive antal visningar per tusen invånare, för Uppsala län och riket som helhet.
+
+```{r}
+#| tbl-cap: "Antal biobesök per invånare"
+#| label: tbl-biosalonger_besok
+
+
+bio <- biosalong_trend_region()
+
+bio[[1]]
+```
+
+```{r}
+#| tbl-cap: "Antal visningar per tusen invånare"
+#| label: tbl-biosalonger_vis
+
+
+bio <- biosalong_trend_region()
+
+bio[[2]]
+```
+
+På riksnivå har antalet biobesök per invånare minskat fram till 2024. För Uppsala län syns ingen motsvarande nedgång, vilket innebär att länet utvecklas något starkare än riket i detta avseende. Skillnaden är dock marginell, och eftersom tidsserien endast omfattar två år går det inte att dra några säkra slutsatser om långsiktiga trender.
+
+När det gäller antalet visningar per tusen invånare ligger Uppsala län tydligt över rikssnittet, vilket förstärker bilden av ett relativt aktivt biografutbud. Samtidigt uppvisar både riket och Uppsala län en nedgång under 2024 jämfört med 2023, vilket kan indikera en generell avmattning i visningsvolymer under perioden.
+
+## Antal biografer per kommun
+
+Tabellen nedan redovisar antalet biografer per kommun i Uppsala län.
+
+```{r}
+#| tbl-cap: "Antal biografer per kommun"
+#| label: tbl-biografer
+
+
+biografer()
+```
+
+Mellan 2023 och 2024 har Tierps och Uppsala kommun ökat sitt antal biografer, medan övriga kommuner uppvisar oförändrade nivåer under perioden.
+
+Flest biografer återfinns i Uppsala kommun, med totalt 8 stycken år 2024. Därefter följer Heby med 3 biografer, samt Tierp och Östhammar med 2 biografer vardera.
+
+# Vad ska vara med
+
+Hur bidrag förändras?
+
+Kulturanalys Som? institutet
+
+företag: Som jobbar inom kultur etc Karta?
+
+Fysiska lokaler kartläggning
+
+-Kulturvanor i länet (Svårfångad sominstitutet?)
+
+-KKB SNI och SSYK. Vilka typer av företag finns det, omsättning, storlek, vilka yrken finns representerade i vilken omfattning. Påbörjad.
+
+-Kulturskolor, vilka kommuner har vad, vilket deltagande är det (% av barn i kommun). Check!
+
+-Investerad krona i kultur per invånare. Var investerar kommunerna sina "kulturpengar"? Check!
+
+-Fritidskortets användning. Antal sökta kort samt föreningar (idrott och kultur) i länet, gärna på kommunnivå.
+
+-Studieförbundens verksamhet i kommunerna
+
+-Kulturinstitutionerna inom kultursamverkansmodellen. Kanske bidragsnivå alt. antal besökare per år. Säger något om scenkonsten, arkiven och museerna i länet.
+
+-Utlån vid biblioteken
+
+Exempel på källor SCB, Kolada, sominstitutet, e-hälsomyndigheten, Kulturdatabasen, Kulturanalys och Kulturrådet.

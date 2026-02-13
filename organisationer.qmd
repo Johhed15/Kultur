@@ -1,0 +1,533 @@
+---
+title: "Organisationer"
+lang: sv 
+bibliography: references.bib
+link-citations: true
+reference-section-title: "Källor"
+format: 
+  html:
+    self-contained: true
+    include-after-body: contact-widget.html # Knapp för kontakt
+    language: sv 
+    toc: true  # Innehållsförteckning
+    toc_float: 
+      collapsed: false  # Visa ToC utvidgad från start
+      smooth_scroll: true  # Mjuk scroll
+    toc-title: "Innehåll"  # Rubrik för ToC
+    page-layout: full
+execute:
+  echo: false
+  warning: false
+  message: false
+  error: false
+editor: visual
+---
+
+```{r setup, include = FALSE, message=FALSE, warnings=FALSE}
+# använd paket(plus några extra som har testas)
+source("Script/install_load_packages.R")
+install_and_load()
+# Ställer in rätt typsnitt
+try(font_add_google("Source Sans Pro", "sourcesanspro"), silent = TRUE)
+font_add("Arial", "path/to/arial.ttf") # Specify the path if Arial is not system-default
+showtext_auto()
+
+source("Script/create_save_plots.R")
+source("Script/create_tables.R")
+```
+
+# Inledning
+
+Denna rapport redovisar i länet och dess utveckling.
+
+Alla interaktiva grafer kan laddas ned genom att trycka på ![Nerladdningsknapp](Figurer/download_graph.png){width="120px"}. Då sparas just den bild som visas, med exempelvis den valda regionen. Genom att dubbelklicka på kommunnamn i grafens legend så zoomas den kommunen in för en mer detaljerad vy(flera kan väljas samtidigt).
+
+```{r}
+#| fig-cap: "Konstutställning"
+#| label: fig-Konstutställning
+#| out.width: "50%"
+#| fig-alt: "Dekorativ bild"
+
+image_read("Mediabank/Konstutställning.png") %>% 
+  image_ggplot(interpolate = TRUE)
+```
+
+# Sysselsättning kolada
+
+Avsnittet beskriver andelen sysselsatta i åldern 15-74 år inom kulturella och personliga tjänster m.m. (SNI-kod R, S, T och U). Andelen beräknas som antalet sysselsatta inom dessa näringsgrenar i relation till det totala antalet sysselsatta.
+
+Med sysselsatta avses personer som under november månad haft löneinkomst från anställning eller inkomst från aktiv näringsverksamhet. Uppgifterna redovisas både utifrån arbetsställets geografiska belägenhet och utifrån individens bostadsort. Statistiken gör det därmed möjligt att belysa eventuella skillnader mellan var arbetet utförs och var de sysselsatta är bosatta.
+
+Data är hämtat från @kolada som hänvisar vidare till @scb_arbetsmarknadsstatus.
+
+::: panel-tabset
+```{r, results='asis'}
+
+# variabel som skiljer graferna
+
+
+for(r in sort(kommuner)){
+
+  cat("## ", r, "\n", sep = "")
+  filename_svg <- paste0("Figurer/syssel_kol_", r, ".svg")
+  
+  filename_png <- paste0("Figurer/syssel_kol_", r, ".png")
+  
+  cat('<img src="', filename_svg, '" alt= "',paste0("Figuren visar utvecklingen av andel sysselsatta inom kulturella och persoliga tjänster mm. i ",r,", mellan 2020 och 2024."), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  
+  cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
+  
+}
+
+```
+:::
+
+Kvinnor har en högre andel sysselsatta inom kulturella och personliga tjänster än män i alla kommuner i länet, oavsett om statistiken baseras på arbetsställets eller bostadens belägenhet. Skillnaderna mellan arbetsställets och bostadens belägenhet är mycket små inom kommunerna. Detta tyder på att pendlingen över kommungränserna för personer som arbetar inom kulturella och personliga tjänster är begränsad, eller att in- och utpendling för dessa verksamheter är relativt balanserad. 
+
+Östhammar är den kommun som har lägst andel för bägge könen, medan Håbo, Knivsta och Uppsala kommun har de högsta andelarna. Skillnaderna mellan könen är som minst i Uppsala kommun och störst i Heby och Älvkarleby.
+
+# Företagsregistret
+
+I @foretagsreg finns Sveriges alla företag, myndigheter, organisationer och deras arbetsställen. Registret uppdateras kontinuerligt med uppgifter från Skatteverket, Bolagsverket och SCB:s egna undersökningar och utredningar.
+
+Klassificeringen av arbetsställen/företag verksamhet sker enligt Standard för svensk näringsgrensindelning (SNI), vilken är den officiella svenska näringsgrensstandarden och fastställs av Statistiska centralbyrån (SCB). SNI bygger på EU-standarden NACE och används primärt för statistiska ändamål, exempelvis för att möjliggöra jämförbarhet mellan branscher, över tid och mellan länder. I denna rapport används den senaste versionen, SNI 2025.
+
+Urvalet av verksamheter som klassas som kulturverksamheter baseras på utvalda SNI-koder, i enlighet med SCB:s dokumentation och tidigare tillämpningar av näringsgrensindelningen inom kulturstatistik (@scb_sni). Endast arbetsställen vars huvudsakliga verksamhet faller inom dessa koder inkluderas i analysen.
+
+Mer information om företagsregistret finns här [SCB företagsregistret](https://www.scb.se/vara-tjanster/bestall-data-och-statistik/foretagsregistret/avgiftsfria-uppgifter-i-foretagsregistret/).
+
+
+*Centrala begrepp*
+
+*Företag* avser hela den juridiska enheten (JE) och identifieras med ett person-/organisationsnummer. Ett företag kan bestå av ett eller flera arbetsställen.
+
+*Arbetsställe* är en fysisk plats där verksamhet bedrivs. Ett företag kan ha flera arbetsställen, till exempel olika butiker i olika städer, men alla hör till samma företag.
+
+**Exempel från SBC: Företaget "Svensk Bil AB" kan ha sitt huvudkontor i Stockholm och verkstäder i Örebro, Skellefteå och Malmö. Då är "Svensk Bil AB" företaget och huvudkontoret samt verkstäderna är arbetsställen.**
+
+
+::: {.callout-note collapse="true"}
+## Branscher som klassas inom vara verksamma inom kultur (SNI 2025)
+
+```{r,results='asis' }
+# Läs in filen (tab-separerad)
+df <- read.delim(
+  "Data/nyckel_bransch_SNI2025.txt",
+  sep = "\t",
+  stringsAsFactors = FALSE
+)
+
+# Skapa punktlista i Markdown-format
+bullet_list <- paste0(
+  "   -    **", df$branschkod, "**: ",
+  df$branschnamn,
+  " (", df$branschkategori, ")"
+)
+
+# Skriv ut som raw markdown
+cat(paste(bullet_list, collapse = "\n"))
+```
+:::
+## Arbetsställen och företag
+
+Data som presenteras i detta avsnitt baseras på SCB:s företagsregister och omfattar samtliga arbetsställen och företag som vid observationstillfället bedöms vara verksamma. Företagsregistret utgör en central källa för svensk näringslivsstatistik och används bland annat som ram för sysselsättnings-, struktur- och regional statistik.
+
+*Omfattning av kulturverksamheter i företagsregistret*
+
+För att beskriva kulturverksamheternas omfattning i företagsregistret används tre centrala mått:
+
+-   
+
+    (1) det totala antalet arbetsställen/företag,
+
+-   
+
+    (2) antalet arbetsställen/företag som klassas som kulturverksamheter, samt
+
+-   
+
+    (3) andelen kulturverksamheter i relation till samtliga arbetsställen/företag.
+
+Dessa mått ger en övergripande bild av kultursektorns relativa storlek inom näringslivet och utgör en viktig utgångspunkt för vidare analyser. Andelen beräknas som kvoten mellan antalet arbetsställen/företag inom kulturklassificerade SNI-koder och det totala antalet arbetsställen/företag i företagsregistret. Resultaten sammanfattas i tabellen och figuren nedan.
+
+::: panel-tabset
+```{r, results='asis', echo=FALSE}
+
+# --- Läs in data ---
+df <- read.csv("Data/df_antal_arbets_kultur.csv")
+andel_k <- df$Antal[df$kommun == "Knivsta"]
+andel_t <- df$Antal[df$kommun == "Tierp"]
+
+# ======================
+# TABELL-FLIK
+# ======================
+cat("## Tabell arbetsställen\n\n")
+
+# Kör tabell-funktion
+antal_arbets()
+
+cat("## Tabell företag\n\n")
+
+antal_foretag()
+
+
+# ======================
+# FIGUR-FLIK
+# ======================
+cat("## Figur arbetsställen\n\n")
+
+filename_svg <- "Figurer/andel_arbets.svg"
+filename_png <- "Figurer/andel_arbets.png"
+
+cat(
+  '<img src="', filename_svg,
+  '" alt="Figuren visar andel arbetsställen inom kultur för varje kommun i länet." ',
+  'style="width:100%; max-width:800px; height:auto;">\n',
+  sep = ""
+)
+
+cat(
+  '<div style="margin-top:0.5rem;">',
+  '<div class="download-dropdown">',
+  '<span class="download-btn">Ladda ner</span>',
+  '<div class="download-menu">',
+  '<a href="', filename_svg, '" download>Som SVG</a>',
+  '<a href="', filename_png, '" download>Som PNG</a>',
+  '</div></div></div>\n\n',
+  sep = ""
+)
+
+cat("## Figur företag\n\n")
+
+filename_svg <- "Figurer/andel_firm.svg"
+filename_png <- "Figurer/andel_firm.png"
+
+cat(
+  '<img src="', filename_svg,
+  '" alt="Figuren visar andel företag inom kultur för varje kommun i länet." ',
+  'style="width:100%; max-width:800px; height:auto;">\n',
+  sep = ""
+)
+
+cat(
+  '<div style="margin-top:0.5rem;">',
+  '<div class="download-dropdown">',
+  '<span class="download-btn">Ladda ner</span>',
+  '<div class="download-menu">',
+  '<a href="', filename_svg, '" download>Som SVG</a>',
+  '<a href="', filename_png, '" download>Som PNG</a>',
+  '</div></div></div>\n\n',
+  sep = ""
+)
+
+
+```
+:::
+
+Andelen kulturarbetsställen varierar avsevärt mellan kommunerna i länet. Uppsala kommun uppvisar den högsta andelen, där 11,9 % av samtliga arbetsställen klassas som kulturverksamheter, medan Östhammars kommun har den lägsta andelen på 5,4 %. Denna skillnad kan delvis förklaras av Uppsala kommuns roll som länets största stad och regioncentrum, med ett större utbud av kulturella tjänster och verksamheter.
+
+Betraktas i stället absoluta tal är skillnaderna i totalt antal arbetsställen mellan vissa kommuner relativt små. Tierps kommun har totalt 2 873 arbetsställen jämfört med 2 615 i Knivsta kommun. Trots att Tierp har fler arbetsställen så har Knivsta `r andel_k - andel_t` fler kulturarbetsställen.
+
+
+Fördelningen mellan arbetsplatser och företag inom kulturbranschen skiljer sig inte speciellt mycket i kommunerna. 
+
+## Branscher
+
+I detta avsnitt redovisas hur arbetsställen och företag inom kultursektorn fördelar sig mellan olika branscher i länets kommuner. Kulturverksamheter omfattar ett brett spektrum av branscher, från traditionella kulturformer till digital kultur och kreativa näringar. 
+
+Figurerna nedan visar andelen per kulturbransch och kommun. Exakta antal redovisas i tabellerna.
+
+::: panel-tabset
+```{r, results='asis'}
+
+#| fig-alt: "Figuren visar storleksfördelningen på anställningsplatserna i per kommun"
+
+
+# ======================
+# FIGUR-FLIK
+# ======================
+cat("## Figur arbetsställen\n\n")
+
+filename_svg <- "Figurer/andel_bransch_kom.svg"
+filename_png <- "Figurer/andel_bransch_kom.png"
+
+cat(
+  '<img src="', filename_svg,
+  '" alt="Figuren visar branschfördelningen på anställningsplatserna per kommun" ',
+  'style="width:100%; max-width:800px; height:auto;">\n',
+  sep = ""
+)
+
+cat(
+  '<div style="margin-top:0.5rem;">',
+  '<div class="download-dropdown">',
+  '<span class="download-btn">Ladda ner</span>',
+  '<div class="download-menu">',
+  '<a href="', filename_svg, '" download>Som SVG</a>',
+  '<a href="', filename_png, '" download>Som PNG</a>',
+  '</div></div></div>\n\n',
+  sep = ""
+)
+
+cat("## Figur företag\n\n")
+
+filename_svg <- "Figurer/andel_bransch_kom_firm.svg"
+filename_png <- "Figurer/andel_bransch_kom_firm.png"
+
+cat(
+  '<img src="', filename_svg,
+  '" alt="Figuren visar branschfördelningen på företagen per kommun"',
+  'style="width:100%; max-width:800px; height:auto;">\n',
+  sep = ""
+)
+
+cat(
+  '<div style="margin-top:0.5rem;">',
+  '<div class="download-dropdown">',
+  '<span class="download-btn">Ladda ner</span>',
+  '<div class="download-menu">',
+  '<a href="', filename_svg, '" download>Som SVG</a>',
+  '<a href="', filename_png, '" download>Som PNG</a>',
+  '</div></div></div>\n\n',
+  sep = ""
+)
+
+```
+:::
+
+Den största branschen inom kultur i de allra flesta kommunerna, både sett till antal arbetsställen och företag, är Rörlig bild, film och foto. Knivsta har den lägsta andelen för den branschkategorin och Älvkarleby den högsta.
+
+Kultur och upplevelse har en lägre andel företag än arbetsplatser i Heby, Uppsala, Älvkarleby och Östhammar. Detta kan indikera att verksamheter inom denna kategori i större utsträckning är organiserade som filialer eller arbetsställen till företag med huvudkontor i andra kommuner, eller att offentligt finansierade kulturinstitutioner utgör en betydande del av verksamheterna.
+
+
+::: panel-tabset
+```{r, results='asis'}
+cat("## Tabell arbetsställen\n\n")
+
+# Kör tabell-funktion
+antal_bransch_kom_t()
+
+cat("## Tabell företag\n\n")
+
+antal_bransch_kom_t_firm()
+  
+```
+:::
+
+Den branschkategori som är minst representerad i antal i samtliga kommuner är Spelutveckling. Här framträder en intressant skillnad i Tierp, där det finns ett registrerat företag men inte någon arbetsställe. Detta kan förklaras av att företaget är registrerat i Tierp men att den faktiska verksamheten bedrivs på annan ort, eller att verksamheten bedrivs utan fysisk arbetsplats (hembaserad verksamhet eller distansarbete).
+
+Uppsala kommun har flest antal inom samtliga branschkategorier, vilket är rimligt sett till kommunens folkmängd.
+
+## Storleksklasser
+
+I detta avsnitt redovisas hur kulturverksamheterna fördelar sig mellan olika storleksklasser, från arbetsställen med 0 anställda upp till arbetsställen med 200 anställda eller fler. Figurerna visar fördelningen per kommun, medan tabellerna redovisar de exakta antalen.
+
+
+::: panel-tabset
+```{r, results='asis'}
+
+#| fig-alt: "Figuren visar storleksfördelningen på anställningsplatserna per kommun"
+
+
+# ======================
+# FIGUR-FLIK
+# ======================
+cat("## Figur arbetsställen\n\n")
+
+filename_svg <- "Figurer/antal_storlek_kom.svg"
+filename_png <- "Figurer/antal_storlek_kom.png"
+
+cat(
+  '<img src="', filename_svg,
+  '" alt="Figuren visar storleksfördelningen på anställningsplatserna i per kommun" ',
+  'style="width:100%; max-width:800px; height:auto;">\n',
+  sep = ""
+)
+
+cat(
+  '<div style="margin-top:0.5rem;">',
+  '<div class="download-dropdown">',
+  '<span class="download-btn">Ladda ner</span>',
+  '<div class="download-menu">',
+  '<a href="', filename_svg, '" download>Som SVG</a>',
+  '<a href="', filename_png, '" download>Som PNG</a>',
+  '</div></div></div>\n\n',
+  sep = ""
+)
+
+cat("## Figur företag\n\n")
+
+filename_svg <- "Figurer/antal_storlek_kom_firm.svg"
+filename_png <- "Figurer/antal_storlek_kom_firm.png"
+
+cat(
+  '<img src="', filename_svg,
+  '" alt="Figuren visar storleksfördelningen på företagen per kommun"',
+  'style="width:100%; max-width:800px; height:auto;">\n',
+  sep = ""
+)
+
+cat(
+  '<div style="margin-top:0.5rem;">',
+  '<div class="download-dropdown">',
+  '<span class="download-btn">Ladda ner</span>',
+  '<div class="download-menu">',
+  '<a href="', filename_svg, '" download>Som SVG</a>',
+  '<a href="', filename_png, '" download>Som PNG</a>',
+  '</div></div></div>\n\n',
+  sep = ""
+)
+```
+:::
+
+Den största andelen av arbetsställena och företagen inom kultur i länets kommuner har 0 anställda, och andelen är större sett till företag än arbetsställen. Detta speglar en av kultursektorns mest karakteristiska drag: en hög grad av egenföretagande och soloverksamheter. 
+
+Den kommun som har störst andel med 0 platser är Tierp och den med minst andel är Håbo.
+
+
+::: panel-tabset
+```{r, results='asis'}
+cat("## Tabell arbetsställen\n\n")
+
+# Kör tabell-funktion
+antal_storlek_kom_t()
+
+cat("## Tabell företag\n\n")
+
+antal_storlek_kom_t_firm()
+  
+```
+:::
+
+I nästan alla av länets kommuner finns det inte arbetsställen och företag inom kultur för alla storleksklasser. Noterbart för Enköping är att det saknas arbetsställen för gruppen 200-499 anställda, men att ett företag inom kulturbranschen i Enköping har den storleken. Detta indikerar att företaget har sitt säte i Enköping men att arbetsställena är lokaliserade i andra kommuner, eller att uppgifterna om arbetsställen och företag registrerats på olika sätt i företagsregistret.
+
+
+
+## Företagens omsättning
+
+Omsättning är ett centralt mått för att förstå kulturföretagenens ekonomiska omfattning och struktur. I detta avsnitt analyseras hur kulturföretagen fördelar sig över olika omsättningsnivåer och hur detta varierar mellan branscher. En del företag i länet saknar data för omsättningsår och har därför uteslutits från analysen i @fig-omsattning.
+
+
+
+```{r}
+#| fig-cap: ""
+#| label: fig-omsattning
+#| fig-alt: "Figuren fördelningen över kulturföretagens bransche per storleksnivå av omsättning i länet."
+
+
+knitr::include_graphics("Figurer/andel_bransch_omsatt.svg")
+
+```
+
+```{=html}
+<div style="margin-top:0.5rem;">
+  <div class="download-dropdown">
+    <span class="download-btn">Ladda ner</span>
+    <div class="download-menu">
+      <a href="Figurer/andel_bransch_omsatt.svg" download>Som SVG</a>
+      <a href="Figurer/andel_bransch_omsatt.png" download>Som PNG</a>
+    </div>
+  </div>
+</div>
+```
+
+En stor majoritet av kulturföretagen i länet återfinns i de lägre omsättningskategorierna. Detta mönster stämmer väl överens med den tidigare observerade dominansen av små företag och soloverksamheter. För många kulturaktörer utgör den egna verksamheten ett komplement till andra inkomstkällor, eller så bedrivs verksamheten på deltid parallellt med annat arbete.
+
+
+De branscher som uppvisar en ökande andel när omsättningen ökar är Media och Spelutveckling. Dessa branscher kännetecknas av större potential för skalbarhet, där framgångsrika produkter eller tjänster kan nå en bred marknad utan motsvarande ökning av personalkostnader. Spelutveckling är särskilt intressant i detta avseende, då framgångsrika spel kan generera betydande intäkter även från relativt små team.
+
+Det finns endast ett kulturklassat företag i länet som har den högsta omsättningsklassen, vilket understryker kultursektorns småskaliga karaktär även i toppen av omsättningsspektrumet.
+
+Litterärt och konstnärligt skapande är den branschkategori som uppvisar den snabbast avtagande andelen vid ökad omsättning. 
+
+
+
+
+
+
+
+
+## Kartor
+
+För att visa den geografiska fördelningen av kultursektorns arbetsställen i länet presenteras två interaktiva kartor nedan. Kartorna gör det möjligt att se var olika typer av verksamheter är lokaliserade. Några av punkterna i kartorna ligger utanför länet, det är pga av att de är registrerade i en kommun i länet, men adressen till arbetsstället är utanför länet.
+
+### Arbetsställernas branscher
+
+@fig-arbetskarta visar var arbetsställena inom kultursektorn finns i länet. Varje punkt på kartan representerar ett arbetsställe, och färgen visar vilken branschkategori verksamheten tillhör. Det går att filtrera ut branscher för att lättare se spridningen för varje enskild bransch.
+
+```{r}
+#| fig-cap: ""
+#| label: fig-arbetskarta
+#| fig-height: 7
+#| fig-alt: "Denna figur visar en karta över länets alla arbetsställen, där färgen på punkterna representerar en branschkategori"
+
+karta_anst_b()
+
+```
+
+::: source-note
+Källa: SCB Företagsregistret
+:::
+
+### Arbetsställernas branscher och storleksklass
+
+@fig-arbetsstorlekskarta visar samma information som föregående karta, men med möjlighet att även filtrera arbetsställena efter storleksklass. Detta gör det möjligt att till exempel enbart visa större arbetsställen eller fokusera på mindre verksamheter.
+
+```{r}
+#| fig-cap: ""
+#| label: fig-arbetsstorlekskarta
+#| fig-height: 7
+#| fig-alt: "Denna figur visar en karta över länets alla arbetsställen, där färgen på punkterna representerar en branschkategori. Möjligheten att sortera ut punkter efter storleksklass finns också"
+
+karta_anst_b_s()
+
+```
+
+::: source-note
+Källa: SCB Företagsregistret
+:::
+
+
+
+# Kulturskapare
+
+Detta kapitel är inspirerat av @regionhalland.
+
+I analysen fokuserar vi på de kulturskapare som är aktiva i Region Uppsala. Vi undersöker därmed Region Uppsalas yrkesverksamma dagbefolkning, vilket innebär de personer som både bor och arbetar i Region Uppsala eller som pendlar in till regionen. De som är bosatta i Region Uppsala men arbetar utanför regionen räknas således inte med i beräkningarna.
+
+För att identifiera kulturskaparna i materialet har vi använt oss samma metod som  @regionhalland vilket är: SCB:s yrkesregister och tittat på de som, baserat på Kreameterns definition, har ett kulturellt eller kreativt yrke [@kreametern2018]. 
+
+De beskriver en problematik med underlaget som är att många kulturskapare driver egen verksamhet och därmed inte alltid har en yrkeskod enligt standarden för svensk yrkesklassificering (SSYK). För att kompensera för detta tas egenföretagare som verkar inom kulturella eller kreativa verksamhetsområden, enligt en avgränsning som tagits fram inom RSS-samarbetet och som baseras på svensk näringsgrensindelning (SNI2025). De poängterar att det kan finnas vissa luckor i statistiken, till exempel vissa deltidsanställda eller kombinatörer som inte är registrerade med ett kulturellt eller kreativt yrke i yrkesregistret. 
+
+
+::: panel-tabset
+```{r, results='asis'}
+
+
+plots <- c("kulturindex_lan","kulturantal_per_kategori",
+          "konsfordelning_kultur","fodelseland_kultur",
+        "alder_kultur","inkomst_kultur","kommun_kultur")
+
+i <- 1
+
+titles <- c("Historisk utveckling", "Kategorier", "Könsfördelning",
+            "Födelseland", "Åldersfördelning", "Inkomster","Geografisk fördelning" )
+
+for(r in plots){
+  
+
+  cat("## ", titles[i], "\n", sep = "")
+  filename_svg <- paste0("Figurer/", r, ".svg")
+  
+  filename_png <- paste0("Figurer/", r, ".png")
+  
+  cat('<img src="', filename_svg, '" alt= "',paste("Figurerna visar historisk utveckling för antal kulturutavare för alla län i Sverige, kulturkategoriernas antal utövare i länet, Könsfördelningen för kategorierna i länet, födelseregion för kategorierna i länet, dess åldersfördelning i länet, medianinkomst i länet och andelen och antalet kulturskapare per kommun  för år 2023"), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  
+  cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
+  
+  
+  i <- i+1
+}
+
+```
+:::
