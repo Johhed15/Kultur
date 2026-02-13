@@ -83,12 +83,11 @@ I flera kommuner och år kan det vid en första anblick se ut som andelen skilje
 
 Uppsala kommun har högst andel av de svarande som svarat "Mycket bra" eller "Ganska bra" på över 75 %. Det syns också att osäkerhetsintervallen är mindre för Uppsala kommun än de övriga kommunerna i länet, vilket troligtvis beror på ett mycket större antal individer som svarat på undersökningen och/eller att bortfallet är lägre. Större urval ger mer precisa skattningar och smalare konfidensintervall, vilket gör resultaten mer tillförlitliga.
 
-Lägst andel hittas i Håbo, där det högsta värdet för perioden är 25 %, vilket gäller män år 2024. För mindre kommuner kan begränsade resurser, färre invånare och större geografiska avstånd till kulturinstitutioner bidra till lägre nöjdhet. 
+Lägst andel hittas i Håbo, där det högsta värdet för perioden är 25 %, vilket gäller män år 2024. För mindre kommuner kan begränsade resurser, färre invånare och större geografiska avstånd till kulturinstitutioner bidra till lägre nöjdhet.
 
 # Deltagande
 
-Detta avsnitt undersöker det faktiska deltagandet i olika kulturaktiviteter.
-Deltagande i kultur redovisas som ett sammanvägt mått baserat på genomsnittligt deltagande i följande aktiviteter:
+Detta avsnitt undersöker det faktiska deltagandet i olika kulturaktiviteter. Deltagande i kultur redovisas som ett sammanvägt mått baserat på genomsnittligt deltagande i följande aktiviteter:
 
 -   Deltagande i konstutställning och/eller museum
 
@@ -124,9 +123,9 @@ knitr::include_graphics("Figurer/deltagande.svg")
 
 **Notera** att y-axeln i grafen är begränsad till 50 procent, vilket kan ge intryck av att skillnaderna är större än de faktiskt är och framför allt att andelen är högre än den faktiskt är. Avgränsningen är gjord för att möjliggöra en närmare granskning av utvecklingen över tid och för att tydligare synliggöra de relativt små skillnaderna mellan regionerna.
 
-De flesta regionerna uppvisar liknande deltagandenivåer, vilket tyder på en relativt jämn spridning av kulturdeltagande över landet. De två regionerna som sticker ut mest är Stockholm och Uppsala, som har en något högre genomsnittlig deltagarandel än övriga regioner. 
+De flesta regionerna uppvisar liknande deltagandenivåer, vilket tyder på en relativt jämn spridning av kulturdeltagande över landet. De två regionerna som sticker ut mest är Stockholm och Uppsala, som har en något högre genomsnittlig deltagarandel än övriga regioner.
 
-Vid 2022 syns en tydlig minskning av andelen för samtliga regioner, och det är troligt att covid-19-pandemin ligger bakom denna nedgång. Nedstängningar, restriktioner och rädsla för smitta påverkade möjligheterna att delta i kulturaktiviteter dramatiskt under denna period. Intressant nog ser andelen år 2021 inte ut att vara lika påverkad av pandemin. Detta beror på att varje datapunkt baseras på ett glidande medelvärde av de två senaste år då mätdata finns tillgänglig. Därmed innehåller värdet för 2021 även observationer från perioden före pandemin, vilket dämpar pandemins genomslag i resultaten. 
+Vid 2022 syns en tydlig minskning av andelen för samtliga regioner, och det är troligt att covid-19-pandemin ligger bakom denna nedgång. Nedstängningar, restriktioner och rädsla för smitta påverkade möjligheterna att delta i kulturaktiviteter dramatiskt under denna period. Intressant nog ser andelen år 2021 inte ut att vara lika påverkad av pandemin. Detta beror på att varje datapunkt baseras på ett glidande medelvärde av de två senaste år då mätdata finns tillgänglig. Därmed innehåller värdet för 2021 även observationer från perioden före pandemin, vilket dämpar pandemins genomslag i resultaten.
 
 ## Elever i musik- eller kulturskola
 
@@ -284,7 +283,7 @@ Den genomsnittliga elevavgiften för musik- eller kulturskola skiljer sig tydlig
 
 Högst avgift per elev hittas i Håbo, Knivsta och Uppsala kommun. Håbo och Uppsala kommun har en elevagift på över 1500 kr/elev för en stor del utav åren i perioden. Knivsta har endast data för ett utav åren och redovisar då en elevavgift på över 2500 kr/elev.
 
-Värt att tänka på är att utbudet av vilka kurser som erbjuds och i vilken omfattning i respektive kommun kan spela stor roll för den genomsnittliga avgiften. Samma kurs i två olika kommuner kan ha samma avgift trots att genomsnittet skiljer sig åt. 
+Värt att tänka på är att utbudet av vilka kurser som erbjuds och i vilken omfattning i respektive kommun kan spela stor roll för den genomsnittliga avgiften. Samma kurs i två olika kommuner kan ha samma avgift trots att genomsnittet skiljer sig åt.
 
 ## Utbud i kulturskolan
 
@@ -639,6 +638,8 @@ Mellan 2023 och 2024 har Tierps och Uppsala kommun ökat sitt antal biografer, m
 
 Flest biografer återfinns i Uppsala kommun, med totalt 8 stycken år 2024. Därefter följer Heby med 3 biografer, samt Tierp och Östhammar med 2 biografer vardera.
 
+
+
 # Vad ska vara med
 
 Hur bidrag förändras?
@@ -651,7 +652,7 @@ Fysiska lokaler kartläggning
 
 -Kulturvanor i länet (Svårfångad sominstitutet?)
 
--KKB SNI och SSYK. Vilka typer av företag finns det, omsättning, storlek, vilka yrken finns representerade i vilken omfattning. Påbörjad.
+-KKB SNI och SSYK. Vilka typer av företag finns det, omsättning, storlek, vilka yrken finns representerade i vilken omfattning. Check!
 
 -Kulturskolor, vilka kommuner har vad, vilket deltagande är det (% av barn i kommun). Check!
 
@@ -661,7 +662,7 @@ Fysiska lokaler kartläggning
 
 -Studieförbundens verksamhet i kommunerna
 
--Kulturinstitutionerna inom kultursamverkansmodellen. Kanske bidragsnivå alt. antal besökare per år. Säger något om scenkonsten, arkiven och museerna i länet.
+-Kulturinstitutionerna inom kultursamverkansmodellen. Kanske bidragsnivå alt. antal besökare per år. Säger något om scenkonsten, arkiven och museerna i länet. 
 
 -Utlån vid biblioteken
 
