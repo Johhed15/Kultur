@@ -6,7 +6,7 @@ link-citations: true
 reference-section-title: "Källor"
 format: 
   html:
-    self-contained: true
+    self-contained: false
     include-after-body: contact-widget.html # Knapp för kontakt
     language: sv 
     toc: true  # Innehållsförteckning
@@ -38,7 +38,7 @@ source("Script/create_tables.R")
 
 # Inledning
 
-Denna rapport redovisar i länet och dess utveckling.
+Denna rapport undersöker kultursektorns utveckling i Uppsala län genom att analysera invånarnas nöjdhet, deltagande i kulturaktiviteter samt kommunernas ekonomiska satsningar på kulturverksamhet. Syftet är att ge en övergripande bild av det kulturella landskapet i länet och identifiera mönster och skillnader mellan kommunerna. Genom att kombinera data om nöjdhet, deltagande och ekonomi erbjuds en mångfacetterad förståelse av hur kulturen fungerar som samhällsresurs i Uppsala län.
 
 Alla interaktiva grafer kan laddas ned genom att trycka på ![Nerladdningsknapp](Figurer/download_graph.png){width="120px"}. Då sparas just den bild som visas, med exempelvis den valda regionen. Genom att dubbelklicka på kommunnamn i grafens legend så zoomas den kommunen in för en mer detaljerad vy(flera kan väljas samtidigt).
 
@@ -639,6 +639,80 @@ Mellan 2023 och 2024 har Tierps och Uppsala kommun ökat sitt antal biografer, m
 Flest biografer återfinns i Uppsala kommun, med totalt 8 stycken år 2024. Därefter följer Heby med 3 biografer, samt Tierp och Östhammar med 2 biografer vardera.
 
 
+# Fritidskort
+
+Fritidskortet är en statlig satsning som syftar till att öka barns och ungas möjlighet att delta i fritidsaktiviteter inom idrott, kultur och andra föreningsaktiviteter. Kortet fungerar som ett digitalt stöd som vårdnadshavare kan använda för att betala avgifter till aktiviteter för barn mellan cirka 7 och 16 år. Syftet är att stärka deltagande oberoende av familjens ekonomiska förutsättningar och att främja en aktiv fritid för alla barn (@turn1search0; @turn1search2).
+
+
+Data om Fritidskortet är hämtad från @ehalso och baseras på registreringar av beviljade och använda kort. Detta avsnitt redovisar antal beviljade kort, antal använda kort samt andel använda kort av de beviljade.
+
+Medianen visar det värde som ligger i mitten när alla kommuner rangordnas efter antal kort eller andel använda kort. Fördelningen mellan kommuner visas också med nedre och övre kvartil, vilket ger en bild av variationen mellan kommuner. Eftersom varje kommun räknas lika mycket, påverkas resultatet inte av hur många barn som bor i kommunen. Det betyder att små och stora kommuner väger lika i statistiken.
+
+::: panel-tabset
+```{r, results='asis'}
+cols <- c("Antal_beviljade_fritidskort", "Antal_anvanda_fritidskort"   ,"kvot")
+
+titles <-  c("Antal beviljade fritidskort", "Antal använda fritidskort"   ,"Andel använda fritidskort av de beviljade korten")
+i <- 1
+for(r in cols){
+
+  cat("## ", titles[i], "\n", sep = "")
+  filename_svg <- paste0("Figurer/fritidskort_kommun_", r, ".svg")
+  
+  filename_png <- paste0("Figurer/fritidskort_kommun_", r, ".png")
+  
+  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar aningen antal bejiljade fritidskort, antal använda fritidskort eller kvoten mellan antal använda dividerat på antal använda fritidskort för länets kommuner.9"), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  
+  cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
+  i <- i + 1
+}
+
+
+
+```
+:::
+
+Både Enköping och Uppsala kommun tillhör den fjärdedel av kommuner i landet som har högst antal beviljade respektive använda fritidskort. Det innebär att dessa kommuner ligger över den övre kvartilen i jämförelsen med övriga kommuner i Sverige.
+
+När analysen i stället utgår från andelen använda fritidskort i förhållande till antalet beviljade förändras bilden i länet. Knivsta och Östhammar tillhör då den fjärdedel av kommuner i landet som har högst andel använda kort. Även Heby ligger över riksmedianen, vilket innebär att en större andel av de beviljade korten används jämfört med hälften av landets kommuner.
+
+Håbo och Tierp har den lägsta andelen använda kort i länet. Båda kommunerna tillhör den fjärdedel av kommuner i landet som har lägst andel använda fritidskort i förhållande till antalet beviljade.
+
+
+
+## Föreningar
+
+@fig-fritidsforening baseras på data från @regeringfritid och visar hur många fritidskort som laddats ned per ansluten förening i Uppsala län. För att ge ett nationellt sammanhang jämförs länet mot riksfördelningens median samt nedre och övre kvartil, beräknade samtliga län i Sverige.
+
+```{r}
+#| fig-cap: ""
+#| label: fig-fritidsforening
+#| fig-alt: "Figuren visar antal nedladdade fritidskort per förening i Uppsala län jämfört mot rikets median och kvartiler för år 2025"
+
+
+knitr::include_graphics("Figurer/fritidskort_lan.svg")
+
+
+df <- read.csv("Data/fritidskort_uppsala.csv")
+
+
+```
+
+```{=html}
+<div style="margin-top:0.5rem;">
+  <div class="download-dropdown">
+    <span class="download-btn">Ladda ner</span>
+    <div class="download-menu">
+      <a href="Figurer/fritidskort_lan.svg" download>Som SVG</a>
+      <a href="Figurer/fritidskort_lan.png" download>Som PNG</a>
+    </div>
+  </div>
+</div>
+```
+
+Antal nedladdade fritidskort i Uppsala län `r df$antal_nedladdade_fritidskort` och totalt antal kopplade föreningar år `r df$år` är `r df$antal_foreningar` stycken.
+
+Uppsala läns kvot placerar länet i den övre kvartilen, bland de 25 procent av länen med flest nedladdningar i förhållande till antalet anslutna föreningar. Hälften av alla landets län hade en kvot på mellan 40 och 65 fritidskort per förening, vilket gör Uppsala läns nivå om cirka 80 påtagligt högre än riksmedianen. 
 
 # Vad ska vara med
 
@@ -658,12 +732,16 @@ Fysiska lokaler kartläggning
 
 -Investerad krona i kultur per invånare. Var investerar kommunerna sina "kulturpengar"? Check!
 
--Fritidskortets användning. Antal sökta kort samt föreningar (idrott och kultur) i länet, gärna på kommunnivå.
+-Fritidskortets användning. Antal sökta kort samt föreningar (idrott och kultur) i länet, gärna på kommunnivå. CHECK?
 
--Studieförbundens verksamhet i kommunerna
+-Studieförbundens verksamhet i kommunerna. CHECK?
 
--Kulturinstitutionerna inom kultursamverkansmodellen. Kanske bidragsnivå alt. antal besökare per år. Säger något om scenkonsten, arkiven och museerna i länet. 
+-Kulturinstitutionerna inom kultursamverkansmodellen. Kanske bidragsnivå alt. antal besökare per år. Säger något om scenkonsten, arkiven och museerna i länet. CHECK?
 
 -Utlån vid biblioteken
 
 Exempel på källor SCB, Kolada, sominstitutet, e-hälsomyndigheten, Kulturdatabasen, Kulturanalys och Kulturrådet.
+
+
+
+Utbud och deltagare - Organisationer - Ekonomi ?

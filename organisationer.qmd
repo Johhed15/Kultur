@@ -6,7 +6,7 @@ link-citations: true
 reference-section-title: "Källor"
 format: 
   html:
-    self-contained: true
+    self-contained: false
     include-after-body: contact-widget.html # Knapp för kontakt
     language: sv 
     toc: true  # Innehållsförteckning
@@ -38,7 +38,7 @@ source("Script/create_tables.R")
 
 # Inledning
 
-Denna rapport redovisar i länet och dess utveckling.
+Denna rapport undersöker organisationer och sysselsättning inom kultursektorn i Uppsala län. Syftet är att ge en övergripande bild av kulturarbetsmarknaden genom att analysera företagsstruktur, sysselsättning och kulturskaparnas förutsättningar i länet. Genom att kombinera information om företag, arbetsställen, sysselsättning och kulturskapare erbjuds en mångfacetterad förståelse av kultursektorns ekonomiska och organisatoriska struktur i Uppsala län.
 
 Alla interaktiva grafer kan laddas ned genom att trycka på ![Nerladdningsknapp](Figurer/download_graph.png){width="120px"}. Då sparas just den bild som visas, med exempelvis den valda regionen. Genom att dubbelklicka på kommunnamn i grafens legend så zoomas den kommunen in för en mer detaljerad vy(flera kan väljas samtidigt).
 
@@ -82,7 +82,7 @@ for(r in sort(kommuner)){
 ```
 :::
 
-Kvinnor har en högre andel sysselsatta inom kulturella och personliga tjänster än män i alla kommuner i länet, oavsett om statistiken baseras på arbetsställets eller bostadens belägenhet. Skillnaderna mellan arbetsställets och bostadens belägenhet är mycket små inom kommunerna. Detta tyder på att pendlingen över kommungränserna för personer som arbetar inom kulturella och personliga tjänster är begränsad, eller att in- och utpendling för dessa verksamheter är relativt balanserad. 
+Kvinnor har en högre andel sysselsatta inom kulturella och personliga tjänster än män i alla kommuner i länet, oavsett om statistiken baseras på arbetsställets eller bostadens belägenhet. Skillnaderna mellan arbetsställets och bostadens belägenhet är mycket små inom kommunerna. Detta tyder på att pendlingen över kommungränserna för personer som arbetar inom kulturella och personliga tjänster är begränsad, eller att in- och utpendling för dessa verksamheter är relativt balanserad.
 
 Östhammar är den kommun som har lägst andel för bägge könen, medan Håbo, Knivsta och Uppsala kommun har de högsta andelarna. Skillnaderna mellan könen är som minst i Uppsala kommun och störst i Heby och Älvkarleby.
 
@@ -96,7 +96,6 @@ Urvalet av verksamheter som klassas som kulturverksamheter baseras på utvalda S
 
 Mer information om företagsregistret finns här [SCB företagsregistret](https://www.scb.se/vara-tjanster/bestall-data-och-statistik/foretagsregistret/avgiftsfria-uppgifter-i-foretagsregistret/).
 
-
 *Centrala begrepp*
 
 *Företag* avser hela den juridiska enheten (JE) och identifieras med ett person-/organisationsnummer. Ett företag kan bestå av ett eller flera arbetsställen.
@@ -104,7 +103,6 @@ Mer information om företagsregistret finns här [SCB företagsregistret](https:
 *Arbetsställe* är en fysisk plats där verksamhet bedrivs. Ett företag kan ha flera arbetsställen, till exempel olika butiker i olika städer, men alla hör till samma företag.
 
 **Exempel från SBC: Företaget "Svensk Bil AB" kan ha sitt huvudkontor i Stockholm och verkstäder i Örebro, Skellefteå och Malmö. Då är "Svensk Bil AB" företaget och huvudkontoret samt verkstäderna är arbetsställen.**
-
 
 ::: {.callout-note collapse="true"}
 ## Branscher som klassas inom vara verksamma inom kultur (SNI 2025)
@@ -128,6 +126,7 @@ bullet_list <- paste0(
 cat(paste(bullet_list, collapse = "\n"))
 ```
 :::
+
 ## Arbetsställen och företag
 
 Data som presenteras i detta avsnitt baseras på SCB:s företagsregister och omfattar samtliga arbetsställen och företag som vid observationstillfället bedöms vara verksamma. Företagsregistret utgör en central källa för svensk näringslivsstatistik och används bland annat som ram för sysselsättnings-, struktur- och regional statistik.
@@ -228,12 +227,11 @@ Andelen kulturarbetsställen varierar avsevärt mellan kommunerna i länet. Upps
 
 Betraktas i stället absoluta tal är skillnaderna i totalt antal arbetsställen mellan vissa kommuner relativt små. Tierps kommun har totalt 2 873 arbetsställen jämfört med 2 615 i Knivsta kommun. Trots att Tierp har fler arbetsställen så har Knivsta `r andel_k - andel_t` fler kulturarbetsställen.
 
-
-Fördelningen mellan arbetsplatser och företag inom kulturbranschen skiljer sig inte speciellt mycket i kommunerna. 
+Fördelningen mellan arbetsplatser och företag inom kulturbranschen skiljer sig inte speciellt mycket i kommunerna.
 
 ## Branscher
 
-I detta avsnitt redovisas hur arbetsställen och företag inom kultursektorn fördelar sig mellan olika branscher i länets kommuner. Kulturverksamheter omfattar ett brett spektrum av branscher, från traditionella kulturformer till digital kultur och kreativa näringar. 
+I detta avsnitt redovisas hur arbetsställen och företag inom kultursektorn fördelar sig mellan olika branscher i länets kommuner. Kulturverksamheter omfattar ett brett spektrum av branscher, från traditionella kulturformer till digital kultur och kreativa näringar.
 
 Figurerna nedan visar andelen per kulturbransch och kommun. Exakta antal redovisas i tabellerna.
 
@@ -299,7 +297,6 @@ Den största branschen inom kultur i de allra flesta kommunerna, både sett till
 
 Kultur och upplevelse har en lägre andel företag än arbetsplatser i Heby, Uppsala, Älvkarleby och Östhammar. Detta kan indikera att verksamheter inom denna kategori i större utsträckning är organiserade som filialer eller arbetsställen till företag med huvudkontor i andra kommuner, eller att offentligt finansierade kulturinstitutioner utgör en betydande del av verksamheterna.
 
-
 ::: panel-tabset
 ```{r, results='asis'}
 cat("## Tabell arbetsställen\n\n")
@@ -321,7 +318,6 @@ Uppsala kommun har flest antal inom samtliga branschkategorier, vilket är rimli
 ## Storleksklasser
 
 I detta avsnitt redovisas hur kulturverksamheterna fördelar sig mellan olika storleksklasser, från arbetsställen med 0 anställda upp till arbetsställen med 200 anställda eller fler. Figurerna visar fördelningen per kommun, medan tabellerna redovisar de exakta antalen.
-
 
 ::: panel-tabset
 ```{r, results='asis'}
@@ -380,10 +376,9 @@ cat(
 ```
 :::
 
-Den största andelen av arbetsställena och företagen inom kultur i länets kommuner har 0 anställda, och andelen är större sett till företag än arbetsställen. Detta speglar en av kultursektorns mest karakteristiska drag: en hög grad av egenföretagande och soloverksamheter. 
+Den största andelen av arbetsställena och företagen inom kultur i länets kommuner har 0 anställda, och andelen är större sett till företag än arbetsställen. Detta speglar en av kultursektorns mest karakteristiska drag: en hög grad av egenföretagande och soloverksamheter.
 
 Den kommun som har störst andel med 0 platser är Tierp och den med minst andel är Håbo.
-
 
 ::: panel-tabset
 ```{r, results='asis'}
@@ -401,13 +396,9 @@ antal_storlek_kom_t_firm()
 
 I nästan alla av länets kommuner finns det inte arbetsställen och företag inom kultur för alla storleksklasser. Noterbart för Enköping är att det saknas arbetsställen för gruppen 200-499 anställda, men att ett företag inom kulturbranschen i Enköping har den storleken. Detta indikerar att företaget har sitt säte i Enköping men att arbetsställena är lokaliserade i andra kommuner, eller att uppgifterna om arbetsställen och företag registrerats på olika sätt i företagsregistret.
 
-
-
 ## Företagens omsättning
 
 Omsättning är ett centralt mått för att förstå kulturföretagenens ekonomiska omfattning och struktur. I detta avsnitt analyseras hur kulturföretagen fördelar sig över olika omsättningsnivåer och hur detta varierar mellan branscher. En del företag i länet saknar data för omsättningsår och har därför uteslutits från analysen i @fig-omsattning.
-
-
 
 ```{r}
 #| fig-cap: ""
@@ -433,19 +424,11 @@ knitr::include_graphics("Figurer/andel_bransch_omsatt.svg")
 
 En stor majoritet av kulturföretagen i länet återfinns i de lägre omsättningskategorierna. Detta mönster stämmer väl överens med den tidigare observerade dominansen av små företag och soloverksamheter. För många kulturaktörer utgör den egna verksamheten ett komplement till andra inkomstkällor, eller så bedrivs verksamheten på deltid parallellt med annat arbete.
 
-
 De branscher som uppvisar en ökande andel när omsättningen ökar är Media och Spelutveckling. Dessa branscher kännetecknas av större potential för skalbarhet, där framgångsrika produkter eller tjänster kan nå en bred marknad utan motsvarande ökning av personalkostnader. Spelutveckling är särskilt intressant i detta avseende, då framgångsrika spel kan generera betydande intäkter även från relativt små team.
 
 Det finns endast ett kulturklassat företag i länet som har den högsta omsättningsklassen, vilket understryker kultursektorns småskaliga karaktär även i toppen av omsättningsspektrumet.
 
-Litterärt och konstnärligt skapande är den branschkategori som uppvisar den snabbast avtagande andelen vid ökad omsättning. 
-
-
-
-
-
-
-
+Litterärt och konstnärligt skapande är den branschkategori som uppvisar den snabbast avtagande andelen vid ökad omsättning.
 
 ## Kartor
 
@@ -487,18 +470,15 @@ karta_anst_b_s()
 Källa: SCB Företagsregistret
 :::
 
-
-
 # Kulturskapare
 
-Detta kapitel är inspirerat av @regionhalland.
+Detta kapitel är inspirerat av @regionhalland och deras analys av kulturskapare.
 
-I analysen fokuserar vi på de kulturskapare som är aktiva i Region Uppsala. Vi undersöker därmed Region Uppsalas yrkesverksamma dagbefolkning, vilket innebär de personer som både bor och arbetar i Region Uppsala eller som pendlar in till regionen. De som är bosatta i Region Uppsala men arbetar utanför regionen räknas således inte med i beräkningarna.
+Fokus ligger på de kulturskapare som är aktiva i Region Uppsala. Vi undersöker därmed Region Uppsalas yrkesverksamma dagbefolkning, vilket innebär de personer som både bor och arbetar i Region Uppsala eller som pendlar in till regionen. De som är bosatta i Region Uppsala men arbetar utanför regionen räknas således inte med i beräkningarna.
 
-För att identifiera kulturskaparna i materialet har vi använt oss samma metod som  @regionhalland vilket är: SCB:s yrkesregister och tittat på de som, baserat på Kreameterns definition, har ett kulturellt eller kreativt yrke [@kreametern2018]. 
+För att identifiera kulturskaparna i materialet har vi använt oss samma metod som @regionhalland vilket är: SCB:s yrkesregister och tittat på de som, baserat på Kreameterns definition, har ett kulturellt eller kreativt yrke [@kreametern2018].
 
-De beskriver en problematik med underlaget som är att många kulturskapare driver egen verksamhet och därmed inte alltid har en yrkeskod enligt standarden för svensk yrkesklassificering (SSYK). För att kompensera för detta tas egenföretagare som verkar inom kulturella eller kreativa verksamhetsområden, enligt en avgränsning som tagits fram inom RSS-samarbetet och som baseras på svensk näringsgrensindelning (SNI2025). De poängterar att det kan finnas vissa luckor i statistiken, till exempel vissa deltidsanställda eller kombinatörer som inte är registrerade med ett kulturellt eller kreativt yrke i yrkesregistret. 
-
+De beskriver en problematik med underlaget som är att många kulturskapare driver egen verksamhet och därmed inte alltid har en yrkeskod enligt standarden för svensk yrkesklassificering (SSYK). För att kompensera för detta tas egenföretagare som verkar inom kulturella eller kreativa verksamhetsområden, enligt en avgränsning som tagits fram inom RSS-samarbetet och som baseras på svensk näringsgrensindelning (SNI2025). De poängterar att det kan finnas vissa luckor i statistiken, till exempel vissa deltidsanställda eller kombinatörer som inte är registrerade med ett kulturellt eller kreativt yrke i yrkesregistret.
 
 ::: panel-tabset
 ```{r, results='asis'}
@@ -513,6 +493,26 @@ i <- 1
 titles <- c("Historisk utveckling", "Kategorier", "Könsfördelning",
             "Födelseland", "Åldersfördelning", "Inkomster","Geografisk fördelning" )
 
+text <- c(
+"Sett från 2014 så har utvecklingen av antalet kulturskapare ökat i Uppsala län, utvecklingen ligger under genomsnittet i riket, men bättre än de flesta andra länen. Den största utvecklingen skedde fram till 2017 och det största antalet var år 2022, liknande trender syns i nästan alla andra län i Sverige.",
+
+
+"Media är det ämnesområde som har flest antal kulturskapare i länet, följt av kultur och upplevelse. Den minsta gruppen är litterärt och konstnärligt skapande, med runt 100 kulturskapare. ",
+
+'Fyra av ämnesområdena infaller i en jämställd könsfördelning på mellan 40 - 60 %. Den kategori som har den skevaste könsfördelningen är spelutveckling där 84,6 % av alla kulturskapare i länet är män.' ,
+
+'I alla ämnesområden utom spelutveckling så är andelen inrikesfödda kulturskapare över 80 %, men för spelutveckling som är andelen 65,4 %. Den ämneskategorin med den minsta andelen utrikesfödda kulturskapare i länet är kultur och upplevelse. ',
+
+'Åldersfördelningen bland kulturskaparna i länet skiljer sig mycket mellan ämnesområdena, där spelutveckling återigen har den skevaste fördelningen. 63,4 % av alla spelutvecklande kulturskapare i länet är i åldern 35 - 49 år, medan endast 5,4 % är i åldern 50 - 64 år. ',
+
+'Medianinkomsten för länets kulturskapare är som högst inom spelutveckling på 576 000 kr, följt av arkitektur på 468 000, lägst medianinkomst är inom litterärt och konstnärligt skapande på 220 000 kr. Medianinkomsten för resterande ämnen är mellan 375 000 och 404 00 kr. ',
+
+'Den kommunen i länet med störst andel kulturskapare av totala dagbefolkningen i kommunen är Knivsta följt av Uppsala kommun. Lägst andel kulturskapare finns i Östhammar på under 1 procent. Den kommunen med det lägsta antalet är Älvkarleby på 32 individer i åldern 20 till 64 år och det totala antalet kulturskapare i länet är 3413.'
+
+
+)
+
+
 for(r in plots){
   
 
@@ -526,7 +526,14 @@ for(r in plots){
   cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
   
   
+  
+  
+  cat(text[i])
+  
+  cat("\n\n")
+  
   i <- i+1
+  
 }
 
 ```
