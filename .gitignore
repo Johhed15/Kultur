@@ -9,7 +9,7 @@
 *.gpkg  
 
 # Bilder / får ej laddas upp
-Figurer/
+
 Mediabank/
 Data/
 Script
