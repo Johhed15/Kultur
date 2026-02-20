@@ -1,5 +1,5 @@
 ---
-title: "Förbund"
+title: "Ekonomi"
 lang: sv 
 bibliography: references.bib
 link-citations: true
