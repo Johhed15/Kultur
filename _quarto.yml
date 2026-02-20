@@ -24,8 +24,8 @@ website:
         href: nojd.qmd
       - text: "Organisationer"
         href: organisationer.qmd
-      - text: "Förbund"
-        href: forbund.qmd
+      - text: "Ekonomi och förbund"
+        href: ekonomi.qmd
 
 
   search:

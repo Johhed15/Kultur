@@ -1,0 +1,266 @@
+---
+title: "Förbund"
+lang: sv 
+bibliography: references.bib
+link-citations: true
+reference-section-title: "Källor"
+format: 
+  html:
+    self-contained: false
+    include-after-body: contact-widget.html # Knapp för kontakt
+    language: sv 
+    toc: true  # Innehållsförteckning
+    toc_float: 
+      collapsed: false  # Visa ToC utvidgad från start
+      smooth_scroll: true  # Mjuk scroll
+    toc-title: "Innehåll"  # Rubrik för ToC
+    page-layout: full
+execute:
+  echo: false
+  warning: false
+  message: false
+  error: false
+editor: visual
+---
+
+```{r setup, include = FALSE, message=FALSE, warnings=FALSE}
+# använd paket(plus några extra som har testas)
+source("Script/install_load_packages.R")
+install_and_load()
+# Ställer in rätt typsnitt
+try(font_add_google("Source Sans Pro", "sourcesanspro"), silent = TRUE)
+font_add("Arial", "path/to/arial.ttf") # Specify the path if Arial is not system-default
+showtext_auto()
+
+source("Script/create_save_plots.R")
+source("Script/create_tables.R")
+```
+
+# Inledning
+
+Denna rapport undersöker ....
+
+Alla interaktiva grafer kan laddas ned genom att trycka på ![Nerladdningsknapp](Figurer/download_graph.png){width="120px"}. Då sparas just den bild som visas, med exempelvis den valda regionen. Genom att dubbelklicka på kommunnamn i grafens legend så zoomas den kommunen in för en mer detaljerad vy(flera kan väljas samtidigt).
+
+# Kostnad och intäkt
+
+Detta avsnitt redovisar kostnader och intäkter för kommunal kulturverksamhet per invånare. Uppgifterna omfattar verksamhet oavsett driftform och avser samtliga kommuner i länet.
+
+I data ingår följande verksamheter:
+
+-   *Allmän kulturverksamhet* omfattar bland annat stöd till kulturella föreningar samt museiverksamhet.
+
+-   *Biblioteksverksamheten* inkluderar kostnader och intäkter för informationsförmedling och utlåning av medier, medan kulturverksamhet som bedrivs inom bibliotekens regi, såsom utställningar och teater, redovisas under allmän kulturverksamhet.
+
+-   *Musik- och kulturskola* avser kommunal kultur- och musikskoleundervisning, exempelvis kommunala musikskolor. Förskole- och grundskoleverksamhet med musikprofil eller annan kulturell specialisering, såsom musikdagis, ingår inte här utan redovisas i stället inom respektive pedagogisk verksamhet.
+
+-   *Stöd till studieorganisationer* avser samtliga bidrag, oavsett om verksamheten har kulturell inriktning eller inte.
+
+Data är hämtat från @kolada som hänvisar till @sbcraken.
+
+```{r}
+# Tar ut år till tabelltitel
+df <- read.csv("Data/df_Kostnad_intakt.csv") %>% filter(year==max(year))
+ar <- max(df$year)
+
+
+```
+
+```{r}
+#| tbl-cap: !expr glue::glue("Kostnad och intäkt per kulturverksamhetsområde år {ar}" )
+#| label: tbl-kostnad_intakt
+
+
+
+kostnad_intakt()
+```
+
+De kommunerna som har högst kostnad per invånare på kulturverksamhet är Uppsala och Östhammar på över 1450 kr per invånare år `r ar`. Högst intäkt per invånare för kulturverksamhet finns i Heby på 149,9 kr/invånare.
+
+Fördelningen av kostnader mellan verksamhetstyper varierar mellan kommunerna. Till exempel har Älvkarleby 61,5 % av kostnaden per invånare inom biblioteksverksamhet, medan motsvarande andel i Enköping är 34 %.
+
+Andelen intäkter i förhållande till kostnader kan skilja sig markant inom samma kommun. I Östhammar står musik- och kulturskola för 30,2 % av kostnaden, men genererar nästan 60 % av intäkterna. Liknande mönster för musik- och kulturskola ses även i Håbo och Knivsta.
+
+### Utvecklingen över tid
+
+För att följa utvecklingen av totala kostnader och intäkter över tid presenteras figurerna nedan.
+
+::: panel-tabset
+```{r, results='asis'}
+
+# variabel som skiljer graferna
+text <- c('kostnad', 'intäkt')
+
+for(r in text){
+
+  cat("## ", str_to_sentence(r), "\n", sep = "")
+  filename_svg <- paste0("Figurer/kostnad_intakt_", r, ".svg")
+  
+  filename_png <- paste0("Figurer/kostnad_intakt_", r, ".png")
+  
+  cat('<img src="', filename_svg, '" alt= "',paste0("Figuren visar utvecklingen av ",r,"en på kulturverksamhet för samtliga kommuner i länet."), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  
+  cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
+  
+}
+
+```
+:::
+
+Kostnaden för kulturverksamhet har ökat stadigt för samtliga kommuner under perioden, men i olika takt sett till kostnad per invånare. Tierp har haft en jämn och stabil ökning av kostnaderna, medan Heby upplevde en kraftig kostnadsökning fram till 2020, för att därefter minska något och sedan stabiliseras.
+
+Uppsala kommun har i början av perioden en intäkt per invånare som är långt över dagens nivåer för samtliga kommuner. Heby har gått från den kommun med lägst inkomst per invånare år 2010 till högst 2024.
+
+## Nettokostnad
+
+Detta avsnitt redovisar nettokostnaden för kommunal kulturverksamhet per invånare, beräknad som skillnaden mellan bruttokostnader och bruttointäkter dividerat med folkmängden den 31 december respektive år. Detta mått ger en mer direkt bild av kommunernas faktiska kostnadsbörda. Uppgifterna omfattar verksamhet oavsett driftform och avser samtliga kommuner i länet.
+
+Data är hämtat från @kolada som hänvisar till @sbcraken.
+
+```{r}
+#| fig-cap: ""
+#| label: fig-nettokostnad_kultur
+#| fig-alt: "Figuren visar nettokostnaden för koluturverksamheter, musik och kulturskola, bibliotek och stö till studieorganisationer över tid för kommunerna i länet."
+#| fig-height: 7
+
+nettokostnad_kultur()
+
+```
+
+Analysen visar att nettobördan för kulturverksamhet ökat i samtliga kommuner under perioden. Enköping sticker ut med den lägsta ökningen under perioden och har på grund av den gått från en av de högsta nettokostnaderna per invånare till en av de lägsta i länet. De tre kommuner med lägst nettokostnad per invånare är också de kommuner i @tbl-kostnad_intakt som visar lägst total kostnad på kulturverksamhet. Ordningen speglar kostnaden på kulturverksamhet väldigt bra.
+
+För allmän kulturverksamhet är skillnaderna mellan kommunerna större, där Knivsta och Älvkarleby har haft låga nivåer under hela perioden, medan Uppsala och Enköping har haft stadigt höga nivåer.
+
+För nettokostnaden av bibliotekets regi så har skillnaderna mellan kommunerna ökat under perioden, där Enköping och Håbo har liknande nivåer som i början av perioden. Medan Knivsta ökade snabbt mellan 2010 och 2013, men sedan dess ar nettokostnaden i kr/invånare minskat något för varje år. Övriga kommuner har ett högre värde 2024 än vid 2010.
+
+Nettokostnaden för musik- och kulturskola har stigit i samtliga kommuner, med Tierp som den kommun med högst kostnad per invånare.
+
+## Kostnader fördelade till kulturverksamhet
+
+Detta mått beskriver relationen mellan fördelade kommungemensamma kostnader och kostnaden för kulturverksamhetens eget åtagande. Syftet är att öka jämförbarheten mellan kommuner som redovisar gemensamma kostnader centralt och kommuner som belastar dessa kostnader direkt i verksamheten.
+
+::: callout-tip
+## Beräkning
+
+$$
+\frac{
+\text{Kostnad för kommungemensam verksamhet (fördelad enligt Kommunnyckel och SCB-nyckel)}
+}{
+\text{Kostnad för eget åtagande avseende kulturverksamhet}
+}
+$$
+:::
+
+Kostnad för eget åtagande definieras som bruttokostnad minus interna intäkter samt försäljning av verksamhet till andra kommuner och/eller regioner. De kommungemensamma kostnaderna omfattar samtliga tjänster, funktioner och varor som redovisas centralt i räkenskapssammandraget och därefter fördelas till kulturverksamheten, exempelvis ekonomiadministration, HR-funktioner och förbrukningsvaror.
+
+**Tolkning:**
+
+Andelen visar hur stor del av kulturverksamhetens egna kostnader som utgörs av påförda kommungemensamma kostnader.
+
+*Hög andel*
+
+-   Stor del av kostnaderna ligger centralt
+
+-   Kulturverksamheten ”bär” mycket overhead
+
+-   Kan tyda på:
+
+    -   hög grad av centralisering
+
+    -   eller att kärnverksamheten är relativt liten
+
+*Låg andel*
+
+-   Färre centrala kostnader belastar kultur
+
+-   Mer kostnader ligger direkt i verksamheten
+
+-   Alternativt: stark och kostnadstung kärnverksamhet
+
+::: callout-note
+## Exempel
+
+Om andelen uppgår till 10 % innebär det att:
+
+För varje 100 kronor som kommunen lägger på sin egen kulturverksamhet tillkommer 10 kronor i gemensamma, centrala kostnader.
+:::
+
+Negativa värden uppstår när kostnaden för eget åtagande är negativ, vilket kan inträffa om interna intäkter och försäljning överstiger bruttokostnaderna. I dessa fall blir kvoten svårtolkad och bör analyseras med försiktighet eller exkluderas vid jämförelser.
+
+Data är hämtat från @kolada som hänvisar till @sbcraken.
+
+```{r}
+#| fig-cap: ""
+#| label: fig-andel_kost
+#| fig-alt: "Figuren visar kostnadsfördelningen för kulturverksamhet för varje kommun i länet."
+
+
+knitr::include_graphics("Figurer/kost_andel.svg")
+
+```
+
+```{=html}
+<div style="margin-top:0.5rem;">
+  <div class="download-dropdown">
+    <span class="download-btn">Ladda ner</span>
+    <div class="download-menu">
+      <a href="Figurer/kost_andel.svg" download>Som SVG</a>
+      <a href="Figurer/kost_andel.png" download>Som PNG</a>
+    </div>
+  </div>
+</div>
+```
+
+**Notera** att y-axeln i figuren inte sträcker sig från 0 till 100 procent, utan är inzoomad för att möjliggöra en mer detaljerad jämförelse mellan kommunerna.
+
+Samtliga kommuner i länet uppvisar andelar under 10 procent under den studerade perioden. Uppsala kommun avviker från övriga genom att konsekvent ligga över 7,5 procent under de senaste 7 åren, vilket indikerar en relativt hög andel fördelade kommungemensamma kostnader inom kulturverksamheten jämfört med övriga kommuner i länet.
+
+För Enköpings kommun förekommer ett enskilt år med ett negativt värde. Detta tyder på att kostnaden för eget åtagande varit negativ, vilket kan uppstå när interna intäkter och försäljning överstiger bruttokostnaderna. Utfallet bör därför tolkas med försiktighet och betraktas som ett redovisningstekniskt särfall snarare än en faktisk minskning av kostnader.
+
+Vidare kan flera tydliga förändringar i andelen observeras för enskilda kommuner över tid. Dessa förändringar inträffar dock inte samtidigt mellan kommunerna, vilket talar emot förekomsten av gemensamma, länsövergripande strukturförändringar. Av de mest markanta förändringarna innebär fyra av fem en ökning i andelen, vilket kan indikera en ökad belastning av kommungemensamma kostnader i kulturverksamheten under dessa år.
+
+# Kommunens köp av kultur och fritid från olika aktörer
+
+I detta kapitel presenteras kommunernas köp av kultur- och fritidsverksamhet över tid, uppdelat efter typ av utförare.
+
+Figurerna visar andelen av kostnaden för kommunens eget åtagande inom kultur och fritid som utgörs av köp av verksamhet, totalt samt från offentliga utförare, privata utförare och privatägda företag. Med köp av verksamhet avses betalningar för offentliga uppdrag (kärnverksamhet) som kommunen har överlämnat till externa aktörer.
+
+Kostnaden för eget åtagande definieras som bruttokostnaden för kultur- och fritidsverksamhet, exklusive interna intäkter samt försäljning till andra kommuner och regioner. Varje figur redovisar utvecklingen över tid för en enskild kommun.
+
+::: callout-note
+# Exempel
+
+Exempel på hur andelar av köp av kultur- och fritidsverksamhet tolkas:
+
+| Kommun | Köp av verksamhet | Kostnad för eget åtagande | Andel (%) | Tolkning |
+|---------------|---------------|---------------|---------------|---------------|
+| A | 0,5 miljoner | 50 miljoner | 1 % | Nästan allt sköts i egen regi |
+| B | 5 miljoner | 50 miljoner | 10 % | Mer av verksamheten utförs externt |
+:::
+
+Data är hämtat från @kolada som hänvisar till @scb_statistikdatabasen.
+
+::: panel-tabset
+```{r, results='asis'}
+
+for(r in sort(kommuner)){
+
+  cat("## ", r, "\n", sep = "")
+  filename_svg <- paste0("Figurer/kop_kf_", r, ".svg")
+  
+  filename_png <- paste0("Figurer/kop_kf_", r, ".png")
+  
+  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar andelen av kommunens köp av kultur och fritids kostnad för eget åtagande, offentliga och privata utförare."), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  
+  cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
+  
+}
+
+```
+:::
+
+**Notera** att kategorierna privata utförare och privatägda företag delvis överlappar. Privata utförare omfattar även idéburna och andra icke-privatägda aktörer, medan privatägda företag utgör en undergrupp av privata utförare.
+
+De redovisade andelarna är genomgående låga och uppgår i många kommuner till omkring 2 procent eller lägre. Detta speglar att måttet avser köp av kärnverksamhet i relation till en omfattande kostnadsmassa, snarare än att köp av kultur- och fritidsverksamhet är av begränsad betydelse. Även relativt små procentuella förändringar kan därmed motsvara betydande belopp i absoluta termer.
+
+Uppsala kommun utmärker sig genom att ha den högsta andelen i länet. Andelen av kommunens köp från offentliga utförare överstiger 5 procent under samtliga år i perioden, med undantag för 2019. Uppsala är även den enda kommunen i länet där offentliga utförare genomgående utgör den största andelen av köpen under hela perioden.

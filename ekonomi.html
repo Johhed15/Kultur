@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="sv" xml:lang="sv"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Förbund</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "Inget resultat",
+    "search-matching-documents-text": "matchande dokument",
+    "search-copy-link-title": "Kopiera länk för att söka",
+    "search-hide-matches-text": "Göm ytterligare resultat",
+    "search-more-match-text": "annat resultat i detta dokument",
+    "search-more-matches-text": "fler resultat i detta dokument",
+    "search-clear-button-title": "Rensa",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Avbryt",
+    "search-submit-button-title": "Verkställ",
+    "search-label": "Sök"
+  }
+}</script>
+<script src="site_libs/core-js-2.5.3/shim.min.js"></script>
+
+<script src="site_libs/react-18.2.0/react.min.js"></script>
+
+<script src="site_libs/react-18.2.0/react-dom.min.js"></script>
+
+<script src="site_libs/reactwidget-2.0.0/react-tools.js"></script>
+
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<link href="site_libs/reactable-0.4.4/reactable.css" rel="stylesheet">
+
+<script src="site_libs/reactable-binding-0.4.4/reactable.js"></script>
+
+<script src="site_libs/plotly-binding-4.11.0/plotly.js"></script>
+
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+
+<script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
+
+<link href="site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+
+<script src="site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+
+<link href="site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+
+<script src="site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./Figurer/Region Uppsala_Logo_CMYK_Vit.png" alt="Region Uppsala" class="navbar-logo">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Sök"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Skifta navigering" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Start</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./nojd.html"> 
+<span class="menu-text">Nöjdhet, kostnader och intäkter</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./organisationer.html"> 
+<span class="menu-text">Organisationer</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./ekonomi.html" aria-current="page"> 
+<span class="menu-text">Ekonomi och förbund</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Innehåll</h2>
+   
+  <ul>
+  <li><a href="#inledning" id="toc-inledning" class="nav-link active" data-scroll-target="#inledning">Inledning</a></li>
+  <li><a href="#kostnad-och-intäkt" id="toc-kostnad-och-intäkt" class="nav-link" data-scroll-target="#kostnad-och-intäkt">Kostnad och intäkt</a>
+  <ul class="collapse">
+  <li><a href="#utvecklingen-över-tid" id="toc-utvecklingen-över-tid" class="nav-link" data-scroll-target="#utvecklingen-över-tid">Utvecklingen över tid</a></li>
+  <li><a href="#nettokostnad" id="toc-nettokostnad" class="nav-link" data-scroll-target="#nettokostnad">Nettokostnad</a></li>
+  <li><a href="#kostnader-fördelade-till-kulturverksamhet" id="toc-kostnader-fördelade-till-kulturverksamhet" class="nav-link" data-scroll-target="#kostnader-fördelade-till-kulturverksamhet">Kostnader fördelade till kulturverksamhet</a></li>
+  </ul></li>
+  <li><a href="#kommunens-köp-av-kultur-och-fritid-från-olika-aktörer" id="toc-kommunens-köp-av-kultur-och-fritid-från-olika-aktörer" class="nav-link" data-scroll-target="#kommunens-köp-av-kultur-och-fritid-från-olika-aktörer">Kommunens köp av kultur och fritid från olika aktörer</a></li>
+  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">Källor</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Förbund</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="inledning" class="level1">
+<h1>Inledning</h1>
+<p>Denna rapport undersöker ….</p>
+<p>Alla interaktiva grafer kan laddas ned genom att trycka på <img src="Figurer/download_graph.png" class="img-fluid" width="120" alt="Nerladdningsknapp">. Då sparas just den bild som visas, med exempelvis den valda regionen. Genom att dubbelklicka på kommunnamn i grafens legend så zoomas den kommunen in för en mer detaljerad vy(flera kan väljas samtidigt).</p>
+</section>
+<section id="kostnad-och-intäkt" class="level1">
+<h1>Kostnad och intäkt</h1>
+<p>Detta avsnitt redovisar kostnader och intäkter för kommunal kulturverksamhet per invånare. Uppgifterna omfattar verksamhet oavsett driftform och avser samtliga kommuner i länet.</p>
+<p>I data ingår följande verksamheter:</p>
+<ul>
+<li><p><em>Allmän kulturverksamhet</em> omfattar bland annat stöd till kulturella föreningar samt museiverksamhet.</p></li>
+<li><p><em>Biblioteksverksamheten</em> inkluderar kostnader och intäkter för informationsförmedling och utlåning av medier, medan kulturverksamhet som bedrivs inom bibliotekens regi, såsom utställningar och teater, redovisas under allmän kulturverksamhet.</p></li>
+<li><p><em>Musik- och kulturskola</em> avser kommunal kultur- och musikskoleundervisning, exempelvis kommunala musikskolor. Förskole- och grundskoleverksamhet med musikprofil eller annan kulturell specialisering, såsom musikdagis, ingår inte här utan redovisas i stället inom respektive pedagogisk verksamhet.</p></li>
+<li><p><em>Stöd till studieorganisationer</em> avser samtliga bidrag, oavsett om verksamheten har kulturell inriktning eller inte.</p></li>
+</ul>
+<p>Data är hämtat från <span class="citation" data-cites="kolada">Rådet för främjande av kommunala analyser (<a href="#ref-kolada" role="doc-biblioref">2025</a>)</span> som hänvisar till <span class="citation" data-cites="sbcraken">Statistiska centralbyrån (SCB) (<a href="#ref-sbcraken" role="doc-biblioref">2025a</a>)</span>.</p>
+<div class="cell">
+<div id="tbl-kostnad_intakt" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-kostnad_intakt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabell&nbsp;1: Kostnad och intäkt per kulturverksamhetsområde år 2024
+</figcaption>
+<div aria-describedby="tbl-kostnad_intakt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div>
+<div style="margin-bottom: 20px;">
+<h4 class="anchored">Välj kommun:</h4>
+<div style="display: flex; flex-wrap: wrap; gap: 6px;">
+<button onclick="Reactable.setFilter('kostnad_intakt_table', 'municipality', 'Enköping')" class="btn btn-outline-primary btn-sm">Enköping</button>
+<button onclick="Reactable.setFilter('kostnad_intakt_table', 'municipality', 'Heby')" class="btn btn-outline-primary btn-sm">Heby</button>
+<button onclick="Reactable.setFilter('kostnad_intakt_table', 'municipality', 'Håbo')" class="btn btn-outline-primary btn-sm">Håbo</button>
+<button onclick="Reactable.setFilter('kostnad_intakt_table', 'municipality', 'Knivsta')" class="btn btn-outline-primary btn-sm">Knivsta</button>
+<button onclick="Reactable.setFilter('kostnad_intakt_table', 'municipality', 'Tierp')" class="btn btn-outline-primary btn-sm">Tierp</button>
+<button onclick="Reactable.setFilter('kostnad_intakt_table', 'municipality', 'Uppsala')" class="btn btn-outline-primary btn-sm">Uppsala</button>
+<button onclick="Reactable.setFilter('kostnad_intakt_table', 'municipality', 'Älvkarleby')" class="btn btn-outline-primary btn-sm">Älvkarleby</button>
+<button onclick="Reactable.setFilter('kostnad_intakt_table', 'municipality', 'Östhammar')" class="btn btn-outline-primary btn-sm">Östhammar</button>
+</div>
+</div>
+<div class="reactable html-widget html-fill-item" id="kostnad_intakt_table" style="width:auto;height:auto;"></div>
+<p style="color:#000;background:#FFFFFF;text-align:left;font-size:16px;font-style:normal;font-weight:normal;text-decoration:;letter-spacing:px;word-spacing:px;text-transform:;text-shadow:;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px">Källa: SCB:s Räkenskapssammandrag</p>
+<script type="application/json" data-for="kostnad_intakt_table">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"title":["Kulturverksamhet","Allmän kulturverksamhet","Bibliotek","Musik- och kulturskola","Stöd till studieorganisationer","Kulturverksamhet","Allmän kulturverksamhet","Bibliotek","Musik- och kulturskola","Stöd till studieorganisationer","Kulturverksamhet","Allmän kulturverksamhet","Bibliotek","Musik- och kulturskola","Stöd till studieorganisationer","Kulturverksamhet","Allmän kulturverksamhet","Bibliotek","Musik- och kulturskola","Stöd till studieorganisationer","Kulturverksamhet","Allmän kulturverksamhet","Bibliotek","Musik- och kulturskola","Stöd till studieorganisationer","Kulturverksamhet","Allmän kulturverksamhet","Bibliotek","Musik- och kulturskola","Stöd till studieorganisationer","Kulturverksamhet","Allmän kulturverksamhet","Bibliotek","Musik- och kulturskola","Stöd till studieorganisationer","Kulturverksamhet","Allmän kulturverksamhet","Bibliotek","Musik- och kulturskola","Stöd till studieorganisationer"],"municipality":["Enköping","Enköping","Enköping","Enköping","Enköping","Heby","Heby","Heby","Heby","Heby","Håbo","Håbo","Håbo","Håbo","Håbo","Knivsta","Knivsta","Knivsta","Knivsta","Knivsta","Tierp","Tierp","Tierp","Tierp","Tierp","Uppsala","Uppsala","Uppsala","Uppsala","Uppsala","Älvkarleby","Älvkarleby","Älvkarleby","Älvkarleby","Älvkarleby","Östhammar","Östhammar","Östhammar","Östhammar","Östhammar"],"Kostnad":[1099.874462,399.045091,374.01988,316.49894,10.289971,1389.682816,407.389334,663.576159,318.647612,0,1028.816437,240.28207,352.805467,418.752449,16.932921,913.226065,91.209362,488.510357,330.061813,3.491719,1700.435936,484.64746,643.622062,549.327142,22.791888,1469.453584,602.622411,533.171247,283.860719,49.799207,1220.477387,152.324121,750,311.243719,6.804858,1452.299214,324.555064,673.096034,438.838197,15.80992],"andel_kostnad":[100,36.2809670363998,34.0056881873488,28.7759149734672,0.935558680150535,100,29.315274630265,47.7501881263818,22.9295209188224,0,100,23.3551935368233,34.2923629825327,40.7023482460166,1.64586415914737,100,9.98759951075203,53.4928180132485,36.1423995273284,0.382349905880096,100,28.5013654286826,37.850415200823,32.3050772081542,1.34035558279333,100,41.009965715256,36.2836399057025,19.3174335066306,3.38896087241092,100,12.4806999803922,61.4513638670144,25.5018013701224,0.557557073361819,100,22.3476719446878,46.3469254483808,30.2167895410016,1.08861313478615],"Intäkt":[81.661213,27.885822,22.432138,31.343253,0,149.878006,41.547578,66.782851,41.547578,0,109.693989,19.239977,28.294084,62.116398,0.043529,124.050394,26.376634,27.792196,69.881565,0,89.888173,15.873768,40.845337,33.169067,0,113.35559,57.992226,22.188085,33.175279,0,89.61474,6.072027,54.752931,28.789782,0,76.47484,18.926732,11.880025,45.668082,0],"andel_intakt":[100,34.1481848916449,27.4697585008932,38.3820566074619,0,100,27.720930581369,44.5581395044714,27.720930581369,0,100,17.5396821424736,25.7936503703954,56.6269843646583,0.0396822108456645,100,21.2628377464081,22.4039562502317,56.3332068094842,0,100,17.6594622743083,45.4401681965435,36.9003684166548,0,100,51.1595643408499,19.5738780945871,29.266557564563,0,100,6.77570118487204,61.0981307316185,32.1261680835095,0,100,24.7489658036552,15.5345535865129,59.7164793022123,0]},"columns":[{"id":"title","name":"Verksamhet","type":"character","header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"font-size":"18px","font-weight":"600"}},"children":["Verksamhet"]},{"name":"div","attribs":{"style":{"font-size":"12px"}},"children":["Kulturverksamhet per område"]}]},"minWidth":140},{"id":"municipality","name":"Kommun","type":"character","filterable":false,"header":{"name":"div","attribs":{"style":{"font-size":"18px","font-weight":"600"}},"children":["Kommun"]},"minWidth":80},{"id":"Kostnad","name":"Kostnad","type":"numeric","format":{"cell":{"digits":1,"separators":true},"aggregated":{"digits":1,"separators":true}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"font-size":"18px","font-weight":"600"}},"children":["Kostnad"]},{"name":"div","attribs":{"style":{"font-size":"12px"}},"children":["kr per invånare"]}]},"minWidth":80,"align":"right"},{"id":"andel_kostnad","name":"Andel kostnad","type":"numeric","format":{"cell":{"digits":1,"separators":true},"aggregated":{"digits":1,"separators":true}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"font-size":"18px","font-weight":"600"}},"children":["Andel (%)"]},{"name":"div","attribs":{"style":{"font-size":"12px"}},"children":["av kostnaden"]}]},"minWidth":80,"align":"right"},{"id":"Intäkt","name":"Intäkt","type":"numeric","format":{"cell":{"digits":1,"separators":true},"aggregated":{"digits":1,"separators":true}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"font-size":"18px","font-weight":"600"}},"children":["Intäkt"]},{"name":"div","attribs":{"style":{"font-size":"12px"}},"children":["kr per invånare"]}]},"minWidth":80,"align":"right"},{"id":"andel_intakt","name":"Intäkt","type":"numeric","format":{"cell":{"digits":1,"separators":true},"aggregated":{"digits":1,"separators":true}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"font-size":"18px","font-weight":"600"}},"children":["Andel (%)"]},{"name":"div","attribs":{"style":{"font-size":"12px"}},"children":["av intäkten"]}]},"minWidth":80,"align":"right"}],"defaultPageSize":5,"highlight":true,"bordered":true,"striped":true,"compact":true,"theme":{"headerStyle":{"background":"#F4DCE8","color":"black","fontSize":"14px","fontWeight":"600"}},"elementId":"kostnad_intakt_table","dataKey":"d0f4e7dda0aaf5f6bccf73716e42d7f1"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>De kommunerna som har högst kostnad per invånare på kulturverksamhet är Uppsala och Östhammar på över 1450 kr per invånare år 2024. Högst intäkt per invånare för kulturverksamhet finns i Heby på 149,9 kr/invånare.</p>
+<p>Fördelningen av kostnader mellan verksamhetstyper varierar mellan kommunerna. Till exempel har Älvkarleby 61,5 % av kostnaden per invånare inom biblioteksverksamhet, medan motsvarande andel i Enköping är 34 %.</p>
+<p>Andelen intäkter i förhållande till kostnader kan skilja sig markant inom samma kommun. I Östhammar står musik- och kulturskola för 30,2 % av kostnaden, men genererar nästan 60 % av intäkterna. Liknande mönster för musik- och kulturskola ses även i Håbo och Knivsta.</p>
+<section id="utvecklingen-över-tid" class="level3">
+<h3 class="anchored" data-anchor-id="utvecklingen-över-tid">Utvecklingen över tid</h3>
+<p>För att följa utvecklingen av totala kostnader och intäkter över tid presenteras figurerna nedan.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Kostnad</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Intäkt</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<img src="Figurer/kostnad_intakt_kostnad.svg" alt="Figuren visar utvecklingen av kostnaden på kulturverksamhet för samtliga kommuner i länet." style="width:100%; max-width:800px; height:100%;">
+<div style="margin-top:0.5rem;">
+<div class="download-dropdown">
+<span class="download-btn">Ladda ner</span>
+<div class="download-menu">
+<a href="Figurer/kostnad_intakt_kostnad.svg" download="">Som SVG</a><a href="Figurer/kostnad_intakt_kostnad.png" download="">Som PNG</a>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<img src="Figurer/kostnad_intakt_intäkt.svg" alt="Figuren visar utvecklingen av intäkten på kulturverksamhet för samtliga kommuner i länet." style="width:100%; max-width:800px; height:100%;">
+<div style="margin-top:0.5rem;">
+<div class="download-dropdown">
+<span class="download-btn">Ladda ner</span>
+<div class="download-menu">
+<a href="Figurer/kostnad_intakt_intäkt.svg" download="">Som SVG</a><a href="Figurer/kostnad_intakt_intäkt.png" download="">Som PNG</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Kostnaden för kulturverksamhet har ökat stadigt för samtliga kommuner under perioden, men i olika takt sett till kostnad per invånare. Tierp har haft en jämn och stabil ökning av kostnaderna, medan Heby upplevde en kraftig kostnadsökning fram till 2020, för att därefter minska något och sedan stabiliseras.</p>
+<p>Uppsala kommun har i början av perioden en intäkt per invånare som är långt över dagens nivåer för samtliga kommuner. Heby har gått från den kommun med lägst inkomst per invånare år 2010 till högst 2024.</p>
+</section>
+<section id="nettokostnad" class="level2">
+<h2 class="anchored" data-anchor-id="nettokostnad">Nettokostnad</h2>
+<p>Detta avsnitt redovisar nettokostnaden för kommunal kulturverksamhet per invånare, beräknad som skillnaden mellan bruttokostnader och bruttointäkter dividerat med folkmängden den 31 december respektive år. Detta mått ger en mer direkt bild av kommunernas faktiska kostnadsbörda. Uppgifterna omfattar verksamhet oavsett driftform och avser samtliga kommuner i länet.</p>
+<p>Data är hämtat från <span class="citation" data-cites="kolada">Rådet för främjande av kommunala analyser (<a href="#ref-kolada" role="doc-biblioref">2025</a>)</span> som hänvisar till <span class="citation" data-cites="sbcraken">Statistiska centralbyrån (SCB) (<a href="#ref-sbcraken" role="doc-biblioref">2025a</a>)</span>.</p>
+<div class="cell">
+<div id="fig-nettokostnad_kultur" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-nettokostnad_kultur-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-3a2943c7b5958ae965d6" style="width:100%;height:650px;"></div>
+<script type="application/json" data-for="htmlwidget-3a2943c7b5958ae965d6">{"x":{"visdat":{"3c947d8d6761":["function () ","plotlyVisDat"]},"cur_data":"3c947d8d6761","attrs":{"3c947d8d6761":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[925.39999999999998,902.69000000000005,959.91999999999996,1038.6199999999999,940.19000000000005,998.30999999999995,1007.21,992.39999999999998,948.00999999999999,1031.8900000000001,1019.6799999999999,969.79999999999995,971.29999999999995,985.21000000000004,1018.21],"type":"scatter","mode":"lines+markers","name":"Enköping","line":{"color":"#D57667","width":5},"marker":{"color":"#D57667","size":8},"visible":true,"inherit":true},"3c947d8d6761.1":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[802.57000000000005,787.00999999999999,742.59000000000003,770.71000000000004,827.79999999999995,1092.6099999999999,1164.3800000000001,1226.4300000000001,1206.04,1226.53,1152.6099999999999,1168.6400000000001,1166.3499999999999,1240.4000000000001,1239.8],"type":"scatter","mode":"lines+markers","name":"Heby","line":{"color":"#F9B000","width":5},"marker":{"color":"#F9B000","size":8},"visible":true,"inherit":true},"3c947d8d6761.2":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[664.48000000000002,642.86000000000001,692.64999999999998,701.47000000000003,961.62,837.86000000000001,871.52999999999997,830.42999999999995,863.34000000000003,941.87,921.42999999999995,927.45000000000005,939.25,935.62,919.12],"type":"scatter","mode":"lines+markers","name":"Håbo","line":{"color":"#019CD7","width":5},"marker":{"color":"#019CD7","size":8},"visible":true,"inherit":true},"3c947d8d6761.3":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[530.83000000000004,544,608.94000000000005,711.75,716.86000000000001,754.39999999999998,735.66999999999996,759.90999999999997,863.62,842.47000000000003,847.33000000000004,893.52999999999997,814.73000000000002,811.04999999999995,789.17999999999995],"type":"scatter","mode":"lines+markers","name":"Knivsta","line":{"color":"#D0342C","width":5},"marker":{"color":"#D0342C","size":8},"visible":true,"inherit":true},"3c947d8d6761.4":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[936.45000000000005,936.20000000000005,959.37,931.74000000000001,993.67999999999995,1041.3699999999999,1146.74,1236.26,1223.03,1187.74,1337.4100000000001,1311.6099999999999,1472.6700000000001,1415.1400000000001,1610.55],"type":"scatter","mode":"lines+markers","name":"Tierp","line":{"color":"#4AA271","width":5},"marker":{"color":"#4AA271","size":8},"visible":true,"inherit":true},"3c947d8d6761.5":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[944.96000000000004,957.00999999999999,965.75999999999999,964.87,881.17999999999995,919.12,948.82000000000005,1022.84,1010.83,1075.9400000000001,1131.1199999999999,1144.8299999999999,1193.71,1264.6600000000001,1356.0999999999999],"type":"scatter","mode":"lines+markers","name":"Uppsala","line":{"color":"#6F787E","width":5},"marker":{"color":"#6F787E","size":8},"visible":true,"inherit":true},"3c947d8d6761.6":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[734.80999999999995,755.86000000000001,776.90999999999997,762.25999999999999,787.98000000000002,814.04999999999995,825.94000000000005,914.70000000000005,946.98000000000002,985.62,988.00999999999999,978.80999999999995,997.19000000000005,1137.6900000000001,1130.8599999999999],"type":"scatter","mode":"lines+markers","name":"Älvkarleby","line":{"color":"#8B4A9C","width":5},"marker":{"color":"#8B4A9C","size":8},"visible":true,"inherit":true},"3c947d8d6761.7":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[737.65999999999997,698.88,726.26999999999998,695.05999999999995,746.19000000000005,825.49000000000001,930.52999999999997,1047.8900000000001,1037.6500000000001,1155.46,1182.6400000000001,1231.1300000000001,1174.72,1403.0799999999999,1375.8199999999999],"type":"scatter","mode":"lines+markers","name":"Östhammar","line":{"color":"#E67E22","width":5},"marker":{"color":"#E67E22","size":8},"visible":true,"inherit":true},"3c947d8d6761.8":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[270.81,277.5,367.87,387.83999999999997,248.16,292.55000000000001,299.67000000000002,274.63,282.25,362.06999999999999,358.13,322.81,339.50999999999999,343.57999999999998,371.16000000000003],"type":"scatter","mode":"lines+markers","name":"Enköping","line":{"color":"#D57667","width":5},"marker":{"color":"#D57667","size":8},"visible":false,"inherit":true},"3c947d8d6761.9":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[171.72,153.72999999999999,152.13,142.97,201.11000000000001,415.92000000000002,496.55000000000001,522.09000000000003,448.31,507.23000000000002,455.43000000000001,403.26999999999998,207.88999999999999,232.16999999999999,365.83999999999997],"type":"scatter","mode":"lines+markers","name":"Heby","line":{"color":"#F9B000","width":5},"marker":{"color":"#F9B000","size":8},"visible":false,"inherit":true},"3c947d8d6761.10":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[75.040000000000006,89.680000000000007,87.659999999999997,110.53,280.92000000000002,165.59,208.13,144.86000000000001,194.12,270.89999999999998,222.66999999999999,253.53999999999999,263.51999999999998,232.87,221.03999999999999],"type":"scatter","mode":"lines+markers","name":"Håbo","line":{"color":"#019CD7","width":5},"marker":{"color":"#019CD7","size":8},"visible":false,"inherit":true},"3c947d8d6761.11":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[26.829999999999998,33.810000000000002,33.18,33.439999999999998,33.649999999999999,40.960000000000001,42.200000000000003,50.82,50.960000000000001,66.310000000000002,82.170000000000002,132.71000000000001,77.090000000000003,88.200000000000003,64.790000000000006],"type":"scatter","mode":"lines+markers","name":"Knivsta","line":{"color":"#D0342C","width":5},"marker":{"color":"#D0342C","size":8},"visible":false,"inherit":true},"3c947d8d6761.12":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[113.39,114.11,114.41,101.87,101.61,107.45999999999999,110.83,126.84999999999999,129.83000000000001,91.120000000000005,107.09,91.599999999999994,139.91,119.47,468.76999999999998],"type":"scatter","mode":"lines+markers","name":"Tierp","line":{"color":"#4AA271","width":5},"marker":{"color":"#4AA271","size":8},"visible":false,"inherit":true},"3c947d8d6761.13":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[434.5,407.61000000000001,425.62,399.56,380.06,343.13999999999999,362.68000000000001,394.55000000000001,370.07999999999998,398.70999999999998,433.11000000000001,432.25,484.94,513.74000000000001,544.63],"type":"scatter","mode":"lines+markers","name":"Uppsala","line":{"color":"#6F787E","width":5},"marker":{"color":"#6F787E","size":8},"visible":false,"inherit":true},"3c947d8d6761.14":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[48.670000000000002,49.289999999999999,50.009999999999998,49.93,97.939999999999998,112.13,68.400000000000006,151.78,127.23999999999999,138.84,134.06,121.22,161.13999999999999,164.44,146.25],"type":"scatter","mode":"lines+markers","name":"Älvkarleby","line":{"color":"#8B4A9C","width":5},"marker":{"color":"#8B4A9C","size":8},"visible":false,"inherit":true},"3c947d8d6761.15":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[148.50999999999999,128.16,162.97,134.84,128.43000000000001,147.24000000000001,150.12,180.96000000000001,171.90000000000001,231.24000000000001,277.82999999999998,274.76999999999998,249.69,303.31,305.63],"type":"scatter","mode":"lines+markers","name":"Östhammar","line":{"color":"#E67E22","width":5},"marker":{"color":"#E67E22","size":8},"visible":false,"inherit":true},"3c947d8d6761.16":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[392.04000000000002,365.00999999999999,334.94999999999999,360.88,391.70999999999998,393.55000000000001,359.56999999999999,370.70999999999998,330.45999999999998,333.38,331.62,329.52999999999997,334.62,356.35000000000002,351.58999999999997],"type":"scatter","mode":"lines+markers","name":"Enköping","line":{"color":"#D57667","width":5},"marker":{"color":"#D57667","size":8},"visible":false,"inherit":true},"3c947d8d6761.17":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[493.94999999999999,497.12,456.51999999999998,442.68000000000001,459.52999999999997,503.16000000000003,492.98000000000002,522.29999999999995,532.49000000000001,536.34000000000003,507.41000000000003,478.43000000000001,540.46000000000004,587.60000000000002,596.78999999999996],"type":"scatter","mode":"lines+markers","name":"Heby","line":{"color":"#F9B000","width":5},"marker":{"color":"#F9B000","size":8},"visible":false,"inherit":true},"3c947d8d6761.18":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[337.05000000000001,320.67000000000002,357.99000000000001,342,400.51999999999998,330.58999999999997,333.99000000000001,340.69999999999999,334.95999999999998,329.49000000000001,331.35000000000002,303.02999999999997,313.11000000000001,330.72000000000003,324.50999999999999],"type":"scatter","mode":"lines+markers","name":"Håbo","line":{"color":"#019CD7","width":5},"marker":{"color":"#019CD7","size":8},"visible":false,"inherit":true},"3c947d8d6761.19":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[376.94,378.88,428.63,512.89999999999998,511.94999999999999,490.77999999999997,499.62,499.22000000000003,500.48000000000002,478.31,481.51999999999998,476.38999999999999,457.25999999999999,450.75999999999999,460.67000000000002],"type":"scatter","mode":"lines+markers","name":"Knivsta","line":{"color":"#D0342C","width":5},"marker":{"color":"#D0342C","size":8},"visible":false,"inherit":true},"3c947d8d6761.20":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[500.01999999999998,496.69,506.94999999999999,487.58999999999997,503.73000000000002,533.79999999999995,576.84000000000003,629.76999999999998,591.57000000000005,625.33000000000004,685.04999999999995,644.82000000000005,722.03999999999996,680.08000000000004,602.77999999999997],"type":"scatter","mode":"lines+markers","name":"Tierp","line":{"color":"#4AA271","width":5},"marker":{"color":"#4AA271","size":8},"visible":false,"inherit":true},"3c947d8d6761.21":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[337.44999999999999,366.66000000000003,377.49000000000001,379.75,306.68000000000001,385.63,382.57999999999998,404.12,402.44999999999999,431.74000000000001,439.24000000000001,449.27999999999997,456.45999999999998,476.81,510.98000000000002],"type":"scatter","mode":"lines+markers","name":"Uppsala","line":{"color":"#6F787E","width":5},"marker":{"color":"#6F787E","size":8},"visible":false,"inherit":true},"3c947d8d6761.22":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[489.29000000000002,503.36000000000001,497.19,487.41000000000003,466.45999999999998,472.29000000000002,523.65999999999997,522.01999999999998,580.27999999999997,609.5,605.39999999999998,574.42999999999995,580.47000000000003,670.28999999999996,695.25],"type":"scatter","mode":"lines+markers","name":"Älvkarleby","line":{"color":"#8B4A9C","width":5},"marker":{"color":"#8B4A9C","size":8},"visible":false,"inherit":true},"3c947d8d6761.23":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[337.86000000000001,322.63,331.25,311.20999999999998,345.69999999999999,366.60000000000002,463.01999999999998,534.76999999999998,536.00999999999999,582.42999999999995,564.24000000000001,596.39999999999998,578.40999999999997,686.86000000000001,661.22000000000003],"type":"scatter","mode":"lines+markers","name":"Östhammar","line":{"color":"#E67E22","width":5},"marker":{"color":"#E67E22","size":8},"visible":false,"inherit":true},"3c947d8d6761.24":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[243.47,241.22999999999999,238.40000000000001,271.32999999999998,281.94999999999999,294.30000000000001,330.38999999999999,329.81999999999999,318.06,319.64999999999998,313.44999999999999,301.56,281.5,274.93000000000001,285.16000000000003],"type":"scatter","mode":"lines+markers","name":"Enköping","line":{"color":"#D57667","width":5},"marker":{"color":"#D57667","size":8},"visible":false,"inherit":true},"3c947d8d6761.25":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[136.90000000000001,136.16,105.13,160.15000000000001,146.18000000000001,149.18000000000001,153.11000000000001,160.88999999999999,225.22999999999999,182.88999999999999,189.77000000000001,286.86000000000001,417.93000000000001,420.62,277.10000000000002],"type":"scatter","mode":"lines+markers","name":"Heby","line":{"color":"#F9B000","width":5},"marker":{"color":"#F9B000","size":8},"visible":false,"inherit":true},"3c947d8d6761.26":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[230.83000000000001,211.72,225.91999999999999,230.87,262.19999999999999,322.25,310.69999999999999,323.25,316.77999999999997,323.56,349.56,352.49000000000001,344.04000000000002,354.05000000000001,356.63999999999999],"type":"scatter","mode":"lines+markers","name":"Håbo","line":{"color":"#019CD7","width":5},"marker":{"color":"#019CD7","size":8},"visible":false,"inherit":true},"3c947d8d6761.27":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[122.66,126.83,142.68000000000001,158.53999999999999,164.86000000000001,213.81999999999999,186.34,203.11000000000001,305.18000000000001,297.85000000000002,283.57999999999998,283.48000000000002,276.81,280.57999999999998,260.18000000000001],"type":"scatter","mode":"lines+markers","name":"Knivsta","line":{"color":"#D0342C","width":5},"marker":{"color":"#D0342C","size":8},"visible":false,"inherit":true},"3c947d8d6761.28":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[267.02999999999997,271.00999999999999,282.88999999999999,291.30000000000001,337.70999999999998,349.98000000000002,412.41000000000003,438.83999999999997,469.20999999999998,441.66000000000003,505.60000000000002,535.58000000000004,572.36000000000001,558.96000000000004,516.15999999999997],"type":"scatter","mode":"lines+markers","name":"Tierp","line":{"color":"#4AA271","width":5},"marker":{"color":"#4AA271","size":8},"visible":false,"inherit":true},"3c947d8d6761.29":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[115.54000000000001,125.90000000000001,127.79000000000001,129.66,142.94,138.46000000000001,148.94999999999999,167.03,186.77000000000001,197.18000000000001,210.74000000000001,217.63,208.33000000000001,229.84,250.69],"type":"scatter","mode":"lines+markers","name":"Uppsala","line":{"color":"#6F787E","width":5},"marker":{"color":"#6F787E","size":8},"visible":false,"inherit":true},"3c947d8d6761.30":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[194.88,199.58000000000001,226.28999999999999,221.63999999999999,217.91,224.25,227.41999999999999,234.31,231.15000000000001,228.72,242.03999999999999,279.00999999999999,249.97,295.33999999999997,282.44999999999999],"type":"scatter","mode":"lines+markers","name":"Älvkarleby","line":{"color":"#8B4A9C","width":5},"marker":{"color":"#8B4A9C","size":8},"visible":false,"inherit":true},"3c947d8d6761.31":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[227.90000000000001,224.75999999999999,208.25999999999999,232.47999999999999,255.68000000000001,295.41000000000003,301.35000000000002,316.19,313.81999999999999,326.01999999999998,324.83999999999997,344.35000000000002,331.36000000000001,397.12,393.17000000000002],"type":"scatter","mode":"lines+markers","name":"Östhammar","line":{"color":"#E67E22","width":5},"marker":{"color":"#E67E22","size":8},"visible":false,"inherit":true},"3c947d8d6761.32":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[19.09,18.920000000000002,18.710000000000001,18.550000000000001,18.34,17.899999999999999,17.59,17.219999999999999,17.239999999999998,16.780000000000001,16.460000000000001,15.9,15.67,10.35,10.289999999999999],"type":"scatter","mode":"lines+markers","name":"Enköping","line":{"color":"#D57667","width":5},"marker":{"color":"#D57667","size":8},"visible":false,"inherit":true},"3c947d8d6761.33":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[0,0,28.809999999999999,24.91,20.98,24.350000000000001,21.809999999999999,21.219999999999999,0,0,0,0,0,0,0],"type":"scatter","mode":"lines+markers","name":"Heby","line":{"color":"#F9B000","width":5},"marker":{"color":"#F9B000","size":8},"visible":false,"inherit":true},"3c947d8d6761.34":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[21.5,20.75,21.02,18.079999999999998,17.969999999999999,19.48,18.710000000000001,21.68,17.48,17.920000000000002,17.850000000000001,18.440000000000001,18.579999999999998,17.93,16.890000000000001],"type":"scatter","mode":"lines+markers","name":"Håbo","line":{"color":"#019CD7","width":5},"marker":{"color":"#019CD7","size":8},"visible":false,"inherit":true},"3c947d8d6761.35":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[4.4100000000000001,4.4800000000000004,4.4500000000000002,6.7999999999999998,6.4000000000000004,8.8300000000000001,7.4500000000000002,6.75,7,0,0,0.91000000000000003,3.5800000000000001,-8.4499999999999993,3.4900000000000002],"type":"scatter","mode":"lines+markers","name":"Knivsta","line":{"color":"#D0342C","width":5},"marker":{"color":"#D0342C","size":8},"visible":false,"inherit":true},"3c947d8d6761.36":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[56,54.390000000000001,55.119999999999997,50.979999999999997,50.630000000000003,50.130000000000003,46.659999999999997,40.799999999999997,32.469999999999999,29.620000000000001,39.619999999999997,39.609999999999999,38.350000000000001,56.619999999999997,22.789999999999999],"type":"scatter","mode":"lines+markers","name":"Tierp","line":{"color":"#4AA271","width":5},"marker":{"color":"#4AA271","size":8},"visible":false,"inherit":true},"3c947d8d6761.37":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[57.479999999999997,56.840000000000003,34.859999999999999,55.890000000000001,51.5,51.890000000000001,54.609999999999999,57.149999999999999,51.539999999999999,48.32,48.020000000000003,45.670000000000002,43.969999999999999,44.270000000000003,49.799999999999997],"type":"scatter","mode":"lines+markers","name":"Uppsala","line":{"color":"#6F787E","width":5},"marker":{"color":"#6F787E","size":8},"visible":false,"inherit":true},"3c947d8d6761.38":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[1.98,3.6299999999999999,3.4199999999999999,3.29,5.6699999999999999,5.3799999999999999,6.3499999999999996,6.5899999999999999,8.3000000000000007,8.5700000000000003,6.5199999999999996,4.1500000000000004,5.6100000000000003,7.7300000000000004,6.7999999999999998],"type":"scatter","mode":"lines+markers","name":"Älvkarleby","line":{"color":"#8B4A9C","width":5},"marker":{"color":"#8B4A9C","size":8},"visible":false,"inherit":true},"3c947d8d6761.39":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[23.390000000000001,23.379999999999999,23.800000000000001,16.530000000000001,16.379999999999999,16.23,16.039999999999999,15.960000000000001,15.869999999999999,15.73,15.73,15.609999999999999,15.220000000000001,15.789999999999999,15.81],"type":"scatter","mode":"lines+markers","name":"Östhammar","line":{"color":"#E67E22","width":5},"marker":{"color":"#E67E22","size":8},"visible":false,"inherit":true}},"layout":{"margin":{"b":100,"l":60,"t":40,"r":10},"title":{"text":"<b> Nettokostnad kulturverksamhet <b>","y":0.96999999999999997,"x":0.5,"font":{"size":20,"color":"#B81867"}},"xaxis":{"domain":[0,1],"automargin":true,"title":"","tickangle":-45,"type":"category","categoryorder":"array","categoryarray":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"<b>Kr/invånare<b>","rangemode":"tozero"},"hovermode":"x unified","updatemenus":[{"y":-0.14999999999999999,"x":1.3,"buttons":[{"method":"update","args":[{"visible":[true,true,true,true,true,true,true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]},{"title":"<b> Nettokostnad kulturverksamhet <b>","yaxis":{"title":"<b>Kr/invånare<b>","rangemode":"tozero"}}],"label":"Nettokostnad kulturverksamhet"},{"method":"update","args":[{"visible":[false,false,false,false,false,false,false,false,true,true,true,true,true,true,true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]},{"title":"<b> Nettokostnad allmän kulturverksamhet <b>","yaxis":{"title":"<b>Kr/invånare<b>","rangemode":"tozero"}}],"label":"Nettokostnad allmän kulturverksamhet"},{"method":"update","args":[{"visible":[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true,true,true,true,true,true,true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]},{"title":"<b> Nettokostnad bibliotek <b>","yaxis":{"title":"<b>Kr/invånare<b>","rangemode":"tozero"}}],"label":"Nettokostnad bibliotek"},{"method":"update","args":[{"visible":[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true,true,true,true,true,true,true,true,false,false,false,false,false,false,false,false]},{"title":"<b> Nettokostnad musik- och kulturskola <b>","yaxis":{"title":"<b>Kr/invånare<b>","rangemode":"tozero"}}],"label":"Nettokostnad musik- och kulturskola"},{"method":"update","args":[{"visible":[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true,true,true,true,true,true,true,true]},{"title":"<b> Nettokostnad stöd till studieorganisationer <b>","yaxis":{"title":"<b>Kr/invånare<b>","rangemode":"tozero"}}],"label":"Nettokostnad stöd till studieorganisationer"}],"direction":"up"}],"annotations":[{"text":"Källa: SCB:s Räkenskapssammandrag","x":0,"y":-0.17000000000000001,"xref":"paper","yref":"paper","xanchor":"left","yanchor":"bottom","showarrow":false,"font":{"size":12}}],"showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"modeBarButtonsToRemove":["zoom2d","pan2d","select2d","lasso2d","zoomIn2d","zoomOut2d"],"displaylogo":false},"data":[{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[925.39999999999998,902.69000000000005,959.91999999999996,1038.6199999999999,940.19000000000005,998.30999999999995,1007.21,992.39999999999998,948.00999999999999,1031.8900000000001,1019.6799999999999,969.79999999999995,971.29999999999995,985.21000000000004,1018.21],"type":"scatter","mode":"lines+markers","name":"Enköping","line":{"color":"#D57667","width":5},"marker":{"color":"#D57667","size":8,"line":{"color":"rgba(31,119,180,1)"}},"visible":true,"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[802.57000000000005,787.00999999999999,742.59000000000003,770.71000000000004,827.79999999999995,1092.6099999999999,1164.3800000000001,1226.4300000000001,1206.04,1226.53,1152.6099999999999,1168.6400000000001,1166.3499999999999,1240.4000000000001,1239.8],"type":"scatter","mode":"lines+markers","name":"Heby","line":{"color":"#F9B000","width":5},"marker":{"color":"#F9B000","size":8,"line":{"color":"rgba(255,127,14,1)"}},"visible":true,"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[664.48000000000002,642.86000000000001,692.64999999999998,701.47000000000003,961.62,837.86000000000001,871.52999999999997,830.42999999999995,863.34000000000003,941.87,921.42999999999995,927.45000000000005,939.25,935.62,919.12],"type":"scatter","mode":"lines+markers","name":"Håbo","line":{"color":"#019CD7","width":5},"marker":{"color":"#019CD7","size":8,"line":{"color":"rgba(44,160,44,1)"}},"visible":true,"error_y":{"color":"rgba(44,160,44,1)"},"error_x":{"color":"rgba(44,160,44,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[530.83000000000004,544,608.94000000000005,711.75,716.86000000000001,754.39999999999998,735.66999999999996,759.90999999999997,863.62,842.47000000000003,847.33000000000004,893.52999999999997,814.73000000000002,811.04999999999995,789.17999999999995],"type":"scatter","mode":"lines+markers","name":"Knivsta","line":{"color":"#D0342C","width":5},"marker":{"color":"#D0342C","size":8,"line":{"color":"rgba(214,39,40,1)"}},"visible":true,"error_y":{"color":"rgba(214,39,40,1)"},"error_x":{"color":"rgba(214,39,40,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[936.45000000000005,936.20000000000005,959.37,931.74000000000001,993.67999999999995,1041.3699999999999,1146.74,1236.26,1223.03,1187.74,1337.4100000000001,1311.6099999999999,1472.6700000000001,1415.1400000000001,1610.55],"type":"scatter","mode":"lines+markers","name":"Tierp","line":{"color":"#4AA271","width":5},"marker":{"color":"#4AA271","size":8,"line":{"color":"rgba(148,103,189,1)"}},"visible":true,"error_y":{"color":"rgba(148,103,189,1)"},"error_x":{"color":"rgba(148,103,189,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[944.96000000000004,957.00999999999999,965.75999999999999,964.87,881.17999999999995,919.12,948.82000000000005,1022.84,1010.83,1075.9400000000001,1131.1199999999999,1144.8299999999999,1193.71,1264.6600000000001,1356.0999999999999],"type":"scatter","mode":"lines+markers","name":"Uppsala","line":{"color":"#6F787E","width":5},"marker":{"color":"#6F787E","size":8,"line":{"color":"rgba(140,86,75,1)"}},"visible":true,"error_y":{"color":"rgba(140,86,75,1)"},"error_x":{"color":"rgba(140,86,75,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[734.80999999999995,755.86000000000001,776.90999999999997,762.25999999999999,787.98000000000002,814.04999999999995,825.94000000000005,914.70000000000005,946.98000000000002,985.62,988.00999999999999,978.80999999999995,997.19000000000005,1137.6900000000001,1130.8599999999999],"type":"scatter","mode":"lines+markers","name":"Älvkarleby","line":{"color":"#8B4A9C","width":5},"marker":{"color":"#8B4A9C","size":8,"line":{"color":"rgba(227,119,194,1)"}},"visible":true,"error_y":{"color":"rgba(227,119,194,1)"},"error_x":{"color":"rgba(227,119,194,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[737.65999999999997,698.88,726.26999999999998,695.05999999999995,746.19000000000005,825.49000000000001,930.52999999999997,1047.8900000000001,1037.6500000000001,1155.46,1182.6400000000001,1231.1300000000001,1174.72,1403.0799999999999,1375.8199999999999],"type":"scatter","mode":"lines+markers","name":"Östhammar","line":{"color":"#E67E22","width":5},"marker":{"color":"#E67E22","size":8,"line":{"color":"rgba(127,127,127,1)"}},"visible":true,"error_y":{"color":"rgba(127,127,127,1)"},"error_x":{"color":"rgba(127,127,127,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[270.81,277.5,367.87,387.83999999999997,248.16,292.55000000000001,299.67000000000002,274.63,282.25,362.06999999999999,358.13,322.81,339.50999999999999,343.57999999999998,371.16000000000003],"type":"scatter","mode":"lines+markers","name":"Enköping","line":{"color":"#D57667","width":5},"marker":{"color":"#D57667","size":8,"line":{"color":"rgba(188,189,34,1)"}},"visible":false,"error_y":{"color":"rgba(188,189,34,1)"},"error_x":{"color":"rgba(188,189,34,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[171.72,153.72999999999999,152.13,142.97,201.11000000000001,415.92000000000002,496.55000000000001,522.09000000000003,448.31,507.23000000000002,455.43000000000001,403.26999999999998,207.88999999999999,232.16999999999999,365.83999999999997],"type":"scatter","mode":"lines+markers","name":"Heby","line":{"color":"#F9B000","width":5},"marker":{"color":"#F9B000","size":8,"line":{"color":"rgba(23,190,207,1)"}},"visible":false,"error_y":{"color":"rgba(23,190,207,1)"},"error_x":{"color":"rgba(23,190,207,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[75.040000000000006,89.680000000000007,87.659999999999997,110.53,280.92000000000002,165.59,208.13,144.86000000000001,194.12,270.89999999999998,222.66999999999999,253.53999999999999,263.51999999999998,232.87,221.03999999999999],"type":"scatter","mode":"lines+markers","name":"Håbo","line":{"color":"#019CD7","width":5},"marker":{"color":"#019CD7","size":8,"line":{"color":"rgba(31,119,180,1)"}},"visible":false,"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[26.829999999999998,33.810000000000002,33.18,33.439999999999998,33.649999999999999,40.960000000000001,42.200000000000003,50.82,50.960000000000001,66.310000000000002,82.170000000000002,132.71000000000001,77.090000000000003,88.200000000000003,64.790000000000006],"type":"scatter","mode":"lines+markers","name":"Knivsta","line":{"color":"#D0342C","width":5},"marker":{"color":"#D0342C","size":8,"line":{"color":"rgba(255,127,14,1)"}},"visible":false,"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[113.39,114.11,114.41,101.87,101.61,107.45999999999999,110.83,126.84999999999999,129.83000000000001,91.120000000000005,107.09,91.599999999999994,139.91,119.47,468.76999999999998],"type":"scatter","mode":"lines+markers","name":"Tierp","line":{"color":"#4AA271","width":5},"marker":{"color":"#4AA271","size":8,"line":{"color":"rgba(44,160,44,1)"}},"visible":false,"error_y":{"color":"rgba(44,160,44,1)"},"error_x":{"color":"rgba(44,160,44,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[434.5,407.61000000000001,425.62,399.56,380.06,343.13999999999999,362.68000000000001,394.55000000000001,370.07999999999998,398.70999999999998,433.11000000000001,432.25,484.94,513.74000000000001,544.63],"type":"scatter","mode":"lines+markers","name":"Uppsala","line":{"color":"#6F787E","width":5},"marker":{"color":"#6F787E","size":8,"line":{"color":"rgba(214,39,40,1)"}},"visible":false,"error_y":{"color":"rgba(214,39,40,1)"},"error_x":{"color":"rgba(214,39,40,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[48.670000000000002,49.289999999999999,50.009999999999998,49.93,97.939999999999998,112.13,68.400000000000006,151.78,127.23999999999999,138.84,134.06,121.22,161.13999999999999,164.44,146.25],"type":"scatter","mode":"lines+markers","name":"Älvkarleby","line":{"color":"#8B4A9C","width":5},"marker":{"color":"#8B4A9C","size":8,"line":{"color":"rgba(148,103,189,1)"}},"visible":false,"error_y":{"color":"rgba(148,103,189,1)"},"error_x":{"color":"rgba(148,103,189,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[148.50999999999999,128.16,162.97,134.84,128.43000000000001,147.24000000000001,150.12,180.96000000000001,171.90000000000001,231.24000000000001,277.82999999999998,274.76999999999998,249.69,303.31,305.63],"type":"scatter","mode":"lines+markers","name":"Östhammar","line":{"color":"#E67E22","width":5},"marker":{"color":"#E67E22","size":8,"line":{"color":"rgba(140,86,75,1)"}},"visible":false,"error_y":{"color":"rgba(140,86,75,1)"},"error_x":{"color":"rgba(140,86,75,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[392.04000000000002,365.00999999999999,334.94999999999999,360.88,391.70999999999998,393.55000000000001,359.56999999999999,370.70999999999998,330.45999999999998,333.38,331.62,329.52999999999997,334.62,356.35000000000002,351.58999999999997],"type":"scatter","mode":"lines+markers","name":"Enköping","line":{"color":"#D57667","width":5},"marker":{"color":"#D57667","size":8,"line":{"color":"rgba(227,119,194,1)"}},"visible":false,"error_y":{"color":"rgba(227,119,194,1)"},"error_x":{"color":"rgba(227,119,194,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[493.94999999999999,497.12,456.51999999999998,442.68000000000001,459.52999999999997,503.16000000000003,492.98000000000002,522.29999999999995,532.49000000000001,536.34000000000003,507.41000000000003,478.43000000000001,540.46000000000004,587.60000000000002,596.78999999999996],"type":"scatter","mode":"lines+markers","name":"Heby","line":{"color":"#F9B000","width":5},"marker":{"color":"#F9B000","size":8,"line":{"color":"rgba(127,127,127,1)"}},"visible":false,"error_y":{"color":"rgba(127,127,127,1)"},"error_x":{"color":"rgba(127,127,127,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[337.05000000000001,320.67000000000002,357.99000000000001,342,400.51999999999998,330.58999999999997,333.99000000000001,340.69999999999999,334.95999999999998,329.49000000000001,331.35000000000002,303.02999999999997,313.11000000000001,330.72000000000003,324.50999999999999],"type":"scatter","mode":"lines+markers","name":"Håbo","line":{"color":"#019CD7","width":5},"marker":{"color":"#019CD7","size":8,"line":{"color":"rgba(188,189,34,1)"}},"visible":false,"error_y":{"color":"rgba(188,189,34,1)"},"error_x":{"color":"rgba(188,189,34,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[376.94,378.88,428.63,512.89999999999998,511.94999999999999,490.77999999999997,499.62,499.22000000000003,500.48000000000002,478.31,481.51999999999998,476.38999999999999,457.25999999999999,450.75999999999999,460.67000000000002],"type":"scatter","mode":"lines+markers","name":"Knivsta","line":{"color":"#D0342C","width":5},"marker":{"color":"#D0342C","size":8,"line":{"color":"rgba(23,190,207,1)"}},"visible":false,"error_y":{"color":"rgba(23,190,207,1)"},"error_x":{"color":"rgba(23,190,207,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[500.01999999999998,496.69,506.94999999999999,487.58999999999997,503.73000000000002,533.79999999999995,576.84000000000003,629.76999999999998,591.57000000000005,625.33000000000004,685.04999999999995,644.82000000000005,722.03999999999996,680.08000000000004,602.77999999999997],"type":"scatter","mode":"lines+markers","name":"Tierp","line":{"color":"#4AA271","width":5},"marker":{"color":"#4AA271","size":8,"line":{"color":"rgba(31,119,180,1)"}},"visible":false,"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[337.44999999999999,366.66000000000003,377.49000000000001,379.75,306.68000000000001,385.63,382.57999999999998,404.12,402.44999999999999,431.74000000000001,439.24000000000001,449.27999999999997,456.45999999999998,476.81,510.98000000000002],"type":"scatter","mode":"lines+markers","name":"Uppsala","line":{"color":"#6F787E","width":5},"marker":{"color":"#6F787E","size":8,"line":{"color":"rgba(255,127,14,1)"}},"visible":false,"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[489.29000000000002,503.36000000000001,497.19,487.41000000000003,466.45999999999998,472.29000000000002,523.65999999999997,522.01999999999998,580.27999999999997,609.5,605.39999999999998,574.42999999999995,580.47000000000003,670.28999999999996,695.25],"type":"scatter","mode":"lines+markers","name":"Älvkarleby","line":{"color":"#8B4A9C","width":5},"marker":{"color":"#8B4A9C","size":8,"line":{"color":"rgba(44,160,44,1)"}},"visible":false,"error_y":{"color":"rgba(44,160,44,1)"},"error_x":{"color":"rgba(44,160,44,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[337.86000000000001,322.63,331.25,311.20999999999998,345.69999999999999,366.60000000000002,463.01999999999998,534.76999999999998,536.00999999999999,582.42999999999995,564.24000000000001,596.39999999999998,578.40999999999997,686.86000000000001,661.22000000000003],"type":"scatter","mode":"lines+markers","name":"Östhammar","line":{"color":"#E67E22","width":5},"marker":{"color":"#E67E22","size":8,"line":{"color":"rgba(214,39,40,1)"}},"visible":false,"error_y":{"color":"rgba(214,39,40,1)"},"error_x":{"color":"rgba(214,39,40,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[243.47,241.22999999999999,238.40000000000001,271.32999999999998,281.94999999999999,294.30000000000001,330.38999999999999,329.81999999999999,318.06,319.64999999999998,313.44999999999999,301.56,281.5,274.93000000000001,285.16000000000003],"type":"scatter","mode":"lines+markers","name":"Enköping","line":{"color":"#D57667","width":5},"marker":{"color":"#D57667","size":8,"line":{"color":"rgba(148,103,189,1)"}},"visible":false,"error_y":{"color":"rgba(148,103,189,1)"},"error_x":{"color":"rgba(148,103,189,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[136.90000000000001,136.16,105.13,160.15000000000001,146.18000000000001,149.18000000000001,153.11000000000001,160.88999999999999,225.22999999999999,182.88999999999999,189.77000000000001,286.86000000000001,417.93000000000001,420.62,277.10000000000002],"type":"scatter","mode":"lines+markers","name":"Heby","line":{"color":"#F9B000","width":5},"marker":{"color":"#F9B000","size":8,"line":{"color":"rgba(140,86,75,1)"}},"visible":false,"error_y":{"color":"rgba(140,86,75,1)"},"error_x":{"color":"rgba(140,86,75,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[230.83000000000001,211.72,225.91999999999999,230.87,262.19999999999999,322.25,310.69999999999999,323.25,316.77999999999997,323.56,349.56,352.49000000000001,344.04000000000002,354.05000000000001,356.63999999999999],"type":"scatter","mode":"lines+markers","name":"Håbo","line":{"color":"#019CD7","width":5},"marker":{"color":"#019CD7","size":8,"line":{"color":"rgba(227,119,194,1)"}},"visible":false,"error_y":{"color":"rgba(227,119,194,1)"},"error_x":{"color":"rgba(227,119,194,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[122.66,126.83,142.68000000000001,158.53999999999999,164.86000000000001,213.81999999999999,186.34,203.11000000000001,305.18000000000001,297.85000000000002,283.57999999999998,283.48000000000002,276.81,280.57999999999998,260.18000000000001],"type":"scatter","mode":"lines+markers","name":"Knivsta","line":{"color":"#D0342C","width":5},"marker":{"color":"#D0342C","size":8,"line":{"color":"rgba(127,127,127,1)"}},"visible":false,"error_y":{"color":"rgba(127,127,127,1)"},"error_x":{"color":"rgba(127,127,127,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[267.02999999999997,271.00999999999999,282.88999999999999,291.30000000000001,337.70999999999998,349.98000000000002,412.41000000000003,438.83999999999997,469.20999999999998,441.66000000000003,505.60000000000002,535.58000000000004,572.36000000000001,558.96000000000004,516.15999999999997],"type":"scatter","mode":"lines+markers","name":"Tierp","line":{"color":"#4AA271","width":5},"marker":{"color":"#4AA271","size":8,"line":{"color":"rgba(188,189,34,1)"}},"visible":false,"error_y":{"color":"rgba(188,189,34,1)"},"error_x":{"color":"rgba(188,189,34,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[115.54000000000001,125.90000000000001,127.79000000000001,129.66,142.94,138.46000000000001,148.94999999999999,167.03,186.77000000000001,197.18000000000001,210.74000000000001,217.63,208.33000000000001,229.84,250.69],"type":"scatter","mode":"lines+markers","name":"Uppsala","line":{"color":"#6F787E","width":5},"marker":{"color":"#6F787E","size":8,"line":{"color":"rgba(23,190,207,1)"}},"visible":false,"error_y":{"color":"rgba(23,190,207,1)"},"error_x":{"color":"rgba(23,190,207,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[194.88,199.58000000000001,226.28999999999999,221.63999999999999,217.91,224.25,227.41999999999999,234.31,231.15000000000001,228.72,242.03999999999999,279.00999999999999,249.97,295.33999999999997,282.44999999999999],"type":"scatter","mode":"lines+markers","name":"Älvkarleby","line":{"color":"#8B4A9C","width":5},"marker":{"color":"#8B4A9C","size":8,"line":{"color":"rgba(31,119,180,1)"}},"visible":false,"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[227.90000000000001,224.75999999999999,208.25999999999999,232.47999999999999,255.68000000000001,295.41000000000003,301.35000000000002,316.19,313.81999999999999,326.01999999999998,324.83999999999997,344.35000000000002,331.36000000000001,397.12,393.17000000000002],"type":"scatter","mode":"lines+markers","name":"Östhammar","line":{"color":"#E67E22","width":5},"marker":{"color":"#E67E22","size":8,"line":{"color":"rgba(255,127,14,1)"}},"visible":false,"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[19.09,18.920000000000002,18.710000000000001,18.550000000000001,18.34,17.899999999999999,17.59,17.219999999999999,17.239999999999998,16.780000000000001,16.460000000000001,15.9,15.67,10.35,10.289999999999999],"type":"scatter","mode":"lines+markers","name":"Enköping","line":{"color":"#D57667","width":5},"marker":{"color":"#D57667","size":8,"line":{"color":"rgba(44,160,44,1)"}},"visible":false,"error_y":{"color":"rgba(44,160,44,1)"},"error_x":{"color":"rgba(44,160,44,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[0,0,28.809999999999999,24.91,20.98,24.350000000000001,21.809999999999999,21.219999999999999,0,0,0,0,0,0,0],"type":"scatter","mode":"lines+markers","name":"Heby","line":{"color":"#F9B000","width":5},"marker":{"color":"#F9B000","size":8,"line":{"color":"rgba(214,39,40,1)"}},"visible":false,"error_y":{"color":"rgba(214,39,40,1)"},"error_x":{"color":"rgba(214,39,40,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[21.5,20.75,21.02,18.079999999999998,17.969999999999999,19.48,18.710000000000001,21.68,17.48,17.920000000000002,17.850000000000001,18.440000000000001,18.579999999999998,17.93,16.890000000000001],"type":"scatter","mode":"lines+markers","name":"Håbo","line":{"color":"#019CD7","width":5},"marker":{"color":"#019CD7","size":8,"line":{"color":"rgba(148,103,189,1)"}},"visible":false,"error_y":{"color":"rgba(148,103,189,1)"},"error_x":{"color":"rgba(148,103,189,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[4.4100000000000001,4.4800000000000004,4.4500000000000002,6.7999999999999998,6.4000000000000004,8.8300000000000001,7.4500000000000002,6.75,7,0,0,0.91000000000000003,3.5800000000000001,-8.4499999999999993,3.4900000000000002],"type":"scatter","mode":"lines+markers","name":"Knivsta","line":{"color":"#D0342C","width":5},"marker":{"color":"#D0342C","size":8,"line":{"color":"rgba(140,86,75,1)"}},"visible":false,"error_y":{"color":"rgba(140,86,75,1)"},"error_x":{"color":"rgba(140,86,75,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[56,54.390000000000001,55.119999999999997,50.979999999999997,50.630000000000003,50.130000000000003,46.659999999999997,40.799999999999997,32.469999999999999,29.620000000000001,39.619999999999997,39.609999999999999,38.350000000000001,56.619999999999997,22.789999999999999],"type":"scatter","mode":"lines+markers","name":"Tierp","line":{"color":"#4AA271","width":5},"marker":{"color":"#4AA271","size":8,"line":{"color":"rgba(227,119,194,1)"}},"visible":false,"error_y":{"color":"rgba(227,119,194,1)"},"error_x":{"color":"rgba(227,119,194,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[57.479999999999997,56.840000000000003,34.859999999999999,55.890000000000001,51.5,51.890000000000001,54.609999999999999,57.149999999999999,51.539999999999999,48.32,48.020000000000003,45.670000000000002,43.969999999999999,44.270000000000003,49.799999999999997],"type":"scatter","mode":"lines+markers","name":"Uppsala","line":{"color":"#6F787E","width":5},"marker":{"color":"#6F787E","size":8,"line":{"color":"rgba(127,127,127,1)"}},"visible":false,"error_y":{"color":"rgba(127,127,127,1)"},"error_x":{"color":"rgba(127,127,127,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[1.98,3.6299999999999999,3.4199999999999999,3.29,5.6699999999999999,5.3799999999999999,6.3499999999999996,6.5899999999999999,8.3000000000000007,8.5700000000000003,6.5199999999999996,4.1500000000000004,5.6100000000000003,7.7300000000000004,6.7999999999999998],"type":"scatter","mode":"lines+markers","name":"Älvkarleby","line":{"color":"#8B4A9C","width":5},"marker":{"color":"#8B4A9C","size":8,"line":{"color":"rgba(188,189,34,1)"}},"visible":false,"error_y":{"color":"rgba(188,189,34,1)"},"error_x":{"color":"rgba(188,189,34,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"y":[23.390000000000001,23.379999999999999,23.800000000000001,16.530000000000001,16.379999999999999,16.23,16.039999999999999,15.960000000000001,15.869999999999999,15.73,15.73,15.609999999999999,15.220000000000001,15.789999999999999,15.81],"type":"scatter","mode":"lines+markers","name":"Östhammar","line":{"color":"#E67E22","width":5},"marker":{"color":"#E67E22","size":8,"line":{"color":"rgba(23,190,207,1)"}},"visible":false,"error_y":{"color":"rgba(23,190,207,1)"},"error_x":{"color":"rgba(23,190,207,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-nettokostnad_kultur-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;1
+</figcaption>
+</figure>
+</div>
+</div>
+<p>Analysen visar att nettobördan för kulturverksamhet ökat i samtliga kommuner under perioden. Enköping sticker ut med den lägsta ökningen under perioden och har på grund av den gått från en av de högsta nettokostnaderna per invånare till en av de lägsta i länet. De tre kommuner med lägst nettokostnad per invånare är också de kommuner i <a href="#tbl-kostnad_intakt" class="quarto-xref">Tabell&nbsp;1</a> som visar lägst total kostnad på kulturverksamhet. Ordningen speglar kostnaden på kulturverksamhet väldigt bra.</p>
+<p>För allmän kulturverksamhet är skillnaderna mellan kommunerna större, där Knivsta och Älvkarleby har haft låga nivåer under hela perioden, medan Uppsala och Enköping har haft stadigt höga nivåer.</p>
+<p>För nettokostnaden av bibliotekets regi så har skillnaderna mellan kommunerna ökat under perioden, där Enköping och Håbo har liknande nivåer som i början av perioden. Medan Knivsta ökade snabbt mellan 2010 och 2013, men sedan dess ar nettokostnaden i kr/invånare minskat något för varje år. Övriga kommuner har ett högre värde 2024 än vid 2010.</p>
+<p>Nettokostnaden för musik- och kulturskola har stigit i samtliga kommuner, med Tierp som den kommun med högst kostnad per invånare.</p>
+</section>
+<section id="kostnader-fördelade-till-kulturverksamhet" class="level2">
+<h2 class="anchored" data-anchor-id="kostnader-fördelade-till-kulturverksamhet">Kostnader fördelade till kulturverksamhet</h2>
+<p>Detta mått beskriver relationen mellan fördelade kommungemensamma kostnader och kostnaden för kulturverksamhetens eget åtagande. Syftet är att öka jämförbarheten mellan kommuner som redovisar gemensamma kostnader centralt och kommuner som belastar dessa kostnader direkt i verksamheten.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Beräkning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\frac{
+\text{Kostnad för kommungemensam verksamhet (fördelad enligt Kommunnyckel och SCB-nyckel)}
+}{
+\text{Kostnad för eget åtagande avseende kulturverksamhet}
+}
+\]</span></p>
+</div>
+</div>
+<p>Kostnad för eget åtagande definieras som bruttokostnad minus interna intäkter samt försäljning av verksamhet till andra kommuner och/eller regioner. De kommungemensamma kostnaderna omfattar samtliga tjänster, funktioner och varor som redovisas centralt i räkenskapssammandraget och därefter fördelas till kulturverksamheten, exempelvis ekonomiadministration, HR-funktioner och förbrukningsvaror.</p>
+<p><strong>Tolkning:</strong></p>
+<p>Andelen visar hur stor del av kulturverksamhetens egna kostnader som utgörs av påförda kommungemensamma kostnader.</p>
+<p><em>Hög andel</em></p>
+<ul>
+<li><p>Stor del av kostnaderna ligger centralt</p></li>
+<li><p>Kulturverksamheten ”bär” mycket overhead</p></li>
+<li><p>Kan tyda på:</p>
+<ul>
+<li><p>hög grad av centralisering</p></li>
+<li><p>eller att kärnverksamheten är relativt liten</p></li>
+</ul></li>
+</ul>
+<p><em>Låg andel</em></p>
+<ul>
+<li><p>Färre centrala kostnader belastar kultur</p></li>
+<li><p>Mer kostnader ligger direkt i verksamheten</p></li>
+<li><p>Alternativt: stark och kostnadstung kärnverksamhet</p></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exempel
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Om andelen uppgår till 10 % innebär det att:</p>
+<p>För varje 100 kronor som kommunen lägger på sin egen kulturverksamhet tillkommer 10 kronor i gemensamma, centrala kostnader.</p>
+</div>
+</div>
+<p>Negativa värden uppstår när kostnaden för eget åtagande är negativ, vilket kan inträffa om interna intäkter och försäljning överstiger bruttokostnaderna. I dessa fall blir kvoten svårtolkad och bör analyseras med försiktighet eller exkluderas vid jämförelser.</p>
+<p>Data är hämtat från <span class="citation" data-cites="kolada">Rådet för främjande av kommunala analyser (<a href="#ref-kolada" role="doc-biblioref">2025</a>)</span> som hänvisar till <span class="citation" data-cites="sbcraken">Statistiska centralbyrån (SCB) (<a href="#ref-sbcraken" role="doc-biblioref">2025a</a>)</span>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-andel_kost" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Figuren visar kostnadsfördelningen för kulturverksamhet för varje kommun i länet.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-andel_kost-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Figurer/kost_andel.svg" id="fig-andel_kost" class="img-fluid figure-img" alt="Figuren visar kostnadsfördelningen för kulturverksamhet för varje kommun i länet.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-andel_kost-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;2
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div style="margin-top:0.5rem;">
+  <div class="download-dropdown">
+    <span class="download-btn">Ladda ner</span>
+    <div class="download-menu">
+      <a href="Figurer/kost_andel.svg" download="">Som SVG</a>
+      <a href="Figurer/kost_andel.png" download="">Som PNG</a>
+    </div>
+  </div>
+</div>
+<p><strong>Notera</strong> att y-axeln i figuren inte sträcker sig från 0 till 100 procent, utan är inzoomad för att möjliggöra en mer detaljerad jämförelse mellan kommunerna.</p>
+<p>Samtliga kommuner i länet uppvisar andelar under 10 procent under den studerade perioden. Uppsala kommun avviker från övriga genom att konsekvent ligga över 7,5 procent under de senaste 7 åren, vilket indikerar en relativt hög andel fördelade kommungemensamma kostnader inom kulturverksamheten jämfört med övriga kommuner i länet.</p>
+<p>För Enköpings kommun förekommer ett enskilt år med ett negativt värde. Detta tyder på att kostnaden för eget åtagande varit negativ, vilket kan uppstå när interna intäkter och försäljning överstiger bruttokostnaderna. Utfallet bör därför tolkas med försiktighet och betraktas som ett redovisningstekniskt särfall snarare än en faktisk minskning av kostnader.</p>
+<p>Vidare kan flera tydliga förändringar i andelen observeras för enskilda kommuner över tid. Dessa förändringar inträffar dock inte samtidigt mellan kommunerna, vilket talar emot förekomsten av gemensamma, länsövergripande strukturförändringar. Av de mest markanta förändringarna innebär fyra av fem en ökning i andelen, vilket kan indikera en ökad belastning av kommungemensamma kostnader i kulturverksamheten under dessa år.</p>
+</section>
+</section>
+<section id="kommunens-köp-av-kultur-och-fritid-från-olika-aktörer" class="level1">
+<h1>Kommunens köp av kultur och fritid från olika aktörer</h1>
+<p>I detta kapitel presenteras kommunernas köp av kultur- och fritidsverksamhet över tid, uppdelat efter typ av utförare.</p>
+<p>Figurerna visar andelen av kostnaden för kommunens eget åtagande inom kultur och fritid som utgörs av köp av verksamhet, totalt samt från offentliga utförare, privata utförare och privatägda företag. Med köp av verksamhet avses betalningar för offentliga uppdrag (kärnverksamhet) som kommunen har överlämnat till externa aktörer.</p>
+<p>Kostnaden för eget åtagande definieras som bruttokostnaden för kultur- och fritidsverksamhet, exklusive interna intäkter samt försäljning till andra kommuner och regioner. Varje figur redovisar utvecklingen över tid för en enskild kommun.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exempel
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Exempel på hur andelar av köp av kultur- och fritidsverksamhet tolkas:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Kommun</th>
+<th>Köp av verksamhet</th>
+<th>Kostnad för eget åtagande</th>
+<th>Andel (%)</th>
+<th>Tolkning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>0,5 miljoner</td>
+<td>50 miljoner</td>
+<td>1 %</td>
+<td>Nästan allt sköts i egen regi</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>5 miljoner</td>
+<td>50 miljoner</td>
+<td>10 %</td>
+<td>Mer av verksamheten utförs externt</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Data är hämtat från <span class="citation" data-cites="kolada">Rådet för främjande av kommunala analyser (<a href="#ref-kolada" role="doc-biblioref">2025</a>)</span> som hänvisar till <span class="citation" data-cites="scb_statistikdatabasen">Statistiska centralbyrån (SCB) (<a href="#ref-scb_statistikdatabasen" role="doc-biblioref">2025b</a>)</span>.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Enköping</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Heby</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">Håbo</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-4" role="tab" aria-controls="tabset-2-4" aria-selected="false">Knivsta</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-5" role="tab" aria-controls="tabset-2-5" aria-selected="false">Tierp</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-6" role="tab" aria-controls="tabset-2-6" aria-selected="false">Uppsala</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-7-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-7" role="tab" aria-controls="tabset-2-7" aria-selected="false">Älvkarleby</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-8-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-8" role="tab" aria-controls="tabset-2-8" aria-selected="false">Östhammar</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<img src="Figurer/kop_kf_Enköping.svg" alt="Figuren visar andelen av kommunens köp av kultur och fritids kostnad för eget åtagande, offentliga och privata utförare." style="width:100%; max-width:800px; height:100%;">
+<div style="margin-top:0.5rem;">
+<div class="download-dropdown">
+<span class="download-btn">Ladda ner</span>
+<div class="download-menu">
+<a href="Figurer/kop_kf_Enköping.svg" download="">Som SVG</a><a href="Figurer/kop_kf_Enköping.png" download="">Som PNG</a>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<img src="Figurer/kop_kf_Heby.svg" alt="Figuren visar andelen av kommunens köp av kultur och fritids kostnad för eget åtagande, offentliga och privata utförare." style="width:100%; max-width:800px; height:100%;">
+<div style="margin-top:0.5rem;">
+<div class="download-dropdown">
+<span class="download-btn">Ladda ner</span>
+<div class="download-menu">
+<a href="Figurer/kop_kf_Heby.svg" download="">Som SVG</a><a href="Figurer/kop_kf_Heby.png" download="">Som PNG</a>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<img src="Figurer/kop_kf_Håbo.svg" alt="Figuren visar andelen av kommunens köp av kultur och fritids kostnad för eget åtagande, offentliga och privata utförare." style="width:100%; max-width:800px; height:100%;">
+<div style="margin-top:0.5rem;">
+<div class="download-dropdown">
+<span class="download-btn">Ladda ner</span>
+<div class="download-menu">
+<a href="Figurer/kop_kf_Håbo.svg" download="">Som SVG</a><a href="Figurer/kop_kf_Håbo.png" download="">Som PNG</a>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-4-tab">
+<img src="Figurer/kop_kf_Knivsta.svg" alt="Figuren visar andelen av kommunens köp av kultur och fritids kostnad för eget åtagande, offentliga och privata utförare." style="width:100%; max-width:800px; height:100%;">
+<div style="margin-top:0.5rem;">
+<div class="download-dropdown">
+<span class="download-btn">Ladda ner</span>
+<div class="download-menu">
+<a href="Figurer/kop_kf_Knivsta.svg" download="">Som SVG</a><a href="Figurer/kop_kf_Knivsta.png" download="">Som PNG</a>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-5-tab">
+<img src="Figurer/kop_kf_Tierp.svg" alt="Figuren visar andelen av kommunens köp av kultur och fritids kostnad för eget åtagande, offentliga och privata utförare." style="width:100%; max-width:800px; height:100%;">
+<div style="margin-top:0.5rem;">
+<div class="download-dropdown">
+<span class="download-btn">Ladda ner</span>
+<div class="download-menu">
+<a href="Figurer/kop_kf_Tierp.svg" download="">Som SVG</a><a href="Figurer/kop_kf_Tierp.png" download="">Som PNG</a>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-6-tab">
+<img src="Figurer/kop_kf_Uppsala.svg" alt="Figuren visar andelen av kommunens köp av kultur och fritids kostnad för eget åtagande, offentliga och privata utförare." style="width:100%; max-width:800px; height:100%;">
+<div style="margin-top:0.5rem;">
+<div class="download-dropdown">
+<span class="download-btn">Ladda ner</span>
+<div class="download-menu">
+<a href="Figurer/kop_kf_Uppsala.svg" download="">Som SVG</a><a href="Figurer/kop_kf_Uppsala.png" download="">Som PNG</a>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-7" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-7-tab">
+<img src="Figurer/kop_kf_Älvkarleby.svg" alt="Figuren visar andelen av kommunens köp av kultur och fritids kostnad för eget åtagande, offentliga och privata utförare." style="width:100%; max-width:800px; height:100%;">
+<div style="margin-top:0.5rem;">
+<div class="download-dropdown">
+<span class="download-btn">Ladda ner</span>
+<div class="download-menu">
+<a href="Figurer/kop_kf_Älvkarleby.svg" download="">Som SVG</a><a href="Figurer/kop_kf_Älvkarleby.png" download="">Som PNG</a>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-8" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-8-tab">
+<img src="Figurer/kop_kf_Östhammar.svg" alt="Figuren visar andelen av kommunens köp av kultur och fritids kostnad för eget åtagande, offentliga och privata utförare." style="width:100%; max-width:800px; height:100%;">
+<div style="margin-top:0.5rem;">
+<div class="download-dropdown">
+<span class="download-btn">Ladda ner</span>
+<div class="download-menu">
+<a href="Figurer/kop_kf_Östhammar.svg" download="">Som SVG</a><a href="Figurer/kop_kf_Östhammar.png" download="">Som PNG</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><strong>Notera</strong> att kategorierna privata utförare och privatägda företag delvis överlappar. Privata utförare omfattar även idéburna och andra icke-privatägda aktörer, medan privatägda företag utgör en undergrupp av privata utförare.</p>
+<p>De redovisade andelarna är genomgående låga och uppgår i många kommuner till omkring 2 procent eller lägre. Detta speglar att måttet avser köp av kärnverksamhet i relation till en omfattande kostnadsmassa, snarare än att köp av kultur- och fritidsverksamhet är av begränsad betydelse. Även relativt små procentuella förändringar kan därmed motsvara betydande belopp i absoluta termer.</p>
+<p>Uppsala kommun utmärker sig genom att ha den högsta andelen i länet. Andelen av kommunens köp från offentliga utförare överstiger 5 procent under samtliga år i perioden, med undantag för 2019. Uppsala är även den enda kommunen i länet där offentliga utförare genomgående utgör den största andelen av köpen under hela perioden.</p>
+
+
+</section>
+<section id="bibliography" class="level1 unnumbered">
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Källor</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-kolada" class="csl-entry" role="listitem">
+Rådet för främjande av kommunala analyser. 2025. <span>”Kolada – Jämför och analysera nyckeltal i kommuner och regioner”</span>. <a href="https://www.kolada.se/">https://www.kolada.se/</a>.
+</div>
+<div id="ref-sbcraken" class="csl-entry" role="listitem">
+Statistiska centralbyrån (SCB). 2025a. <span>”Räkenskapssammandrag för kommuner och regioner”</span>. <a href="https://www.scb.se/hitta-statistik/statistik-efter-amne/offentlig-ekonomi/finanser-for-den-kommunala-sektorn/rakenskapssammandrag-for-kommuner-och-regioner/" class="uri">https://www.scb.se/hitta-statistik/statistik-efter-amne/offentlig-ekonomi/finanser-for-den-kommunala-sektorn/rakenskapssammandrag-for-kommuner-och-regioner/</a>.
+</div>
+<div id="ref-scb_statistikdatabasen" class="csl-entry" role="listitem">
+———. 2025b. <span>”Statistikdatabasen”</span>. <a href="https://www.statistikdatabasen.scb.se/pxweb/sv/ssd/">https://www.statistikdatabasen.scb.se/pxweb/sv/ssd/</a>.
+</div>
+</div></section></div></main> <!-- /main -->
+
+
+
+
+<div class="contact-widget">
+
+  <input type="checkbox" id="contact-toggle">
+
+
+
+  <label for="contact-toggle" class="contact-button" title="Kontakt">
+
+    💬
+
+  </label>
+
+
+
+  <div class="floating-contact-box">
+
+    <strong>Vid frågor kontakta</strong><br>
+
+    Region Uppsala - Regional Utveckling <br>
+
+    <a href="mailto:regionalutveckling.analys@regionuppsala.se">regionalutveckling.analys@regionuppsala.se</a><br>
+
+  </div>
+
+</div>
+
+
+
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopierat!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopierat!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

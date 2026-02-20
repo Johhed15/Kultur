@@ -538,3 +538,530 @@ for(r in plots){
 
 ```
 :::
+
+
+
+# Studieförbund
+
+
+Detta kapitel belyser studieförbundens verksamhet i Sverige. Studieförbunden är en mötesplats för bildning och kultur där människor samlas för att lära sig nya saker och utveckla sina intressen, oavsett bakgrund eller förkunskaper. Verksamheten spänner över ett brett fält och innehåller bland annat bokcirklar, hantverk, konserter och föreläsningar.
+
+Data är hämtat från @scb_statistikdatabasen.
+
+## Arrangemang per verksamhetsform
+
+::: panel-tabset
+```{r, results='asis'}
+
+for(r in sort(kommuner)){
+
+  cat("## ", r, "\n", sep = "")
+  filename_svg <- paste0("Figurer/studieforbund_", r, ".svg")
+  
+  filename_png <- paste0("Figurer/studieforbund_", r, ".png")
+  
+  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar antalet deltagare för respektive kön i studieförbundets verksamheter för åren 2019 till 2024."), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  
+  cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
+  
+}
+
+```
+:::
+
+Av studieförbundens arrangemang så är kulturprogram den verksamhet som har högst antal i de flesta kommunerna i länet under perioden. I Knivsta så har studiecirkel varit den verksamhet som haft störst antal arrangemang fram till 2023, där antal kulturprogramsarrangemang ökat kraftigt.
+
+Det en markant minskning av antal arrangemang i samtliga kommuner vid 2020, där Knivsta är den enda kommunen i länet där en verksamhetsform har tagit sig tillbaka till liknande nivåer som innan pandemin.
+
+## Könsfördelning bland deltagare
+
+::: panel-tabset
+```{r, results='asis'}
+
+for(r in sort(kommuner)){
+
+  cat("## ", r, "\n", sep = "")
+  filename_svg <- paste0("Figurer/studieforbund_kon_", r, ".svg")
+  
+  filename_png <- paste0("Figurer/studieforbund_kon_", r, ".png")
+  
+  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar antalet deltagare för respektive kön i studieförbundets verksamheter för åren 2019 till 2024."), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  
+  cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
+  
+}
+
+```
+:::
+
+Antalet deltagare inom studieförbundens arrangemang har också sjunkit kraftigt utan att återhämta sig efter pandemin. Knivsta är den enda kommunen som har liknande nivåer eller ett högre deltagarantal efter minskningen 2020.
+
+En större del av deltagarna är kvinnor för samtliga kommuner och år, utom år 2020 i Enköping. Där deltagarantalet för män inte ser ut att ha påverkats lika kraftigt av pandemin och stod för 70,7% av deltagarna.
+
+## Effektivitet
+
+I detta kapitel analyseras effektivitetsmått för studieverksamhet inom olika kommuner. Syftet är att ge en översikt över hur resurser används i relation till deltagarnas omfattning och insatsens intensitet. Vi fokuserar på två centrala mått:
+
+-   Deltagare per studietimme – mäter hur många deltagare som i genomsnitt deltar per genomförd studietimme. Ett högre värde indikerar större grupper eller mer effektiv resursanvändning per deltagare. Ett lägre värde kan också innebära mer individanpassad studietid.
+
+-   Genomsnittlig studietid – anger hur mycket studietid varje deltagare får. Detta mått speglar insatsens omfattning och kan ge indikationer på utbildningens djup och kvalitet per individ.
+
+Tolkningen av måtten bör göras med hänsyn till att de representerar olika aspekter av effektivitet: medan “deltagare per studietimme” främst speglar resursutnyttjande, ger “genomsnittlig studietid” en bild av deltagarnas faktiska studietid.
+
+::: panel-tabset
+```{r, results='asis'}
+
+for(r in sort(kommuner)){
+
+  cat("## ", r, "\n", sep = "")
+  filename_svg <- paste0("Figurer/forbund_kvot_", r, ".svg")
+  
+  filename_png <- paste0("Figurer/forbund_kvot_", r, ".png")
+  
+  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar antalet deltagare för respektive kön i studieförbundets verksamheter för åren 2019 till 2024."), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  
+  cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
+  
+}
+
+
+# Hämtar data
+df <- read.csv("Data/df_studieforbund.csv")
+  
+# Kvoter
+df_kvoter <- df %>%
+    filter(verksamhetsform == "Totalt", år ==max(år)) %>%
+    mutate(
+      deltagare_per_studietimme = Deltagare / Studietimmar,
+    ) %>%
+    pivot_longer(
+      cols = c(deltagare_per_studietimme),
+      names_to = "Mått",
+      values_to = "Värde"
+    ) %>%
+    mutate(Mått = case_when(
+      Mått == "deltagare_per_studietimme" ~ "Deltagare per studietimme",
+    ))
+  
+  
+max_dps <- df_kvoter[which.max(df_kvoter$Värde),]
+
+
+max_dps_k <- max_dps$region # kommun
+max_dps_v <- round(max_dps$Värde,2) # värde
+max_dps_y <- max_dps$år # år
+```
+:::
+
+I samtliga kommuner är kurvan för "Deltagare per studietimme" (övre panelen) stabil över hela perioden 2019-2024, medan "Genomsnittlig studietid" uppvisar betydligt större variation.
+
+Samtliga kommuner utom Håbo visar en tydlig topp i genomsnittlig studietid runt 2020-2021, följt av en nedgång. Uppgången har troligtvis att göra med pandemin, där större digitala grupper
+
+Håbo sticker ut som den enda kommunen med en uppåtgående långsiktig trend. Den genomsnittliga studietiden har ökat från cirka 4 timmar 2019 till omkring 8 timmar 2023-2024, utan någon tydlig pandemitopp. Håbo har också det lägsta värdet av alla kommuner för deltagare per studietimme år 2024.
+
+`r max_dps_k` har det högsta värdet på deltagare per studietimme i länet på `r max_dps_v` år `r max_dps_y`.
+
+# Kulturdatabasen
+
+@kulturdatabasen är ett nationellt verktyg utvecklat av Myndigheten för kulturanalys för att samla in och tillgängliggöra officiell statistik om svensk kulturverksamhet. Databasen omfattar uppgifter om museer och scenkonst, och innehåller data inom områdena besök, föreställningar, utställningar, ekonomi och personal.
+
+I detta kapitel redovisas statistik för Uppsala län baserat på uppgifter från kulturdatabasen. Det bör noteras att datainsamlingen inte är fullständig för alla verksamheter och år – ju längre tillbaka i tiden som studeras, desto fler verksamheter saknar data. Verksamheter som saknar uppgifter för de två senaste insamlade åren har uteslutits ur analyserna, men ingår i länstotalen för de år då de var verksamma. Resultaten bör därför tolkas med detta i åtanke, särskilt vid jämförelser över längre tidsperioder.
+
+## Besöksutveckling
+
+Avsnittet redovisar hur antalet besökare har utvecklats över tid för länets kulturverksamheter. Eftersom datainsamlingen inte är fullständig för alla verksamheter under hela perioden bör utvecklingen längre bak i tiden tolkas med försiktighet, ju äldre data, desto fler verksamheter saknar uppgifter.
+
+Verksamheter utan data för de två senaste insamlade åren har uteslutits ur analyserna, men ingår i länstotalen för de år då de var aktiva.
+
+### Museer
+
+Utvecklingen visas både för anläggningsbesök och verksamhetsbesök, vissa verksamheter räknar ett besök till bägge kategorierna, vilket gör att linjerna överlappar i grafen.
+
+::: panel-tabset
+```{r, results='asis'}
+
+# Hämtar kolnamn 
+  df <- read_excel("Data/kulturdatabasen.xlsx", sheet =  "Museer - Data", skip = 0) %>%
+    mutate(
+      besok_a_totalt = na_if(besok_a_totalt, "."),
+      besok_a_totalt = na_if(besok_a_totalt, "A"),
+      besok_v_totalt = na_if(besok_v_totalt, "."),
+      besok_v_totalt = na_if(besok_v_totalt, "A"),
+      besok_a_totalt = as.numeric(besok_a_totalt),
+      besok_v_totalt = as.numeric(besok_v_totalt))
+
+  df$museum <- ifelse(df$museum == "Uppsala konstmuseum","Uppsala Konstmuseum",df$museum  )
+
+
+  # Fixar till strukturen på data
+  df_clean <- df %>% select(museum, "år"=ar,"Anläggningsbesök"=besok_a_totalt,
+                            "Verksamhetsbesök"=besok_v_totalt ) 
+    
+  
+  tot <- df_clean %>% group_by(år) %>% summarise(Anläggningsbesök = sum(Anläggningsbesök,na.rm=T ),
+                                                 Verksamhetsbesök = sum(Verksamhetsbesök,na.rm=T))
+  
+  tot$museum <- "totalt i länet"
+  
+  df_clean <- rbind(df_clean,tot)
+  
+  df_clean <- df_clean %>%
+    pivot_longer(
+      cols = c(Anläggningsbesök, Verksamhetsbesök),
+      names_to = "typ_av_besök",
+      values_to = "antal"
+    )
+  
+  # Hitta senaste år i datan
+max_year <- max(df_clean$år, na.rm = TRUE)
+
+df_clean <- df_clean %>%
+  group_by(museum) %>%
+  filter(
+    any(år == max_year & !is.na(antal)) |
+    any(år == (max_year - 1) & !is.na(antal))
+  ) %>%
+  ungroup()
+  
+  # Antal platser
+ kat <- sort(unique(factor(
+  df_clean$museum,
+  levels = c( "totalt i länet",
+             sort(setdiff(unique(df_clean$museum), "totalt i länet"))))))
+
+ 
+
+for(r in kat){
+  title <- ifelse(r=="totalt i länet", "Totalt i länet", r)
+  cat("## ", title, "\n", sep = "")
+  filename_svg <- paste0("Figurer/besok_museer2_", r, ".svg")
+  
+  filename_png <- paste0("Figurer/besok_museer2_", r, ".png")
+  
+  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar utvecklingen av antal besökare på",r), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  
+  cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
+  
+}
+
+```
+:::
+
+Det låga antalet fram till 2013 beror främst på brist på data från flera av länets museum, det högsta antal besök är mellan 2015 och 2017 för att sedan konstant sjunka till lägsta nivån under pandemiåren. Efter 2021 så har antal besök börjat öka, där anläggningsbesök gjort det största lyftet.
+
+Bror Hjorts Hus, Evulutionsmuseet, Uppsala Konstmuseum, Gamla Uppsala Museum och Pumphuset har alla högre antal besökare för de senaste åren än innan pandemin.
+
+### Föreställningar/konserter och publik
+
+Avsnittet redovisar utvecklingen av antalet föreställningar och konserter samt publik för länets scenkonst, uppdelat på egna produktioner och samproduktioner respektive gästspel. Publiksnittet, det vill säga antal åskådare per föreställning, används som ett mått på hur väl belagda föreställningarna är.
+
+::: panel-tabset
+```{r, results='asis'}
+
+  # Hämtar kolnamn 
+  df <- read_excel("Data/KDB-Uppsala.xlsx", sheet = "3 - Tidsserier", skip = 5)
+  namn <-colnames(df)
+  
+  # tar ut museer och konsthallar
+  index <- which(df$...1=='4.3 Tidsserier scenkonst – föreställningar/konserter och publik')
+  
+  # Hämtar data
+  KDB_Uppsala <- read_excel("Data/KDB-Uppsala.xlsx", sheet = "3 - Tidsserier", skip = index+5)
+  colnames(KDB_Uppsala)[-1] <- namn[-1]
+  
+  KDB_Uppsala[KDB_Uppsala == "#"] <- NA
+  
+  # Fixar till strukturen på data
+  df_clean <- KDB_Uppsala %>%
+    rename(kategori = 1) %>%
+    mutate(år = if_else(str_detect(kategori, "^\\d{4}$"), kategori, NA_character_)) %>%
+    fill(år, .direction = "down") %>%
+    filter(!str_detect(kategori, "^\\d{4}$")) %>%
+    remove_empty("cols") %>%  # Tar bort tomma kolumner
+    relocate(år, .before = kategori) %>% mutate(år = as.integer(år),
+                                                `totalt i länet` = as.numeric(Uppsala),
+                                                `Region UppsalaKulturutvecklingTotalt interna övriga`=as.numeric(`Region UppsalaKulturutvecklingTotalt interna övriga`)) %>% 
+    select(-Uppsala)%>% rename("Övriga interna"=`Region UppsalaKulturutvecklingTotalt interna övriga`)
+  
+  
+  
+  # gör till long
+  df_clean <- df_clean %>% pivot_longer(names_to = "Plats",
+                                        cols = c(where(is.numeric),-år))
+  
+  df2 <- df_clean %>%
+    mutate(
+      typ = case_when(
+        str_detect(kategori, "Publik") ~ "Publik",
+        str_detect(kategori, "Föreställningar") ~ "Föreställningar"
+      ),
+      grupp = case_when(
+        str_detect(kategori, "Egen") ~ "Egen och samproduktion",
+        str_detect(kategori, "Mottagna") ~ "Gästspel"
+      )
+    )
+  
+  df2 <- df2  %>% filter(!is.na(value), !is.na(typ))
+  
+  
+  df_ratio <- df2 %>%
+    pivot_wider(
+      id_cols = c(år, grupp, Plats),
+      names_from = typ,
+      values_from = value
+    ) %>%
+    mutate(
+      publik_per_forest = Publik / Föreställningar
+    )
+  
+
+  # Antal platser
+ kat <- sort(unique(factor(
+  df_ratio$Plats,
+  levels = c("totalt i länet",
+             sort(setdiff(unique(df_ratio$Plats),"totalt i länet"))))))
+
+ 
+
+for(r in kat){
+  title <- ifelse(r=="totalt i länet", "Totalt i länet", r)
+  cat("## ", title, "\n", sep = "")
+  filename_svg <- paste0("Figurer/forestallning_konsert_", r, ".svg")
+  
+  filename_png <- paste0("Figurer/forestallning_konsert_", r, ".png")
+  
+  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar utvecklingen av antal besökare på",r), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  
+  cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
+  
+  cat("\n\n")
+   filename_svg <- paste0("Figurer/forestallning_konsert_ant_", r, ".svg")
+  
+  filename_png <- paste0("Figurer/forestallning_konsert_ant_", r, ".png")
+  
+  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar utvecklingen av antal besökare på",r), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  
+  cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
+  
+    cat("\n\n")
+   filename_svg <- paste0("Figurer/forestallning_konsert_pub_", r, ".svg")
+  
+  filename_png <- paste0("Figurer/forestallning_konsert_pub_", r, ".png")
+  
+  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar utvecklingen av antal besökare på",r), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  
+  cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
+  
+  
+  
+}
+
+```
+:::
+
+Uppsala Stadsteater uppvisar ett genomgående högre publiksnitt för gästspel än för egna produktioner och samproduktioner. Efter pandemin har publiksnittet för teaterns egna produktioner ändå förbättrats och ligger nu på en högre nivå än åren dessförinnan, trots att antalet föreställningar är i stort sett oförändrat.
+
+Musik i Uppland visar en annan bild: antalet föreställningar har efter pandemin återhämtat sig och är nu högre än tidigare, men den totala publiken har inte följt med i samma utsträckning. Det innebär att publiken per föreställning har minskat över tid, en trend som är synlig redan före pandemiåren.
+
+```{r}
+#| tbl-cap: "Publik - och föreställningsantal för scenkonst"
+#| label: tbl-antal_scenkonst
+
+forestallning_konsert_tbl()
+```
+
+## Intäkter och bidrag
+
+Avsnittet beskriver de ekonomiska förutsättningarna för länets kulturverksamheter, med fokus på intäkter och kostnader över tid. Eftersom rapporteringen varierar mellan verksamheter och år bör jämförelser göras med viss försiktighet – tidsperioderna är inte alltid fullständiga och vissa verksamheter saknar kostnadsdata.
+
+```{r}
+
+
+  # Hämta data
+  df <- read_excel("Data/kulturdatabasen.xlsx", sheet = "Museer - Data", skip = 0)%>%
+    mutate(
+      intakter_totalt = na_if(intakter_totalt, "."),
+      intakter_totalt = na_if(intakter_totalt, "A"),
+      intakter_totalt = as.numeric(intakter_totalt)) %>% 
+    select(museum, ar, KategoriB, intakter_totalt) %>% filter(!is.na(intakter_totalt))
+  
+  
+  # Tar bort de som inte har data senaste åren
+  df <- df %>%
+    group_by(museum) %>%
+    filter(
+      any(ar == max_year & !is.na(intakter_totalt)) |
+        any(ar == (max_year - 1) & !is.na(intakter_totalt))
+    ) %>%
+    ungroup()
+  
+  # Antal platser
+  kat <- sort(unique(df$museum))
+  
+  
+  # Hämtar kolnamn 
+  df2 <- read_excel("Data/KDB-Uppsala.xlsx", sheet = "3 - Tidsserier", skip = 5)
+  namn <-colnames(df2)
+  
+  # tar ut museer och konsthallar
+  index <- which(df2$...1=='4.1 Tidsserier intäkter och kostnader i kronor')
+  
+  # Hämtar data
+  KDB_Uppsala <- read_excel("Data/KDB-Uppsala.xlsx", sheet = "3 - Tidsserier", skip = index+5)
+  colnames(KDB_Uppsala)[-1] <- namn[-1]
+  
+  index <- which(df2$...1=='4.2 Tidsserier årsarbetskrafter')
+  
+  KDB_Uppsala <- KDB_Uppsala[1:index,]
+  
+  KDB_Uppsala[KDB_Uppsala == "#"] <- NA
+  
+  # Fixar till strukturen på data
+  df_clean <- KDB_Uppsala %>%
+    rename(kategori = 1) %>%
+    mutate(år = if_else(str_detect(kategori, "^\\d{4}$"), kategori, NA_character_)) %>%
+    fill(år, .direction = "down") %>%
+    filter(!str_detect(kategori, "^\\d{4}$")) %>%
+    remove_empty("cols") %>%  # Tar bort tomma kolumner
+    relocate(år, .before = kategori) %>% mutate(år = as.integer(år),
+                                                `totalt i länet` = as.numeric(Uppsala),
+                                                `Region UppsalaKulturutvecklingTotalt interna övriga`=as.numeric(`Region UppsalaKulturutvecklingTotalt interna övriga`)) %>% 
+    select(-Uppsala) %>% rename("Övriga interna"=`Region UppsalaKulturutvecklingTotalt interna övriga`)
+  
+  
+  
+  # gör till long
+  df_clean <- df_clean %>% pivot_longer(names_to = "Plats",
+                                        cols = c(where(is.numeric),-år))
+  
+  df_clean$kategori <- gsub(", kr", "", df_clean$kategori)
+ 
+  # Antal platser
+  kat2 <- unique(df_clean$Plats)
+
+  kat <- c(kat,setdiff(kat2,kat))
+ 
+  kat <- sort(unique(factor(
+  kat,
+  levels = c("totalt i länet",
+             sort(setdiff(unique(kat),"totalt i länet"))))))
+```
+
+**I följande graf innebär totalt i länet, totalen endast från följande verksamheter eftersom de också har kostnadsdata:**
+
+```{r, results='asis'}
+
+
+bullet_list <- paste0(
+  "   -    *",kat2[-length(kat2)], "*: "
+)
+
+# Skriv ut som raw markdown
+cat(paste(bullet_list, collapse = "\n"))
+
+```
+
+::: panel-tabset
+```{r, results='asis'}
+
+  
+for(r in kat){
+  temp <- df %>%  filter(museum == r)
+   if(nrow(temp)==1){
+      next()
+   }
+  title <- ifelse(r=="totalt i länet", "Totalt i länet", r)
+  cat("## ", title, "\n", sep = "")
+  filename_svg <- paste0("Figurer/inkomst_per_verksamhet_", r, ".svg")
+  
+  filename_png <- paste0("Figurer/inkomst_per_verksamhet_", r, ".png")
+  
+  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar utvecklingen av antal besökare på",r), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  
+  cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
+  
+}
+
+```
+:::
+
+Sedan 2020 har de sammanlagda intäkterna och kostnaderna för länets kulturverksamheter ökat med över 100 miljoner kronor. Intäkter och kostnader följer varandra nära under hela den redovisade perioden, vilket tyder på en stabil ekonomisk balans i sektorn som helhet.
+
+Bror Hjorts Hus och Företagens historia i Uppsala län sticker ut negativt: båda verksamheterna redovisar kraftiga intäktsfall mellan 2019 och 2020, och har ännu inte återhämtat sig till tidigare nivåer. Övriga verksamheter visar en ökande trend för både intäkter och kostnader.
+
+### Detaljerad nivå
+
+Intäktsdata på detaljerad nivå finns för ett urval av länets kulturverksamheter och presenteras för det senaste tillgängliga året. Uppdelningen visar hur intäkterna fördelar sig mellan olika källor, exempelvis biljettintäkter, kommunala bidrag, regionala bidrag och statliga bidrag inom kultursamverkansmodellen.
+
+::: panel-tabset
+```{r, results='asis'}
+
+
+ # Hämtar kolnamn 
+  df <- read_excel("Data/KDB-Uppsala.xlsx", sheet = "4 - Org, ekonomi och personal", skip = 5)
+  namn <-colnames(df)
+  
+  # tar ut museer och konsthallar
+  index <- which(df$...1=='2.1 Intäkter i kronor')
+  
+  # Hämtar data
+  KDB_Uppsala <- read_excel("Data/KDB-Uppsala.xlsx", sheet = "4 - Org, ekonomi och personal", skip = index+5)
+  colnames(KDB_Uppsala)[-1] <- namn[-1]
+  
+  # Tar bort andra variabler
+  index <- which(KDB_Uppsala$`2.1 Intäkter i kronor`=='2.1b Årliga bidrag')
+  
+  KDB_Uppsala <- KDB_Uppsala[1:(index-1),]
+  
+  # Fixar till strukturen på data
+  df_clean <- KDB_Uppsala %>%
+    rename(kategori = 1) %>%
+    mutate(år = str_extract(kategori, "\\d{4}"),
+           # flag which rows are data rows
+           is_data = str_detect(kategori, "^Intäkter \\d{4}")) %>%
+    # fill category name downward so data rows inherit it
+    mutate(kategori_clean = if_else(!is_data, kategori, NA_character_)) %>%
+    fill(kategori_clean, .direction = "down") %>%
+    fill(år, .direction = "down") %>%
+    # now keep only the data rows
+    filter(is_data) %>%
+    select(-kategori, -is_data) %>%
+    rename(kategori = kategori_clean) %>%
+    remove_empty("cols") %>%
+    relocate(år, kategori) %>%
+    mutate(
+      år = as.integer(år),
+      `totalt i länet` = as.numeric(Uppsala),
+      `Region UppsalaKulturutvecklingTotalt interna övriga` = as.numeric(`Region UppsalaKulturutvecklingTotalt interna övriga`)
+    ) %>%
+    select(-Uppsala) %>%
+    rename(`Övriga interna` = `Region UppsalaKulturutvecklingTotalt interna övriga`)
+  
+  columns <- colnames(df_clean)[-(1:2)]
+  
+
+  kat <- sort(factor(
+  columns,
+  levels = c("totalt i länet",
+             sort(setdiff(columns,"totalt i länet")))))
+
+for(r in kat){
+  title <- ifelse(r=="totalt i länet", "Totalt i länet", r)
+  cat("## ", title, "\n", sep = "")
+  filename_svg <- paste0("Figurer/intakt_bidrag_", r, ".svg")
+  
+  filename_png <- paste0("Figurer/intakt_bidrag_", r, ".png")
+  
+  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar utvecklingen av antal besökare på",r), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  
+  cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
+  
+}
+
+```
+:::
+
+De viktigaste finansieringskällorna för länets kulturverksamheter är kommunala och regionala bidrag samt statliga bidrag inom ramen för kultursamverkansmodellen. Publikintäkter i form av biljetter och entréavgifter uppgår sammantaget till drygt 29 miljoner kronor, varav nästan 20 miljoner kronor härrör från Uppsala Stadsteater AB.
+
+Folkrörelsearkivet för Uppsala län avviker från övriga verksamheter: här utgör övriga bidrag, det vill säga bidrag som varken är kommunala, regionala eller statliga inom kultursamverkansmodellen, en av de största intäktskällorna.
+
