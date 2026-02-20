@@ -36,6 +36,8 @@ Detta är ett Quarto-projekt som visualiserar och analyserar kulturarbetet i Upp
         -   Skriv att ni vill ha data för Museer, scenkonst över tid, med variabler som antal besökare, föreställningar, och ekonomivariabler(som bidrag) för alla kommuner och verksamheter i länet. De ger ut datan för offentliga verksamheter!
         -   När nu fil fås ska den slås ihop med den befintliga filen så att resterande kod fungerar, kod för att slå ihop dataset måste skapas själv.
 
+    -   Funktionerna om fritidsdata som är tydligt markerade i "run_all_functions.R" har en variabel för året som presenteras, kolla om sökvägarna är uppdaterade för nya år och om de har samma struktur. Annars behöver sökvägen ändras när data laddas ned.
+
 -   I terminalen skriv \* quarto render
 
 då skapas mappen "\_site" där index.html hittas, öppna den
