@@ -539,10 +539,7 @@ for(r in plots){
 ```
 :::
 
-
-
 # Studieförbund
-
 
 Detta kapitel belyser studieförbundens verksamhet i Sverige. Studieförbunden är en mötesplats för bildning och kultur där människor samlas för att lära sig nya saker och utveckla sina intressen, oavsett bakgrund eller förkunskaper. Verksamheten spänner över ett brett fält och innehåller bland annat bokcirklar, hantverk, konserter och föreläsningar.
 
@@ -1064,4 +1061,3 @@ for(r in kat){
 De viktigaste finansieringskällorna för länets kulturverksamheter är kommunala och regionala bidrag samt statliga bidrag inom ramen för kultursamverkansmodellen. Publikintäkter i form av biljetter och entréavgifter uppgår sammantaget till drygt 29 miljoner kronor, varav nästan 20 miljoner kronor härrör från Uppsala Stadsteater AB.
 
 Folkrörelsearkivet för Uppsala län avviker från övriga verksamheter: här utgör övriga bidrag, det vill säga bidrag som varken är kommunala, regionala eller statliga inom kultursamverkansmodellen, en av de största intäktskällorna.
-

@@ -1,5 +1,5 @@
 ---
-title: "Nöjdhet, kostnader och intäkter"
+title: "Utbud och deltagande"
 lang: sv 
 bibliography: references.bib
 link-citations: true
@@ -341,7 +341,6 @@ Slöjd/hantverk är nästan helt frånvarande i länet. Endast Knivsta erbjöd d
 
 Teater/drama, musik – ensemble/orkester/kör/musikgrupp och dans erbjuds i samtliga kommuner, vilket gör dessa till de mest spridda ämnena i länet.
 
-
 # Biosalonger
 
 Denna del redovisar statistik över biografverksamhet och biobesök på länsnivå. Underlaget baseras på data från @kulturanalys och omfattar bland annat besöksnivåer, antal salonger och visningar i relation till befolkningen. För mer detaljerade analyser, metodbeskrivningar och nationella jämförelser hänvisas till Kulturanalys tematiska genomgång av filmområdet: [Kulturanalys](https://kulturanalys.se/temaomraden/film/).
@@ -488,27 +487,25 @@ Antal nedladdade fritidskort i Uppsala län `r df$antal_nedladdade_fritidskort` 
 
 Uppsala läns kvot placerar länet i den övre kvartilen, bland de 25 procent av länen med flest nedladdningar i förhållande till antalet anslutna föreningar. Hälften av alla landets län hade en kvot på mellan 40 och 65 fritidskort per förening, vilket gör Uppsala läns nivå om cirka 80 påtagligt högre än riksmedianen.
 
-
 # Bibliotek
 
-Kapitlet beskriver omfattningen och användningen av offentligt finansierade bibliotek. Uppgifterna ger en översikt av verksamheten och hur den har utvecklats över tid. Uppgifterna samlas in och publiceras av @bibstat inom ramen för den officiella biblioteksstatistiken.. 
+Kapitlet beskriver omfattningen och användningen av offentligt finansierade bibliotek. Uppgifterna ger en översikt av verksamheten och hur den har utvecklats över tid. Uppgifterna samlas in och publiceras av @bibstat inom ramen för den officiella biblioteksstatistiken..
 
-  -   *Utlån av fysiska böcker:*
-      - Totalt antal registrerade lån av tryckta böcker under året, inklusive omlån. Fjärrlån och interna överföringar mellan bibliotek räknas inte in. Om två kommuner delar bokbuss bör antalet lån på bussen delas mellan kommunerna i förhållande till hur stor procentuell andel av bokbusshållplatserna som ligger i respektive kommun. Lån som redovisats under ”övriga utlåningsställen” ingår även i denna fråga."
+-   *Utlån av fysiska böcker:*
+    -   Totalt antal registrerade lån av tryckta böcker under året, inklusive omlån. Fjärrlån och interna överföringar mellan bibliotek räknas inte in. Om två kommuner delar bokbuss bör antalet lån på bussen delas mellan kommunerna i förhållande till hur stor procentuell andel av bokbusshållplatserna som ligger i respektive kommun. Lån som redovisats under ”övriga utlåningsställen” ingår även i denna fråga."
 
-::: {.callout-note}
+::: callout-note
 ## Bibliotekstyper
 
-- Skolbibliotek  
-- Friskolebibliotek  
-- Gymnasiebibliotek  
-- Specialbibliotek  
-- Folkbibliotek  
-- Universitetsbibliotek  
-- Friskolegymnasiebibliotek  
-- Sjukhusbibliotek  
+-   Skolbibliotek\
+-   Friskolebibliotek\
+-   Gymnasiebibliotek\
+-   Specialbibliotek\
+-   Folkbibliotek\
+-   Universitetsbibliotek\
+-   Friskolegymnasiebibliotek\
+-   Sjukhusbibliotek\
 :::
-
 
 ::: panel-tabset
 ```{r, results='asis'}
@@ -540,18 +537,14 @@ Folkbiblioteken dominerar utlåningen av fysiska medier i samtliga kommuner i l�
 
 Uppsala kommun utgör dock ett delvis avvikande fall. Där är universitetsbibliotekens andel av de fysiska lånen större än både skol- och gymnasiebibliotekens, något som speglar Uppsalas karaktär som universitetsstad med en omfattande studentpopulation.
 
-
 ## Folkbibliotek
 
 Detta avsnitt beskriver statistiken för folkbiblioteken. Folkbiblioteken är den bibliotekstyp som når flest invånare och utgör en central del av kommunernas kultur- och informationsverksamhet.
-  
-  -   *Fysiska besök:*
-      - Antal besök vid bemannade bibliotek och bokbussar under året. Uppgifterna baseras på automatiska räknare eller beräknas enligt fastställd mätmetod för helår.
-      
-  -   *Aktiva låntagare:*
-      - Antal registrerade användare (personer och institutioner) som har gjort minst ett lån under året. 
 
-
+-   *Fysiska besök:*
+    -   Antal besök vid bemannade bibliotek och bokbussar under året. Uppgifterna baseras på automatiska räknare eller beräknas enligt fastställd mätmetod för helår.
+-   *Aktiva låntagare:*
+    -   Antal registrerade användare (personer och institutioner) som har gjort minst ett lån under året.
 
 Data är hämtat från @bibstat.
 
@@ -590,15 +583,13 @@ for(r in sort(biblio)){
 ```
 :::
 
-
-De flesta folkbibliotek i länet uppvisar en tydlig nedgång i både fysiska besök, aktiva låntagare och antal utlån av fysiska böcker under covid-pandemins första år, vilket speglar de restriktioner och stängningar som påverkade kultursektorn under perioden. 
+De flesta folkbibliotek i länet uppvisar en tydlig nedgång i både fysiska besök, aktiva låntagare och antal utlån av fysiska böcker under covid-pandemins första år, vilket speglar de restriktioner och stängningar som påverkade kultursektorn under perioden.
 
 Kulturhuset Möbelns bibliotek sticker ut genom att redan år 2019, redovisa sitt lägsta antal fysiska besök och aktiva låntagare. Detta mönster är unikt bland länets folkbibliotek och tyder på att biblioteket hade strukturella utmaningar redan innan pandemin slog till, snarare än att nedgången enbart kan förklaras av covid-19.
 
 Mot slutet av perioden syns däremot en anmärkningsvärd vändning för just Kulturhuset Möbelns bibliotek: antalet aktiva låntagare når sin högsta nivå under hela den studerade perioden. Samma positiva utveckling gäller för Älvkarleby folkbibliotek, som också når rekordnivåer i antalet aktiva låntagare det senaste mätåret.
 
 För Älvkarlebys del uppstår dock en paradox, trots de rekordmånga aktiva låntagarna registreras samtidigt bibliotekets lägsta antal fysiska besök under samma år. Detta kan tyda på en förändrad användning av bibliotekstjänsterna, där låntagare i högre utsträckning nyttjar digitala tjänster, e-lån eller andra distansbaserade erbjudanden snarare än att besöka biblioteket fysiskt.
-
 
 
 
@@ -626,7 +617,7 @@ Fysiska lokaler kartläggning
 
 -Kulturinstitutionerna inom kultursamverkansmodellen. Kanske bidragsnivå alt. antal besökare per år. Säger något om scenkonsten, arkiven och museerna i länet. CHECK?
 
--Utlån vid biblioteken
+-Utlån vid biblioteken.  CHECK?
 
 Exempel på källor SCB, Kolada, sominstitutet, e-hälsomyndigheten, Kulturdatabasen, Kulturanalys och Kulturrådet.
 

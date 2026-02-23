@@ -20,7 +20,7 @@ website:
     left:                       # Menylänkar till vänster
       - text: "Start"
         href: index.html
-      - text: "Nöjdhet, kostnader och intäkter"
+      - text: "Utbud och deltagande"
         href: nojd.qmd
       - text: "Organisationer"
         href: organisationer.qmd
