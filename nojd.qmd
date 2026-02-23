@@ -54,7 +54,7 @@ image_read("Mediabank/Musikstudio.png") %>%
 
 # Nöjdhet med kultur- och nöjesliv
 
-Invånarnas upplevelse av det lokala kultur- och nöjeslivet är en central indikator för kulturpolitikens framgång och kultursektorns relevans. Detta avsnitt redovisar andelen invånare som har svarat ”Mycket bra” eller ”Ganska bra” på frågan ”Vad tycker du om det lokala kultur- och nöjeslivet i kommunen (t.ex. konstutställningar, teater, konserter etc.)?” i SCB:s medborgarundersökning. Svarsalternativen ”Vet inte” och ”Ingen åsikt” har exkluderats från beräkningarna.
+Invånarnas upplevelse av det lokala kultur- och nöjeslivet är en central indikator för kulturpolitikens framgång och kultursektorns relevans. Detta avsnitt redovisar andelen invånare som har svarat ”Mycket bra” eller ”Ganska bra” på frågan ”Vad tycker du om det lokala kultur- och nöjeslivet i kommunen (till exempel konstutställningar, teater, konserter etc.)?” i SCB:s medborgarundersökning. Svarsalternativen ”Vet inte” och ”Ingen åsikt” har exkluderats från beräkningarna.
 
 Resultaten baseras på en urvalsundersökning och redovisas som punktskattningar. Detta innebär att de uppskattade andelarna är behäftade med statistisk osäkerhet och inte nödvändigtvis är fullt representativa för hela populationen i respektive kommun. Med hjälp av osäkerhetsintervall kring skattningarna kan det med hög sannolikhet antas att den sanna andelen ligger inom det redovisade intervallet.
 
@@ -70,7 +70,7 @@ for(r in sort(kommuner)){
   
   filename_png <- paste0("Figurer/medborgarund_kultur_", r, ".png")
   
-  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar andelen män och kvinnor som svarat mycket eller ganska bra angående kommunens kulutur och nöjesliv. Beroende på hur mycket data som finns så presenteras vissa kommuner som tidsserie och andra som stapeldiagram. Alla figurer har tillhörande osäkerhetsintervall."), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar andelen män och kvinnor som svarat mycket eller ganska bra angående kommunens kultur och nöjesliv. Beroende på hur mycket data som finns så presenteras vissa kommuner som tidsserie och andra som stapeldiagram. Alla figurer har tillhörande osäkerhetsintervall."), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
   
   cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
   
@@ -168,7 +168,7 @@ for(r in text){
   
   filename_png <- paste0("Figurer/elever_mk_", r, ".png")
   
-  cat('<img src="', filename_svg, '" alt= "',paste0("Figuren visar utvecklingen av andeler elever i musik- och kulturskola för de kommunerna med data för åldrarna",r), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  cat('<img src="', filename_svg, '" alt= "',paste0("Figuren visar utvecklingen av andelen elever i musik- och kulturskola för de kommunerna med data för åldrarna",r), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
   
   cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
   
@@ -228,7 +228,7 @@ Samtliga kommuner uppvisar en lägre andel elever i musik- eller kulturskola nä
 
 Av de kommuner som har data för år 2024 ligger andelarna mycket nära varandra, mellan 10 och 15 procent. Denna relativa homogenitet tyder på att kulturskolans räckvidd är förhållandevis jämn mellan kommunerna
 
-Att Östhammar har en andel på 0 år 2023 för åldersgruppen 6-19 är troligtvis pga att data saknas och har blivit registrerad som 0 av kolada. Knivsta och Älvkarleby saknar data för åren som presenteras ovan och har därav exkluderas från figurerna.
+Att Östhammar har en andel på 0 år 2023 för åldersgruppen 6-19 är troligtvis på grund av att data saknas och har blivit registrerad som 0 av kolada. Knivsta och Älvkarleby saknar data för åren som presenteras ovan och har därav exkluderas från figurerna.
 
 ## Könsfördelning i kulturskola
 
@@ -245,7 +245,7 @@ Data är hämtat från @kolada som hänvisar till @kulturradet
 konsfordelning_skola()
 ```
 
-Flickor utgör en tydlig majoritet av eleverna i kulturskolan. Endast vid ett tillfälle under hela perioden var pojkarna fler - i Håbo år 2017. I övrigt ligger andelen flickor över 50 procent i samtliga kommuner och år med tillgängliga data. För de kommuner som har aktuell data (de senaste två åren) ligger andelen flickor generellt högt. Uppsala kommun är den enda kommunen under 60 procent med 59,72 procent flickor senaste året.
+Flickor utgör en tydlig majoritet av eleverna i kulturskolan. Endast vid ett tillfälle under hela perioden var pojkarna fler - i Håbo år 2017. I övrigt ligger andelen flickor över 50 procent i samtliga kommuner och år med tillgängliga data. För de kommuner som har aktuella data (de senaste två åren) ligger andelen flickor generellt högt. Uppsala kommun är den enda kommunen under 60 procent med 59,72 procent flickor senaste året.
 
 Den högsta andelen under perioden finns i Älvkarleby år 2017 med 91,68 procent flickor, vilket också är det senaste året med data för kommunen. Året innan, 2016, var andelen 68,54 procent, alltså en väldigt stor förändring. värt att notera är att i mindre kommuner med färre elever kan små förändringar i absoluta tal ge stora utslag i procentandelar.
 
@@ -281,7 +281,7 @@ knitr::include_graphics("Figurer/genom_elevkost.svg")
 
 Den genomsnittliga elevavgiften för musik- eller kulturskola skiljer sig tydligt mellan kommunerna i länet, där Älvkarleby och Östhammar har lägst värden och ligger under 100 kr/elev för åren de har data.
 
-Högst avgift per elev hittas i Håbo, Knivsta och Uppsala kommun. Håbo och Uppsala kommun har en elevagift på över 1500 kr/elev för en stor del utav åren i perioden. Knivsta har endast data för ett utav åren och redovisar då en elevavgift på över 2500 kr/elev.
+Högst avgift per elev hittas i Håbo, Knivsta och Uppsala kommun. Håbo och Uppsala kommun har en elevavgift på över 1500 kr/elev för en stor del utav åren i perioden. Knivsta har endast data för ett utav åren och redovisar då en elevavgift på över 2500 kr/elev.
 
 Värt att tänka på är att utbudet av vilka kurser som erbjuds och i vilken omfattning i respektive kommun kan spela stor roll för den genomsnittliga avgiften. Samma kurs i två olika kommuner kan ha samma avgift trots att genomsnittet skiljer sig åt.
 
@@ -436,7 +436,7 @@ for(r in cols){
   
   filename_png <- paste0("Figurer/fritidskort_kommun_", r, ".png")
   
-  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar aningen antal bejiljade fritidskort, antal använda fritidskort eller kvoten mellan antal använda dividerat på antal använda fritidskort för länets kommuner.9"), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar aningen antal beviljade fritidskort, antal använda fritidskort eller kvoten mellan antal använda dividerat på antal använda fritidskort för länets kommuner.9"), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
   
   cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
   i <- i + 1
@@ -519,9 +519,9 @@ for(r in sort(kommuner)){
   filename_png <- paste0("Figurer/biblioteks_antal_lan_", r, ".png")
   
   cat('<img src="', filename_svg, '" alt= "',paste(
-  "Figuren visar utvecklingen över tid för",
+  "Figuren visar utvecklingen av totalt antal lån av fysiska medium över tid för",
   r,
-  "med tre linjediagram: antal fysiska besök per år uppdelat på bibliotekstyp."
+  " per år uppdelat på bibliotekstyp."
 ), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
   
   cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
@@ -591,34 +591,3 @@ Mot slutet av perioden syns däremot en anmärkningsvärd vändning för just Ku
 
 För Älvkarlebys del uppstår dock en paradox, trots de rekordmånga aktiva låntagarna registreras samtidigt bibliotekets lägsta antal fysiska besök under samma år. Detta kan tyda på en förändrad användning av bibliotekstjänsterna, där låntagare i högre utsträckning nyttjar digitala tjänster, e-lån eller andra distansbaserade erbjudanden snarare än att besöka biblioteket fysiskt.
 
-
-
-# Vad ska vara med
-
-Hur bidrag förändras?
-
-Kulturanalys Som? institutet
-
-företag: Som jobbar inom kultur etc Karta?
-
-Fysiska lokaler kartläggning
-
--Kulturvanor i länet (Svårfångad sominstitutet?)
-
--KKB SNI och SSYK. Vilka typer av företag finns det, omsättning, storlek, vilka yrken finns representerade i vilken omfattning. Check!
-
--Kulturskolor, vilka kommuner har vad, vilket deltagande är det (% av barn i kommun). Check!
-
--Investerad krona i kultur per invånare. Var investerar kommunerna sina "kulturpengar"? Check!
-
--Fritidskortets användning. Antal sökta kort samt föreningar (idrott och kultur) i länet, gärna på kommunnivå. CHECK?
-
--Studieförbundens verksamhet i kommunerna. CHECK?
-
--Kulturinstitutionerna inom kultursamverkansmodellen. Kanske bidragsnivå alt. antal besökare per år. Säger något om scenkonsten, arkiven och museerna i länet. CHECK?
-
--Utlån vid biblioteken.  CHECK?
-
-Exempel på källor SCB, Kolada, sominstitutet, e-hälsomyndigheten, Kulturdatabasen, Kulturanalys och Kulturrådet.
-
-Utbud och deltagare - Organisationer - Ekonomi ?

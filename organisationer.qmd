@@ -73,7 +73,7 @@ for(r in sort(kommuner)){
   
   filename_png <- paste0("Figurer/syssel_kol_", r, ".png")
   
-  cat('<img src="', filename_svg, '" alt= "',paste0("Figuren visar utvecklingen av andel sysselsatta inom kulturella och persoliga tjänster mm. i ",r,", mellan 2020 och 2024."), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  cat('<img src="', filename_svg, '" alt= "',paste0("Figuren visar utvecklingen av andel sysselsatta inom kulturella och personliga tjänster mm. i ",r,", mellan 2020 och 2024."), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
   
   cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
   
@@ -311,7 +311,7 @@ antal_bransch_kom_t_firm()
 ```
 :::
 
-Den branschkategori som är minst representerad i antal i samtliga kommuner är Spelutveckling. Här framträder en intressant skillnad i Tierp, där det finns ett registrerat företag men inte någon arbetsställe. Detta kan förklaras av att företaget är registrerat i Tierp men att den faktiska verksamheten bedrivs på annan ort, eller att verksamheten bedrivs utan fysisk arbetsplats (hembaserad verksamhet eller distansarbete).
+Den branschkategori som är minst representerad i antal i samtliga kommuner är Spelutveckling. Här framträder en intressant skillnad i Tierp, där det finns ett registrerat företag men inte något arbetsställe. Detta kan förklaras av att företaget är registrerat i Tierp men att den faktiska verksamheten bedrivs på annan ort, eller att verksamheten bedrivs utan fysisk arbetsplats (hembaserad verksamhet eller distansarbete).
 
 Uppsala kommun har flest antal inom samtliga branschkategorier, vilket är rimligt sett till kommunens folkmängd.
 
@@ -321,9 +321,6 @@ I detta avsnitt redovisas hur kulturverksamheterna fördelar sig mellan olika st
 
 ::: panel-tabset
 ```{r, results='asis'}
-
-#| fig-alt: "Figuren visar storleksfördelningen på anställningsplatserna per kommun"
-
 
 # ======================
 # FIGUR-FLIK
@@ -403,7 +400,7 @@ Omsättning är ett centralt mått för att förstå kulturföretagenens ekonomi
 ```{r}
 #| fig-cap: ""
 #| label: fig-omsattning
-#| fig-alt: "Figuren fördelningen över kulturföretagens bransche per storleksnivå av omsättning i länet."
+#| fig-alt: "Figuren fördelningen över kulturföretagens branscher per storleksnivå av omsättning i länet."
 
 
 knitr::include_graphics("Figurer/andel_bransch_omsatt.svg")
@@ -432,9 +429,9 @@ Litterärt och konstnärligt skapande är den branschkategori som uppvisar den s
 
 ## Kartor
 
-För att visa den geografiska fördelningen av kultursektorns arbetsställen i länet presenteras två interaktiva kartor nedan. Kartorna gör det möjligt att se var olika typer av verksamheter är lokaliserade. Några av punkterna i kartorna ligger utanför länet, det är pga av att de är registrerade i en kommun i länet, men adressen till arbetsstället är utanför länet.
+För att visa den geografiska fördelningen av kultursektorns arbetsställen i länet presenteras två interaktiva kartor nedan. Kartorna gör det möjligt att se var olika typer av verksamheter är lokaliserade. Några av punkterna i kartorna ligger utanför länet, det är på grund av att de är registrerade i en kommun i länet, men adressen till arbetsstället är utanför länet.
 
-### Arbetsställernas branscher
+### Arbetsställenas branscher
 
 @fig-arbetskarta visar var arbetsställena inom kultursektorn finns i länet. Varje punkt på kartan representerar ett arbetsställe, och färgen visar vilken branschkategori verksamheten tillhör. Det går att filtrera ut branscher för att lättare se spridningen för varje enskild bransch.
 
@@ -452,7 +449,7 @@ karta_anst_b()
 Källa: SCB Företagsregistret
 :::
 
-### Arbetsställernas branscher och storleksklass
+### Arbetsställenas branscher och storleksklass
 
 @fig-arbetsstorlekskarta visar samma information som föregående karta, men med möjlighet att även filtrera arbetsställena efter storleksklass. Detta gör det möjligt att till exempel enbart visa större arbetsställen eller fokusera på mindre verksamheter.
 
@@ -521,7 +518,7 @@ for(r in plots){
   
   filename_png <- paste0("Figurer/", r, ".png")
   
-  cat('<img src="', filename_svg, '" alt= "',paste("Figurerna visar historisk utveckling för antal kulturutavare för alla län i Sverige, kulturkategoriernas antal utövare i länet, Könsfördelningen för kategorierna i länet, födelseregion för kategorierna i länet, dess åldersfördelning i länet, medianinkomst i länet och andelen och antalet kulturskapare per kommun  för år 2023"), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  cat('<img src="', filename_svg, '" alt= "',paste("Figurerna visar historisk utveckling för antal kulturutövare för alla län i Sverige, kulturkategoriernas antal utövare i länet, Könsfördelningen för kategorierna i länet, födelseregion för kategorierna i länet, dess åldersfördelning i länet, medianinkomst i länet och andelen och antalet kulturskapare per kommun  för år 2023"), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
   
   cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
   
@@ -615,7 +612,7 @@ for(r in sort(kommuner)){
   
   filename_png <- paste0("Figurer/forbund_kvot_", r, ".png")
   
-  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar antalet deltagare för respektive kön i studieförbundets verksamheter för åren 2019 till 2024."), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar antal deltagare per studietimme och genomsnittlig studietid för studieverksamheterna över tid i",r), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
   
   cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
   
@@ -746,7 +743,7 @@ for(r in kat){
 
 Det låga antalet fram till 2013 beror främst på brist på data från flera av länets museum, det högsta antal besök är mellan 2015 och 2017 för att sedan konstant sjunka till lägsta nivån under pandemiåren. Efter 2021 så har antal besök börjat öka, där anläggningsbesök gjort det största lyftet.
 
-Bror Hjorts Hus, Evulutionsmuseet, Uppsala Konstmuseum, Gamla Uppsala Museum och Pumphuset har alla högre antal besökare för de senaste åren än innan pandemin.
+Bror Hjorts Hus, Evolutionsmuseet, Uppsala Konstmuseum, Gamla Uppsala Museum och Pumphuset har alla högre antal besökare för de senaste åren än innan pandemin.
 
 ### Föreställningar/konserter och publik
 
@@ -827,7 +824,7 @@ for(r in kat){
   
   filename_png <- paste0("Figurer/forestallning_konsert_", r, ".png")
   
-  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar utvecklingen av antal besökare på",r), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar utvecklingen av publiksnittet på",r), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
   
   cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
   
@@ -836,7 +833,7 @@ for(r in kat){
   
   filename_png <- paste0("Figurer/forestallning_konsert_ant_", r, ".png")
   
-  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar utvecklingen av antal besökare på",r), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar utvecklingen av antal föreställningar på",r), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
   
   cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
   
@@ -845,7 +842,7 @@ for(r in kat){
   
   filename_png <- paste0("Figurer/forestallning_konsert_pub_", r, ".png")
   
-  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar utvecklingen av antal besökare på",r), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar utvecklingen av publiktotalen på",r), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
   
   cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
   
@@ -973,7 +970,7 @@ for(r in kat){
   
   filename_png <- paste0("Figurer/inkomst_per_verksamhet_", r, ".png")
   
-  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar utvecklingen av antal besökare på",r), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar utvecklingen av intäkter och kostnader på",r), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
   
   cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
   
@@ -1049,7 +1046,7 @@ for(r in kat){
   
   filename_png <- paste0("Figurer/intakt_bidrag_", r, ".png")
   
-  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar utvecklingen av antal besökare på",r), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar intäktsfördelningen för ",r), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
   
   cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
   
