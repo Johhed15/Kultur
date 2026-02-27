@@ -38,13 +38,11 @@ source("Script/create_tables.R")
 
 # Inledning
 
-Denna rapport ger en samlad bild av kommunernas ekonomi inom kultur- och fritidsverksamhet i länet. Syftet är att skapa ett underlag för jämförelser och analyser som kan stödja kommunernas eget utvecklingsarbete och dialog inom förbundet.
+Denna rapport ger en samlad bild av ett urval av länets kulturverksamheters ekonomi. Syftet är att skapa ett underlag för jämförelser och analyser som kan stödja kommunernas eget utvecklingsarbete och dialog inom förbundet.
 
 Rapporten utgår från officiell statistik och redovisar nyckeltal inom bland annat kostnader och intäkter per verksamhetstyp, nettokostnader över tid, fördelade kommungemensamma kostnader samt kommunernas köp av verksamhet från externa utförare. Samtliga uppgifter avser kommunal verksamhet oavsett driftform.
 
 Målet är inte att värdera enskilda kommuners prioriteringar, utan att synliggöra likheter och skillnader inom länet och ge en gemensam faktabas för fortsatt analys. Eftersom kommunerna skiljer sig åt i storlek, struktur och hur kostnader redovisas bör jämförelserna göras med viss försiktighet.
-
-Alla interaktiva grafer kan laddas ned genom att trycka på ![Nerladdningsknapp](Figurer/download_graph.png){width="120px"}. Då sparas just den bild som visas, med exempelvis den valda regionen. Genom att dubbelklicka på kommunnamn i grafens legend så zoomas den kommunen in för en mer detaljerad vy(flera kan väljas samtidigt).
 
 # Kostnad och intäkt
 
@@ -67,7 +65,9 @@ Data är hämtat från @kolada som hänvisar till @sbcraken.
 df <- read.csv("Data/df_Kostnad_intakt.csv") %>% filter(year==max(year))
 ar <- max(df$year)
 
+top <- df[which.max(df$value),]
 
+kom <- top$municipality
 ```
 
 ```{r}
@@ -79,11 +79,13 @@ ar <- max(df$year)
 kostnad_intakt()
 ```
 
-De kommunerna som har högst kostnad per invånare på kulturverksamhet är Uppsala och Östhammar på över 1450 kr per invånare år `r ar`. Högst intäkt per invånare för kulturverksamhet finns i Heby på 149,9 kr/invånare.
+Den kommunen som har högst kostnad per invånare på kulturverksamhet år `r ar` är `r kom`. Det är också den enda kommunen i länet som har en högre kostnad per invånare än rikssnittet.
 
-Fördelningen av kostnader mellan verksamhetstyper varierar mellan kommunerna. Till exempel har Älvkarleby 61,5 % av kostnaden per invånare inom biblioteksverksamhet, medan motsvarande andel i Enköping är 34 %.
+Fördelningen av kostnader mellan verksamhetstyper varierar mellan kommunerna. Till exempel har Älvkarleby runt 60 % av kostnaden per invånare inom biblioteksverksamhet, medan motsvarande andel i Enköping är runt 35 %.
 
-Andelen intäkter i förhållande till kostnader kan skilja sig markant inom samma kommun. I Östhammar står musik- och kulturskola för 30,2 % av kostnaden, men genererar nästan 60 % av intäkterna. Liknande mönster för musik- och kulturskola ses även i Håbo och Knivsta.
+Andelen intäkter i förhållande till kostnader kan skilja sig markant inom samma kommun. I Östhammar står musik- och kulturskola för cirka 30 % av kostnaden, men genererar nästan 60 % av intäkterna. Liknande mönster för musik- och kulturskola ses även i Håbo och Knivsta.
+
+
 
 ### Utvecklingen över tid
 
@@ -111,9 +113,11 @@ for(r in text){
 ```
 :::
 
-Kostnaden för kulturverksamhet har ökat stadigt för samtliga kommuner under perioden, men i olika takt sett till kostnad per invånare. Tierp har haft en jämn och stabil ökning av kostnaderna, medan Heby upplevde en kraftig kostnadsökning fram till 2020, för att därefter minska något och sedan stabiliseras.
+Kostnaden för kulturverksamhet har ökat stadigt för samtliga kommuner under perioden, men i olika takt sett till kostnad per invånare. Tierp har haft en jämn och stabil ökning av kostnaderna, den har dock ökat snabbare än för riket. Heby upplevde en kraftig kostnadsökning fram till 2020, för att därefter minska något och sedan stabiliseras.
 
-Uppsala kommun har i början av perioden en intäkt per invånare som är långt över dagens nivåer för samtliga kommuner. Heby har gått från den kommun med lägst inkomst per invånare år 2010 till högst 2024.
+De flesta kommunernas kostnad utvecklas i liknande takt som riket, men finner sig på lägre nivåer.
+
+Uppsala kommun har i början av perioden en intäkt per invånare som är långt över dagens nivåer för samtliga kommuner. Heby har gått från den kommun med lägst intäkt per invånare år 2010 till högst 2024. 
 
 ## Nettokostnad
 
@@ -222,6 +226,8 @@ Samtliga kommuner i länet uppvisar andelar under 10 procent under den studerade
 För Enköpings kommun förekommer ett enskilt år med ett negativt värde. Detta tyder på att kostnaden för eget åtagande varit negativ, vilket kan uppstå när interna intäkter och försäljning överstiger bruttokostnaderna. Utfallet bör därför tolkas med försiktighet och betraktas som ett redovisningstekniskt särfall snarare än en faktisk minskning av kostnader.
 
 Vidare kan flera tydliga förändringar i andelen observeras för enskilda kommuner över tid. Dessa förändringar inträffar dock inte samtidigt mellan kommunerna, vilket talar emot förekomsten av gemensamma, länsövergripande strukturförändringar. Av de mest markanta förändringarna innebär fyra av fem en ökning i andelen, vilket kan indikera en ökad belastning av kommungemensamma kostnader i kulturverksamheten under dessa år.
+
+Andelen för riket är ofta lägre än kommunerna i länet.
 
 # Kommunens köp av kultur och fritid från olika aktörer
 

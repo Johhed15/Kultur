@@ -38,9 +38,7 @@ source("Script/create_tables.R")
 
 # Inledning
 
-Denna rapport undersöker kultursektorns utveckling i Uppsala län genom att analysera invånarnas nöjdhet, deltagande i kulturaktiviteter samt kommunernas ekonomiska satsningar på kulturverksamhet. Syftet är att ge en övergripande bild av det kulturella landskapet i länet och identifiera mönster och skillnader mellan kommunerna. Genom att kombinera data om nöjdhet, deltagande och ekonomi erbjuds en mångfacetterad förståelse av hur kulturen fungerar som samhällsresurs i Uppsala län.
-
-Alla interaktiva grafer kan laddas ned genom att trycka på ![Nerladdningsknapp](Figurer/download_graph.png){width="120px"}. Då sparas just den bild som visas, med exempelvis den valda regionen. Genom att dubbelklicka på kommunnamn i grafens legend så zoomas den kommunen in för en mer detaljerad vy(flera kan väljas samtidigt).
+Denna rapport undersöker kulturen i Uppsala län utifrån invånarnas perspektiv. Syftet är att ge en övergripande bild av hur länets invånare tar del av och upplever kulturlivet, samt i vilken utsträckning kommunerna erbjuder kulturverksamhet och infrastruktur för sina invånare.
 
 ```{r}
 #| fig-cap: "Musikstudio"
@@ -52,9 +50,9 @@ image_read("Mediabank/Musikstudio.png") %>%
   image_ggplot(interpolate = TRUE)
 ```
 
-# Nöjdhet med kultur- och nöjesliv
+# Upplevelse av kultur- och nöjesliv
 
-Invånarnas upplevelse av det lokala kultur- och nöjeslivet är en central indikator för kulturpolitikens framgång och kultursektorns relevans. Detta avsnitt redovisar andelen invånare som har svarat ”Mycket bra” eller ”Ganska bra” på frågan ”Vad tycker du om det lokala kultur- och nöjeslivet i kommunen (till exempel konstutställningar, teater, konserter etc.)?” i SCB:s medborgarundersökning. Svarsalternativen ”Vet inte” och ”Ingen åsikt” har exkluderats från beräkningarna.
+Detta avsnitt redovisar andelen invånare som har svarat ”Mycket bra” eller ”Ganska bra” på frågan ”Vad tycker du om det lokala kultur- och nöjeslivet i kommunen (till exempel konstutställningar, teater, konserter etc.)?” i SCB:s medborgarundersökning. Svarsalternativen ”Vet inte” och ”Ingen åsikt” har exkluderats från beräkningarna.
 
 Resultaten baseras på en urvalsundersökning och redovisas som punktskattningar. Detta innebär att de uppskattade andelarna är behäftade med statistisk osäkerhet och inte nödvändigtvis är fullt representativa för hela populationen i respektive kommun. Med hjälp av osäkerhetsintervall kring skattningarna kan det med hög sannolikhet antas att den sanna andelen ligger inom det redovisade intervallet.
 
@@ -63,7 +61,7 @@ Data är hämtat från @kolada som hänvisar till @scb_medborgarundersokningen. 
 ::: panel-tabset
 ```{r, results='asis'}
 
-for(r in sort(kommuner)){
+for(r in c("Uppsala län",sort(kommuner))){
 
   cat("## ", r, "\n", sep = "")
   filename_svg <- paste0("Figurer/medborgarund_kultur_", r, ".svg")
@@ -87,15 +85,15 @@ Lägst andel hittas i Håbo, där det högsta värdet för perioden är 25 %, vi
 
 # Deltagande
 
-Detta avsnitt undersöker det faktiska deltagandet i olika kulturaktiviteter. Deltagande i kultur redovisas som ett sammanvägt mått baserat på genomsnittligt deltagande i följande aktiviteter:
+Detta avsnitt undersöker det faktiska åskådar- och besöksdeltagandet i olika kulturaktiviteter, det vill säga att som publik ta del av kultur, inte att själv utöva eller delta aktivt. Deltagande i kultur redovisas som ett sammanvägt mått baserat på genomsnittligt deltagande i följande aktiviteter:
 
--   Deltagande i konstutställning och/eller museum
+-   Konstutställning och/eller museum
 
 -   Teater eller bio
 
 -   Sportevenemang
 
-För varje aktivitet avser uppgifterna den genomsnittliga andelen av befolkningen i åldern 16–84 år som deltagit under perioden år $T$, $T-1$ och $T-2$. Det innebär att varje värde representerar ett glidande medelvärde över tre år, vilket bidrar till att minska slumpmässiga variationer mellan enskilda år.
+För varje aktivitet avser uppgifterna den genomsnittliga andelen av befolkningen i åldern 16–84 år som deltagit under perioden år $T$ (undersökt år), $T-1$(ett år innan sett från undersökt år) och $T-2$(två år innan). Det innebär att varje värde representerar ett glidande medelvärde över tre år, vilket bidrar till att minska slumpmässiga variationer mellan enskilda år.
 
 Data är hämtat från @kolada som hänvisar till @Folkhalsomyndigheten.
 
@@ -121,13 +119,263 @@ knitr::include_graphics("Figurer/deltagande.svg")
 </div>
 ```
 
-**Notera** att y-axeln i grafen är begränsad till 50 procent, vilket kan ge intryck av att skillnaderna är större än de faktiskt är och framför allt att andelen är högre än den faktiskt är. Avgränsningen är gjord för att möjliggöra en närmare granskning av utvecklingen över tid och för att tydligare synliggöra de relativt små skillnaderna mellan regionerna.
+**Notera** att y-axeln i grafen är begränsad till 50 procent, vilket kan ge intryck av att skillnaderna är större än de faktiskt är och framför allt att andelen är högre än den faktiskt är. Avgränsningen är gjord för att möjliggöra en närmare granskning av utvecklingen över tid och för att tydligare synliggöra de relativt små skillnaderna mellan länen
 
-De flesta regionerna uppvisar liknande deltagandenivåer, vilket tyder på en relativt jämn spridning av kulturdeltagande över landet. De två regionerna som sticker ut mest är Stockholm och Uppsala, som har en något högre genomsnittlig deltagarandel än övriga regioner.
+De flesta län uppvisar liknande deltagandenivåer, vilket tyder på en relativt jämn spridning av kulturdeltagande över landet. De två länen som sticker ut mest är Stockholm och Uppsala, som har en något högre genomsnittlig deltagarandel än övriga regioner.
 
 Vid 2022 syns en tydlig minskning av andelen för samtliga regioner, och det är troligt att covid-19-pandemin ligger bakom denna nedgång. Nedstängningar, restriktioner och rädsla för smitta påverkade möjligheterna att delta i kulturaktiviteter dramatiskt under denna period. Intressant nog ser andelen år 2021 inte ut att vara lika påverkad av pandemin. Detta beror på att varje datapunkt baseras på ett glidande medelvärde av de två senaste år då mätdata finns tillgänglig. Därmed innehåller värdet för 2021 även observationer från perioden före pandemin, vilket dämpar pandemins genomslag i resultaten.
 
-## Elever i musik- eller kulturskola
+# Biosalonger
+
+Denna del redovisar statistik över biografverksamhet och biobesök på länsnivå. Underlaget baseras på data från @kulturanalys och omfattar bland annat besöksnivåer, antal salonger och visningar i relation till befolkningen. För mer detaljerade analyser, metodbeskrivningar och nationella jämförelser hänvisas till Kulturanalys tematiska genomgång av filmområdet: [Kulturanalys](https://kulturanalys.se/temaomraden/film/).
+
+```{r}
+#| fig-cap: ""
+#| label: fig-biosalonger
+#| fig-alt: "Figuren visar biosalongsdata för alla län i Sverige för det senaste året i datat "
+
+
+knitr::include_graphics("Figurer/biosalonger_region.svg")
+
+```
+
+```{=html}
+<div style="margin-top:0.5rem;">
+  <div class="download-dropdown">
+    <span class="download-btn">Ladda ner</span>
+    <div class="download-menu">
+      <a href="Figurer/biosalonger_region.svg" download>Som SVG</a>
+      <a href="Figurer/biosalonger_region.png" download>Som PNG</a>
+    </div>
+  </div>
+</div>
+```
+
+Uppsala län uppvisar relativt höga nivåer i flera centrala kategorier. Länet ligger bland de främsta i landet när det gäller besök per invånare, antal salonger per miljon invånare samt antal visningar per tusen invånare. Detta indikerar en hög tillgänglighet till biografutbud i kombination med ett aktivt publikdeltagande.
+
+När det gäller antal biografer per miljon invånare ligger Uppsala län däremot nära riksgenomsnittet, vilket tyder på att länets starka resultat i flera kategorier snarare drivs av användning och utbud än av ett exceptionellt stort antal biografanläggningar. Gotlands län har de högsta värdena i samtliga kategorier utom besök per invånare, där Stockholms län toppar.
+
+## Utveckling jämfört med riket
+
+Tabellerna nedan visar utvecklingen av antal biobesök per invånare respektive antal visningar per tusen invånare, för Uppsala län och riket som helhet.
+
+```{r}
+#| tbl-cap: "Antal biobesök per invånare"
+#| label: tbl-biosalonger_besok
+
+
+bio <- biosalong_trend_region()
+
+bio[[1]]
+```
+
+```{r}
+#| tbl-cap: "Antal visningar per tusen invånare"
+#| label: tbl-biosalonger_vis
+
+
+bio <- biosalong_trend_region()
+
+bio[[2]]
+```
+
+På riksnivå har antalet biobesök per invånare minskat fram till 2024. För Uppsala län syns ingen motsvarande nedgång, vilket innebär att länet utvecklas något starkare än riket i detta avseende. Skillnaden är dock marginell, och eftersom tidsserien endast omfattar två år går det inte att dra några säkra slutsatser om långsiktiga trender.
+
+När det gäller antalet visningar per tusen invånare ligger Uppsala län tydligt över rikssnittet, vilket förstärker bilden av ett relativt aktivt biografutbud. Samtidigt uppvisar både riket och Uppsala län en nedgång under 2024 jämfört med 2023, vilket kan indikera en generell avmattning i visningsvolymer under perioden.
+
+## Antal biografer per kommun
+
+Tabellen nedan redovisar antalet biografer per kommun i Uppsala län.
+
+```{r}
+#| tbl-cap: "Antal biografer per kommun"
+#| label: tbl-biografer
+
+
+biografer()
+```
+
+Mellan 2023 och 2024 har Tierps och Uppsala kommun ökat sitt antal biografer, medan övriga kommuner uppvisar oförändrade nivåer under perioden.
+
+Flest biografer återfinns i Uppsala kommun, med totalt 8 stycken år 2024. Därefter följer Heby med 3 biografer, samt Tierp och Östhammar med 2 biografer vardera.
+
+# Bibliotek
+
+Kapitlet beskriver omfattningen och användningen av offentligt finansierade bibliotek. Uppgifterna ger en översikt av verksamheten och hur den har utvecklats över tid. Uppgifterna samlas in och publiceras av @bibstat inom ramen för den officiella biblioteksstatistiken..
+
+-   *Utlån av fysiska böcker:*
+    -   Totalt antal registrerade lån av tryckta böcker under året, inklusive omlån. Fjärrlån och interna överföringar mellan bibliotek räknas inte in. Om två kommuner delar bokbuss bör antalet lån på bussen delas mellan kommunerna i förhållande till hur stor procentuell andel av bokbusshållplatserna som ligger i respektive kommun. Lån som redovisats under ”övriga utlåningsställen” ingår även i denna fråga."
+
+::: callout-note
+## Bibliotekstyper
+
+-   Skolbibliotek\
+-   Friskolebibliotek\
+-   Gymnasiebibliotek\
+-   Specialbibliotek\
+-   Folkbibliotek\
+-   Universitetsbibliotek\
+-   Friskolegymnasiebibliotek\
+-   Sjukhusbibliotek\
+:::
+
+::: panel-tabset
+```{r, results='asis'}
+
+
+for(r in sort(kommuner)){
+
+  cat("## ", r, "\n", sep = "")
+  filename_svg <- paste0("Figurer/biblioteks_antal_lan_", r, ".svg")
+  
+  filename_png <- paste0("Figurer/biblioteks_antal_lan_", r, ".png")
+  
+  cat('<img src="', filename_svg, '" alt= "',paste(
+  "Figuren visar utvecklingen av totalt antal lån av fysiska medium över tid för",
+  r,
+  " per år uppdelat på bibliotekstyp."
+), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  
+  cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
+  
+}
+
+
+
+```
+:::
+
+Folkbiblioteken dominerar utlåningen av fysiska medier i samtliga kommuner i länet.
+
+Uppsala kommun utgör dock ett delvis avvikande fall. Där är universitetsbibliotekens andel av de fysiska lånen större än både skol- och gymnasiebibliotekens, något som speglar Uppsalas karaktär som universitetsstad med en omfattande studentpopulation.
+
+## Folkbibliotek
+
+Detta avsnitt beskriver statistiken för folkbiblioteken. Folkbiblioteken är den bibliotekstyp som når flest invånare och utgör en central del av kommunernas kultur- och informationsverksamhet.
+
+-   *Fysiska besök:*
+    -   Antal besök vid bemannade bibliotek och bokbussar under året. Uppgifterna baseras på automatiska räknare eller beräknas enligt fastställd mätmetod för helår.
+-   *Aktiva låntagare:*
+    -   Antal registrerade användare (personer och institutioner) som har gjort minst ett lån under året.
+
+Data är hämtat från @bibstat.
+
+::: panel-tabset
+```{r, results='asis'}
+  df <- read.csv("Data/bibstat_uppsala_kommuner.csv") %>% filter(Bibliotekstyp=="folkbib")
+  
+  df <- df %>% 
+    select(Bibliotek,Kommunkod, year, Stad,
+              Besok01,
+              Utlan301,
+              Aktiv99)  
+  
+  biblio <- unique(df$Bibliotek)
+
+for(r in sort(biblio)){
+
+  cat("## ", r, "\n", sep = "")
+  filename_svg <- paste0("Figurer/biblioteks_folk_", r, ".svg")
+  
+  filename_png <- paste0("Figurer/biblioteks_folk_", r, ".png")
+  
+  cat('<img src="', filename_svg, '" alt= "',paste(
+  "Figuren visar utvecklingen över tid för",
+  r,
+  "med tre linjediagram: antal fysiska besök, totalt antal utlån",
+  "samt antal aktiva låntagare per år."
+), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  
+  cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
+  
+}
+
+
+
+```
+:::
+
+De flesta folkbibliotek i länet uppvisar en tydlig nedgång i både fysiska besök, aktiva låntagare och antal utlån av fysiska böcker under covid-pandemins första år, vilket speglar de restriktioner och stängningar som påverkade kultursektorn under perioden.
+
+Kulturhuset Möbelns bibliotek sticker ut genom att redan år 2019, redovisa sitt lägsta antal fysiska besök och aktiva låntagare. Detta mönster är unikt bland länets folkbibliotek och tyder på att biblioteket hade strukturella utmaningar redan innan pandemin slog till, snarare än att nedgången enbart kan förklaras av covid-19.
+
+Mot slutet av perioden syns däremot en anmärkningsvärd vändning för just Kulturhuset Möbelns bibliotek: antalet aktiva låntagare når sin högsta nivå under hela den studerade perioden. Samma positiva utveckling gäller för Älvkarleby folkbibliotek, som också når rekordnivåer i antalet aktiva låntagare det senaste mätåret.
+
+För Älvkarlebys del uppstår dock en paradox, trots de rekordmånga aktiva låntagarna registreras samtidigt bibliotekets lägsta antal fysiska besök under samma år. Detta kan tyda på en förändrad användning av bibliotekstjänsterna, där låntagare i högre utsträckning nyttjar digitala tjänster, e-lån eller andra distansbaserade erbjudanden snarare än att besöka biblioteket fysiskt.
+
+# Fritidskort
+
+Fritidskortet är en statlig satsning som syftar till att öka barns och ungas möjlighet att delta i fritidsaktiviteter inom idrott, kultur och andra föreningsaktiviteter. Kortet fungerar som ett digitalt stöd som vårdnadshavare kan använda för att betala avgifter till aktiviteter för barn mellan cirka 7 och 16 år. Syftet är att stärka deltagande oberoende av familjens ekonomiska förutsättningar och att främja en aktiv fritid för alla barn (@turn1search0; @turn1search2).
+
+Data om Fritidskortet är hämtad från @ehalso och baseras på registreringar av beviljade och använda kort. Detta avsnitt redovisar antal beviljade kort, antal använda kort samt andel använda kort av de beviljade.
+
+Medianen visar det värde som ligger i mitten när alla kommuner rangordnas efter antal kort eller andel använda kort. Fördelningen mellan kommuner visas också med nedre och övre kvartil, vilket ger en bild av variationen mellan kommuner. Eftersom varje kommun räknas lika mycket, påverkas resultatet inte av hur många barn som bor i kommunen. Det betyder att små och stora kommuner väger lika i statistiken.
+
+::: panel-tabset
+```{r, results='asis'}
+cols <- c("Antal_beviljade_fritidskort", "Antal_anvanda_fritidskort"   ,"kvot")
+
+titles <-  c("Antal beviljade fritidskort", "Antal använda fritidskort"   ,"Andel använda fritidskort av de beviljade korten")
+i <- 1
+for(r in cols){
+
+  cat("## ", titles[i], "\n", sep = "")
+  filename_svg <- paste0("Figurer/fritidskort_kommun_", r, ".svg")
+  
+  filename_png <- paste0("Figurer/fritidskort_kommun_", r, ".png")
+  
+  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar aningen antal beviljade fritidskort, antal använda fritidskort eller kvoten mellan antal använda dividerat på antal använda fritidskort för länets kommuner.9"), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  
+  cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
+  i <- i + 1
+}
+
+
+
+```
+:::
+
+Både Enköping och Uppsala kommun tillhör den fjärdedel av kommuner i landet som har högst antal beviljade respektive använda fritidskort. Det innebär att dessa kommuner ligger över den övre kvartilen i jämförelsen med övriga kommuner i Sverige.
+
+När analysen i stället utgår från andelen använda fritidskort i förhållande till antalet beviljade förändras bilden i länet. Knivsta och Östhammar tillhör då den fjärdedel av kommuner i landet som har högst andel använda kort. Även Heby ligger över riksmedianen, vilket innebär att en större andel av de beviljade korten används jämfört med hälften av landets kommuner.
+
+Håbo och Tierp har den lägsta andelen använda kort i länet. Båda kommunerna tillhör den fjärdedel av kommuner i landet som har lägst andel använda fritidskort i förhållande till antalet beviljade.
+
+## Föreningar
+
+@fig-fritidsforening baseras på data från @regeringfritid och visar det genomsnittliga antalet nedladdade fritidskort per ansluten förening i Uppsala län. För att sätta siffran i ett nationellt sammanhang jämförs länet mot övriga Sveriges län, där mitten av fördelningen samt de 25 procent lägsta och högsta länen visas.
+
+```{r}
+#| fig-cap: ""
+#| label: fig-fritidsforening
+#| fig-alt: "Figuren visar antal nedladdade fritidskort per förening i Uppsala län jämfört mot rikets median och kvartiler för år 2025"
+
+
+knitr::include_graphics("Figurer/fritidskort_lan.svg")
+
+
+df <- read.csv("Data/fritidskort_uppsala.csv")
+
+
+```
+
+```{=html}
+<div style="margin-top:0.5rem;">
+  <div class="download-dropdown">
+    <span class="download-btn">Ladda ner</span>
+    <div class="download-menu">
+      <a href="Figurer/fritidskort_lan.svg" download>Som SVG</a>
+      <a href="Figurer/fritidskort_lan.png" download>Som PNG</a>
+    </div>
+  </div>
+</div>
+```
+
+Under år `r df$år` laddades totalt `r df$antal_nedladdade_fritidskort` fritidskort ned i Uppsala län, fördelat på `r df$antal_foreningar` föreningar.
+
+Det innebär i genomsnitt cirka 80 nedladdningar per förening, vilket är påtagligt högre än i de flesta andra län. I hälften av landets län låg motsvarande genomsnitt på mellan 40 och 65 nedladdningar per förening, och Uppsala placerar sig bland de 25 procent av länen med högst antal nedladdningar per förening.
+
+# Elever i musik- eller kulturskola
 
 Detta avsnitt redovisar andelen barn och unga som deltar i kommunal musik- eller kulturskoleverksamhet. Andelen beräknas som antalet unika individer inskrivna i musik- eller kulturskola dividerat med den totala befolkningen i motsvarande åldersgrupp. Redovisningen omfattar både åldersgruppen 6–19 år samt 6–15 år.
 
@@ -237,7 +485,7 @@ Detta kapitel redovisar könsfördelningen bland elever i kulturskolan i ålders
 Data är hämtat från @kolada som hänvisar till @kulturradet
 
 ```{r}
-#| tbl-cap: "Andelen flickor i kulturskolan (6-19 år)."
+#| tbl-cap: "Andelen flickor i kulturskolan (6-19 år), anges i procent(%)."
 #| label: tbl-konsfordelning_skola
 
 
@@ -340,254 +588,3 @@ Knivsta och Tierp har kraftigt utökat sitt utbud under perioden. Båda kommuner
 Slöjd/hantverk är nästan helt frånvarande i länet. Endast Knivsta erbjöd detta ämne, och då enbart år 2022. Foto finns bara i Östhammar, ingen annan kommun i länet har detta ämne.
 
 Teater/drama, musik – ensemble/orkester/kör/musikgrupp och dans erbjuds i samtliga kommuner, vilket gör dessa till de mest spridda ämnena i länet.
-
-# Biosalonger
-
-Denna del redovisar statistik över biografverksamhet och biobesök på länsnivå. Underlaget baseras på data från @kulturanalys och omfattar bland annat besöksnivåer, antal salonger och visningar i relation till befolkningen. För mer detaljerade analyser, metodbeskrivningar och nationella jämförelser hänvisas till Kulturanalys tematiska genomgång av filmområdet: [Kulturanalys](https://kulturanalys.se/temaomraden/film/).
-
-```{r}
-#| fig-cap: ""
-#| label: fig-biosalonger
-#| fig-alt: "Figuren visar biosalongsdata för alla län i Sverige för det senaste året i datat "
-
-
-knitr::include_graphics("Figurer/biosalonger_region.svg")
-
-```
-
-```{=html}
-<div style="margin-top:0.5rem;">
-  <div class="download-dropdown">
-    <span class="download-btn">Ladda ner</span>
-    <div class="download-menu">
-      <a href="Figurer/biosalonger_region.svg" download>Som SVG</a>
-      <a href="Figurer/biosalonger_region.png" download>Som PNG</a>
-    </div>
-  </div>
-</div>
-```
-
-Uppsala län uppvisar relativt höga nivåer i flera centrala kategorier. Länet ligger bland de främsta i landet när det gäller besök per invånare, antal salonger per miljon invånare samt antal visningar per tusen invånare. Detta indikerar en hög tillgänglighet till biografutbud i kombination med ett aktivt publikdeltagande.
-
-När det gäller antal biografer per miljon invånare ligger Uppsala län däremot nära riksgenomsnittet, vilket tyder på att länets starka resultat i flera kategorier snarare drivs av användning och utbud än av ett exceptionellt stort antal biografanläggningar. Gotlands län har de högsta värdena i samtliga kategorier utom besök per invånare, där Stockholms län istället toppar med ett värde på 1,3.
-
-## Utveckling jämfört med riket
-
-Tabellerna nedan visar utvecklingen av antal biobesök per invånare respektive antal visningar per tusen invånare, för Uppsala län och riket som helhet.
-
-```{r}
-#| tbl-cap: "Antal biobesök per invånare"
-#| label: tbl-biosalonger_besok
-
-
-bio <- biosalong_trend_region()
-
-bio[[1]]
-```
-
-```{r}
-#| tbl-cap: "Antal visningar per tusen invånare"
-#| label: tbl-biosalonger_vis
-
-
-bio <- biosalong_trend_region()
-
-bio[[2]]
-```
-
-På riksnivå har antalet biobesök per invånare minskat fram till 2024. För Uppsala län syns ingen motsvarande nedgång, vilket innebär att länet utvecklas något starkare än riket i detta avseende. Skillnaden är dock marginell, och eftersom tidsserien endast omfattar två år går det inte att dra några säkra slutsatser om långsiktiga trender.
-
-När det gäller antalet visningar per tusen invånare ligger Uppsala län tydligt över rikssnittet, vilket förstärker bilden av ett relativt aktivt biografutbud. Samtidigt uppvisar både riket och Uppsala län en nedgång under 2024 jämfört med 2023, vilket kan indikera en generell avmattning i visningsvolymer under perioden.
-
-## Antal biografer per kommun
-
-Tabellen nedan redovisar antalet biografer per kommun i Uppsala län.
-
-```{r}
-#| tbl-cap: "Antal biografer per kommun"
-#| label: tbl-biografer
-
-
-biografer()
-```
-
-Mellan 2023 och 2024 har Tierps och Uppsala kommun ökat sitt antal biografer, medan övriga kommuner uppvisar oförändrade nivåer under perioden.
-
-Flest biografer återfinns i Uppsala kommun, med totalt 8 stycken år 2024. Därefter följer Heby med 3 biografer, samt Tierp och Östhammar med 2 biografer vardera.
-
-# Fritidskort
-
-Fritidskortet är en statlig satsning som syftar till att öka barns och ungas möjlighet att delta i fritidsaktiviteter inom idrott, kultur och andra föreningsaktiviteter. Kortet fungerar som ett digitalt stöd som vårdnadshavare kan använda för att betala avgifter till aktiviteter för barn mellan cirka 7 och 16 år. Syftet är att stärka deltagande oberoende av familjens ekonomiska förutsättningar och att främja en aktiv fritid för alla barn (@turn1search0; @turn1search2).
-
-Data om Fritidskortet är hämtad från @ehalso och baseras på registreringar av beviljade och använda kort. Detta avsnitt redovisar antal beviljade kort, antal använda kort samt andel använda kort av de beviljade.
-
-Medianen visar det värde som ligger i mitten när alla kommuner rangordnas efter antal kort eller andel använda kort. Fördelningen mellan kommuner visas också med nedre och övre kvartil, vilket ger en bild av variationen mellan kommuner. Eftersom varje kommun räknas lika mycket, påverkas resultatet inte av hur många barn som bor i kommunen. Det betyder att små och stora kommuner väger lika i statistiken.
-
-::: panel-tabset
-```{r, results='asis'}
-cols <- c("Antal_beviljade_fritidskort", "Antal_anvanda_fritidskort"   ,"kvot")
-
-titles <-  c("Antal beviljade fritidskort", "Antal använda fritidskort"   ,"Andel använda fritidskort av de beviljade korten")
-i <- 1
-for(r in cols){
-
-  cat("## ", titles[i], "\n", sep = "")
-  filename_svg <- paste0("Figurer/fritidskort_kommun_", r, ".svg")
-  
-  filename_png <- paste0("Figurer/fritidskort_kommun_", r, ".png")
-  
-  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar aningen antal beviljade fritidskort, antal använda fritidskort eller kvoten mellan antal använda dividerat på antal använda fritidskort för länets kommuner.9"), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
-  
-  cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
-  i <- i + 1
-}
-
-
-
-```
-:::
-
-Både Enköping och Uppsala kommun tillhör den fjärdedel av kommuner i landet som har högst antal beviljade respektive använda fritidskort. Det innebär att dessa kommuner ligger över den övre kvartilen i jämförelsen med övriga kommuner i Sverige.
-
-När analysen i stället utgår från andelen använda fritidskort i förhållande till antalet beviljade förändras bilden i länet. Knivsta och Östhammar tillhör då den fjärdedel av kommuner i landet som har högst andel använda kort. Även Heby ligger över riksmedianen, vilket innebär att en större andel av de beviljade korten används jämfört med hälften av landets kommuner.
-
-Håbo och Tierp har den lägsta andelen använda kort i länet. Båda kommunerna tillhör den fjärdedel av kommuner i landet som har lägst andel använda fritidskort i förhållande till antalet beviljade.
-
-## Föreningar
-
-@fig-fritidsforening baseras på data från @regeringfritid och visar hur många fritidskort som laddats ned per ansluten förening i Uppsala län. För att ge ett nationellt sammanhang jämförs länet mot riksfördelningens median samt nedre och övre kvartil, beräknade samtliga län i Sverige.
-
-```{r}
-#| fig-cap: ""
-#| label: fig-fritidsforening
-#| fig-alt: "Figuren visar antal nedladdade fritidskort per förening i Uppsala län jämfört mot rikets median och kvartiler för år 2025"
-
-
-knitr::include_graphics("Figurer/fritidskort_lan.svg")
-
-
-df <- read.csv("Data/fritidskort_uppsala.csv")
-
-
-```
-
-```{=html}
-<div style="margin-top:0.5rem;">
-  <div class="download-dropdown">
-    <span class="download-btn">Ladda ner</span>
-    <div class="download-menu">
-      <a href="Figurer/fritidskort_lan.svg" download>Som SVG</a>
-      <a href="Figurer/fritidskort_lan.png" download>Som PNG</a>
-    </div>
-  </div>
-</div>
-```
-
-Antal nedladdade fritidskort i Uppsala län `r df$antal_nedladdade_fritidskort` och totalt antal kopplade föreningar år `r df$år` är `r df$antal_foreningar` stycken.
-
-Uppsala läns kvot placerar länet i den övre kvartilen, bland de 25 procent av länen med flest nedladdningar i förhållande till antalet anslutna föreningar. Hälften av alla landets län hade en kvot på mellan 40 och 65 fritidskort per förening, vilket gör Uppsala läns nivå om cirka 80 påtagligt högre än riksmedianen.
-
-# Bibliotek
-
-Kapitlet beskriver omfattningen och användningen av offentligt finansierade bibliotek. Uppgifterna ger en översikt av verksamheten och hur den har utvecklats över tid. Uppgifterna samlas in och publiceras av @bibstat inom ramen för den officiella biblioteksstatistiken..
-
--   *Utlån av fysiska böcker:*
-    -   Totalt antal registrerade lån av tryckta böcker under året, inklusive omlån. Fjärrlån och interna överföringar mellan bibliotek räknas inte in. Om två kommuner delar bokbuss bör antalet lån på bussen delas mellan kommunerna i förhållande till hur stor procentuell andel av bokbusshållplatserna som ligger i respektive kommun. Lån som redovisats under ”övriga utlåningsställen” ingår även i denna fråga."
-
-::: callout-note
-## Bibliotekstyper
-
--   Skolbibliotek\
--   Friskolebibliotek\
--   Gymnasiebibliotek\
--   Specialbibliotek\
--   Folkbibliotek\
--   Universitetsbibliotek\
--   Friskolegymnasiebibliotek\
--   Sjukhusbibliotek\
-:::
-
-::: panel-tabset
-```{r, results='asis'}
-
-
-for(r in sort(kommuner)){
-
-  cat("## ", r, "\n", sep = "")
-  filename_svg <- paste0("Figurer/biblioteks_antal_lan_", r, ".svg")
-  
-  filename_png <- paste0("Figurer/biblioteks_antal_lan_", r, ".png")
-  
-  cat('<img src="', filename_svg, '" alt= "',paste(
-  "Figuren visar utvecklingen av totalt antal lån av fysiska medium över tid för",
-  r,
-  " per år uppdelat på bibliotekstyp."
-), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
-  
-  cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
-  
-}
-
-
-
-```
-:::
-
-Folkbiblioteken dominerar utlåningen av fysiska medier i samtliga kommuner i länet.
-
-Uppsala kommun utgör dock ett delvis avvikande fall. Där är universitetsbibliotekens andel av de fysiska lånen större än både skol- och gymnasiebibliotekens, något som speglar Uppsalas karaktär som universitetsstad med en omfattande studentpopulation.
-
-## Folkbibliotek
-
-Detta avsnitt beskriver statistiken för folkbiblioteken. Folkbiblioteken är den bibliotekstyp som når flest invånare och utgör en central del av kommunernas kultur- och informationsverksamhet.
-
--   *Fysiska besök:*
-    -   Antal besök vid bemannade bibliotek och bokbussar under året. Uppgifterna baseras på automatiska räknare eller beräknas enligt fastställd mätmetod för helår.
--   *Aktiva låntagare:*
-    -   Antal registrerade användare (personer och institutioner) som har gjort minst ett lån under året.
-
-Data är hämtat från @bibstat.
-
-::: panel-tabset
-```{r, results='asis'}
-  df <- read.csv("Data/bibstat_uppsala_kommuner.csv") %>% filter(Bibliotekstyp=="folkbib")
-  
-  df <- df %>% 
-    select(Bibliotek,Kommunkod, year, Stad,
-              Besok01,
-              Utlan301,
-              Aktiv99)  
-  
-  biblio <- unique(df$Bibliotek)
-
-for(r in sort(biblio)){
-
-  cat("## ", r, "\n", sep = "")
-  filename_svg <- paste0("Figurer/biblioteks_folk_", r, ".svg")
-  
-  filename_png <- paste0("Figurer/biblioteks_folk_", r, ".png")
-  
-  cat('<img src="', filename_svg, '" alt= "',paste(
-  "Figuren visar utvecklingen över tid för",
-  r,
-  "med tre linjediagram: antal fysiska besök, totalt antal utlån",
-  "samt antal aktiva låntagare per år."
-), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
-  
-  cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
-  
-}
-
-
-
-```
-:::
-
-De flesta folkbibliotek i länet uppvisar en tydlig nedgång i både fysiska besök, aktiva låntagare och antal utlån av fysiska böcker under covid-pandemins första år, vilket speglar de restriktioner och stängningar som påverkade kultursektorn under perioden.
-
-Kulturhuset Möbelns bibliotek sticker ut genom att redan år 2019, redovisa sitt lägsta antal fysiska besök och aktiva låntagare. Detta mönster är unikt bland länets folkbibliotek och tyder på att biblioteket hade strukturella utmaningar redan innan pandemin slog till, snarare än att nedgången enbart kan förklaras av covid-19.
-
-Mot slutet av perioden syns däremot en anmärkningsvärd vändning för just Kulturhuset Möbelns bibliotek: antalet aktiva låntagare når sin högsta nivå under hela den studerade perioden. Samma positiva utveckling gäller för Älvkarleby folkbibliotek, som också når rekordnivåer i antalet aktiva låntagare det senaste mätåret.
-
-För Älvkarlebys del uppstår dock en paradox, trots de rekordmånga aktiva låntagarna registreras samtidigt bibliotekets lägsta antal fysiska besök under samma år. Detta kan tyda på en förändrad användning av bibliotekstjänsterna, där låntagare i högre utsträckning nyttjar digitala tjänster, e-lån eller andra distansbaserade erbjudanden snarare än att besöka biblioteket fysiskt.
-

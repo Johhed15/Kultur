@@ -38,9 +38,7 @@ source("Script/create_tables.R")
 
 # Inledning
 
-Denna rapport undersöker organisationer och sysselsättning inom kultursektorn i Uppsala län. Syftet är att ge en övergripande bild av kulturarbetsmarknaden genom att analysera företagsstruktur, sysselsättning och kulturskaparnas förutsättningar i länet. Genom att kombinera information om företag, arbetsställen, sysselsättning och kulturskapare erbjuds en mångfacetterad förståelse av kultursektorns ekonomiska och organisatoriska struktur i Uppsala län.
-
-Alla interaktiva grafer kan laddas ned genom att trycka på ![Nerladdningsknapp](Figurer/download_graph.png){width="120px"}. Då sparas just den bild som visas, med exempelvis den valda regionen. Genom att dubbelklicka på kommunnamn i grafens legend så zoomas den kommunen in för en mer detaljerad vy(flera kan väljas samtidigt).
+Denna rapport undersöker ett urval av länets organisationer och sysselsättning inom kultursektorn i Uppsala län. Syftet är att ge en övergripande bild av kulturarbetsmarknaden genom att analysera företagsstruktur, sysselsättning och kulturskaparnas förutsättningar i länet. Genom att kombinera information om företag, arbetsställen, sysselsättning och kulturskapare erbjuds en mångfacetterad förståelse av kultursektorns ekonomiska och organisatoriska struktur i Uppsala län.
 
 ```{r}
 #| fig-cap: "Konstutställning"
@@ -51,40 +49,6 @@ Alla interaktiva grafer kan laddas ned genom att trycka på ![Nerladdningsknapp]
 image_read("Mediabank/Konstutställning.png") %>% 
   image_ggplot(interpolate = TRUE)
 ```
-
-# Sysselsättning kolada
-
-Avsnittet beskriver andelen sysselsatta i åldern 15-74 år inom kulturella och personliga tjänster m.m. (SNI-kod R, S, T och U). Andelen beräknas som antalet sysselsatta inom dessa näringsgrenar i relation till det totala antalet sysselsatta.
-
-Med sysselsatta avses personer som under november månad haft löneinkomst från anställning eller inkomst från aktiv näringsverksamhet. Uppgifterna redovisas både utifrån arbetsställets geografiska belägenhet och utifrån individens bostadsort. Statistiken gör det därmed möjligt att belysa eventuella skillnader mellan var arbetet utförs och var de sysselsatta är bosatta.
-
-Data är hämtat från @kolada som hänvisar vidare till @scb_arbetsmarknadsstatus.
-
-::: panel-tabset
-```{r, results='asis'}
-
-# variabel som skiljer graferna
-
-
-for(r in sort(kommuner)){
-
-  cat("## ", r, "\n", sep = "")
-  filename_svg <- paste0("Figurer/syssel_kol_", r, ".svg")
-  
-  filename_png <- paste0("Figurer/syssel_kol_", r, ".png")
-  
-  cat('<img src="', filename_svg, '" alt= "',paste0("Figuren visar utvecklingen av andel sysselsatta inom kulturella och personliga tjänster mm. i ",r,", mellan 2020 och 2024."), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
-  
-  cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
-  
-}
-
-```
-:::
-
-Kvinnor har en högre andel sysselsatta inom kulturella och personliga tjänster än män i alla kommuner i länet, oavsett om statistiken baseras på arbetsställets eller bostadens belägenhet. Skillnaderna mellan arbetsställets och bostadens belägenhet är mycket små inom kommunerna. Detta tyder på att pendlingen över kommungränserna för personer som arbetar inom kulturella och personliga tjänster är begränsad, eller att in- och utpendling för dessa verksamheter är relativt balanserad.
-
-Östhammar är den kommun som har lägst andel för bägge könen, medan Håbo, Knivsta och Uppsala kommun har de högsta andelarna. Skillnaderna mellan könen är som minst i Uppsala kommun och störst i Heby och Älvkarleby.
 
 # Företagsregistret
 
@@ -105,7 +69,7 @@ Mer information om företagsregistret finns här [SCB företagsregistret](https:
 **Exempel från SBC: Företaget "Svensk Bil AB" kan ha sitt huvudkontor i Stockholm och verkstäder i Örebro, Skellefteå och Malmö. Då är "Svensk Bil AB" företaget och huvudkontoret samt verkstäderna är arbetsställen.**
 
 ::: {.callout-note collapse="true"}
-## Branscher som klassas inom vara verksamma inom kultur (SNI 2025)
+## Branscher som klassas verksamma inom kultur (SNI 2025)
 
 ```{r,results='asis' }
 # Läs in filen (tab-separerad)
@@ -395,7 +359,7 @@ I nästan alla av länets kommuner finns det inte arbetsställen och företag in
 
 ## Företagens omsättning
 
-Omsättning är ett centralt mått för att förstå kulturföretagenens ekonomiska omfattning och struktur. I detta avsnitt analyseras hur kulturföretagen fördelar sig över olika omsättningsnivåer och hur detta varierar mellan branscher. En del företag i länet saknar data för omsättningsår och har därför uteslutits från analysen i @fig-omsattning.
+Omsättning är ett centralt mått för att förstå kulturföretagens ekonomiska omfattning och struktur. I detta avsnitt analyseras hur kulturföretagen fördelar sig över olika omsättningsnivåer och hur detta varierar mellan branscher. En del företag i länet saknar data för omsättningsår och har därför uteslutits från analysen i @fig-omsattning.
 
 ```{r}
 #| fig-cap: ""
@@ -431,7 +395,7 @@ Litterärt och konstnärligt skapande är den branschkategori som uppvisar den s
 
 För att visa den geografiska fördelningen av kultursektorns arbetsställen i länet presenteras två interaktiva kartor nedan. Kartorna gör det möjligt att se var olika typer av verksamheter är lokaliserade. Några av punkterna i kartorna ligger utanför länet, det är på grund av att de är registrerade i en kommun i länet, men adressen till arbetsstället är utanför länet.
 
-### Arbetsställenas branscher
+### Kultursektorns arbetsställen
 
 @fig-arbetskarta visar var arbetsställena inom kultursektorn finns i länet. Varje punkt på kartan representerar ett arbetsställe, och färgen visar vilken branschkategori verksamheten tillhör. Det går att filtrera ut branscher för att lättare se spridningen för varje enskild bransch.
 
@@ -471,7 +435,7 @@ Källa: SCB Företagsregistret
 
 Detta kapitel är inspirerat av @regionhalland och deras analys av kulturskapare.
 
-Fokus ligger på de kulturskapare som är aktiva i Region Uppsala. Vi undersöker därmed Region Uppsalas yrkesverksamma dagbefolkning, vilket innebär de personer som både bor och arbetar i Region Uppsala eller som pendlar in till regionen. De som är bosatta i Region Uppsala men arbetar utanför regionen räknas således inte med i beräkningarna.
+Fokus ligger på de kulturskapare som är aktiva i Uppsala län. Vi undersöker därmed Uppsala läns yrkesverksamma dagbefolkning inom kultur. Vilket innebär de personer som både bor och arbetar i Uppsala län eller som pendlar in till länet. De som är bosatta i Uppsala län, men arbetar utanför regionen räknas således inte med i beräkningarna.
 
 För att identifiera kulturskaparna i materialet har vi använt oss samma metod som @regionhalland vilket är: SCB:s yrkesregister och tittat på de som, baserat på Kreameterns definition, har ett kulturellt eller kreativt yrke [@kreametern2018].
 
@@ -536,9 +500,55 @@ for(r in plots){
 ```
 :::
 
+# Sysselsättning kolada
+
+Avsnittet visar andelen sysselsatta efter indikatorn som tas fram av kolada. Indikatorn beskriver andelen sysselsatta i åldern 15-74 år inom kulturella och personliga tjänster m.m. (SNI-kod R, S, T och U). Andelen beräknas som antalet sysselsatta inom dessa näringsgrenar i relation till det totala antalet sysselsatta.
+
+Med sysselsatta avses personer som under november månad haft löneinkomst från anställning eller inkomst från aktiv näringsverksamhet. Uppgifterna redovisas både utifrån arbetsställets geografiska belägenhet och utifrån individens bostadsort. Statistiken gör det därmed möjligt att belysa eventuella skillnader mellan var arbetet utförs och var de sysselsatta är bosatta.
+
+Data är hämtat från @kolada som hänvisar vidare till @scb_arbetsmarknadsstatus.
+
+::: {.callout-note collapse="true"}
+# SNI-beskrivning
+
+R - Vård och omsorg; social verksamhet
+
+S - Kultur, idrott och fritid
+
+T - Annan serviceverksamhet
+
+U - Förvärvsarbete i hushåll; hushållens produktion av diverse varor och tjänster för eget bruk
+:::
+
+::: panel-tabset
+```{r, results='asis'}
+
+# variabel som skiljer graferna
+
+
+for(r in sort(kommuner)){
+
+  cat("## ", r, "\n", sep = "")
+  filename_svg <- paste0("Figurer/syssel_kol_", r, ".svg")
+  
+  filename_png <- paste0("Figurer/syssel_kol_", r, ".png")
+  
+  cat('<img src="', filename_svg, '" alt= "',paste0("Figuren visar utvecklingen av andel sysselsatta inom kulturella och personliga tjänster mm. i ",r,", mellan 2020 och 2024."), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
+  
+  cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
+  
+}
+
+```
+:::
+
+Kvinnor har en högre andel sysselsatta inom kulturella och personliga tjänster än män i alla kommuner i länet, oavsett om statistiken baseras på arbetsställets eller bostadens belägenhet. Skillnaderna mellan arbetsställets och bostadens belägenhet är mycket små inom kommunerna. Detta tyder på att pendlingen över kommungränserna för personer som arbetar inom kulturella och personliga tjänster är begränsad, eller att in- och utpendling för dessa verksamheter är relativt balanserad.
+
+Östhammar är den kommun som har lägst andel för bägge könen, medan Håbo, Knivsta och Uppsala kommun har de högsta andelarna. Skillnaderna mellan könen är som minst i Uppsala kommun och störst i Heby och Älvkarleby.
+
 # Studieförbund
 
-Detta kapitel belyser studieförbundens verksamhet i Sverige. Studieförbunden är en mötesplats för bildning och kultur där människor samlas för att lära sig nya saker och utveckla sina intressen, oavsett bakgrund eller förkunskaper. Verksamheten spänner över ett brett fält och innehåller bland annat bokcirklar, hantverk, konserter och föreläsningar.
+Detta kapitel belyser studieförbundens verksamhet i Uppsala län. Studieförbunden är en mötesplats för bildning och kultur där människor samlas för att lära sig nya saker och utveckla sina intressen, oavsett bakgrund eller förkunskaper. Verksamheten spänner över ett brett fält och innehåller bland annat bokcirklar, hantverk, konserter och föreläsningar.
 
 Data är hämtat från @scb_statistikdatabasen.
 
@@ -567,6 +577,8 @@ Av studieförbundens arrangemang så är kulturprogram den verksamhet som har h�
 
 Det en markant minskning av antal arrangemang i samtliga kommuner vid 2020, där Knivsta är den enda kommunen i länet där en verksamhetsform har tagit sig tillbaka till liknande nivåer som innan pandemin.
 
+Eftersom det är så stor nivåskillnad mellan 2019 och de övriga åren så skulle det kunna ha skett en förändring i hur studieförbunden registrerat arrangemangen för kulturprogrammen.
+
 ## Könsfördelning bland deltagare
 
 ::: panel-tabset
@@ -591,69 +603,6 @@ for(r in sort(kommuner)){
 Antalet deltagare inom studieförbundens arrangemang har också sjunkit kraftigt utan att återhämta sig efter pandemin. Knivsta är den enda kommunen som har liknande nivåer eller ett högre deltagarantal efter minskningen 2020.
 
 En större del av deltagarna är kvinnor för samtliga kommuner och år, utom år 2020 i Enköping. Där deltagarantalet för män inte ser ut att ha påverkats lika kraftigt av pandemin och stod för 70,7% av deltagarna.
-
-## Effektivitet
-
-I detta kapitel analyseras effektivitetsmått för studieverksamhet inom olika kommuner. Syftet är att ge en översikt över hur resurser används i relation till deltagarnas omfattning och insatsens intensitet. Vi fokuserar på två centrala mått:
-
--   Deltagare per studietimme – mäter hur många deltagare som i genomsnitt deltar per genomförd studietimme. Ett högre värde indikerar större grupper eller mer effektiv resursanvändning per deltagare. Ett lägre värde kan också innebära mer individanpassad studietid.
-
--   Genomsnittlig studietid – anger hur mycket studietid varje deltagare får. Detta mått speglar insatsens omfattning och kan ge indikationer på utbildningens djup och kvalitet per individ.
-
-Tolkningen av måtten bör göras med hänsyn till att de representerar olika aspekter av effektivitet: medan “deltagare per studietimme” främst speglar resursutnyttjande, ger “genomsnittlig studietid” en bild av deltagarnas faktiska studietid.
-
-::: panel-tabset
-```{r, results='asis'}
-
-for(r in sort(kommuner)){
-
-  cat("## ", r, "\n", sep = "")
-  filename_svg <- paste0("Figurer/forbund_kvot_", r, ".svg")
-  
-  filename_png <- paste0("Figurer/forbund_kvot_", r, ".png")
-  
-  cat('<img src="', filename_svg, '" alt= "',paste("Figuren visar antal deltagare per studietimme och genomsnittlig studietid för studieverksamheterna över tid i",r), '" style="width:100%; max-width:800px; height:100%;">\n', sep = "")
-  
-  cat('<div style="margin-top:0.5rem;"><div class="download-dropdown"><span class="download-btn">Ladda ner</span><div class="download-menu"><a href="', filename_svg, '" download>Som SVG</a><a href="', filename_png, '" download>Som PNG</a></div></div></div>', "\n\n", sep = "")
-  
-}
-
-
-# Hämtar data
-df <- read.csv("Data/df_studieforbund.csv")
-  
-# Kvoter
-df_kvoter <- df %>%
-    filter(verksamhetsform == "Totalt", år ==max(år)) %>%
-    mutate(
-      deltagare_per_studietimme = Deltagare / Studietimmar,
-    ) %>%
-    pivot_longer(
-      cols = c(deltagare_per_studietimme),
-      names_to = "Mått",
-      values_to = "Värde"
-    ) %>%
-    mutate(Mått = case_when(
-      Mått == "deltagare_per_studietimme" ~ "Deltagare per studietimme",
-    ))
-  
-  
-max_dps <- df_kvoter[which.max(df_kvoter$Värde),]
-
-
-max_dps_k <- max_dps$region # kommun
-max_dps_v <- round(max_dps$Värde,2) # värde
-max_dps_y <- max_dps$år # år
-```
-:::
-
-I samtliga kommuner är kurvan för "Deltagare per studietimme" (övre panelen) stabil över hela perioden 2019-2024, medan "Genomsnittlig studietid" uppvisar betydligt större variation.
-
-Samtliga kommuner utom Håbo visar en tydlig topp i genomsnittlig studietid runt 2020-2021, följt av en nedgång. Uppgången har troligtvis att göra med pandemin, där större digitala grupper
-
-Håbo sticker ut som den enda kommunen med en uppåtgående långsiktig trend. Den genomsnittliga studietiden har ökat från cirka 4 timmar 2019 till omkring 8 timmar 2023-2024, utan någon tydlig pandemitopp. Håbo har också det lägsta värdet av alla kommuner för deltagare per studietimme år 2024.
-
-`r max_dps_k` har det högsta värdet på deltagare per studietimme i länet på `r max_dps_v` år `r max_dps_y`.
 
 # Kulturdatabasen
 
@@ -723,7 +672,7 @@ df_clean <- df_clean %>%
   levels = c( "totalt i länet",
              sort(setdiff(unique(df_clean$museum), "totalt i länet"))))))
 
- 
+kat <- kat[kat!="Carolina Rediviva"]
 
 for(r in kat){
   title <- ifelse(r=="totalt i länet", "Totalt i länet", r)
@@ -957,7 +906,7 @@ cat(paste(bullet_list, collapse = "\n"))
 
 ::: panel-tabset
 ```{r, results='asis'}
-
+kat <- kat[kat!="Carolina Rediviva"]
   
 for(r in kat){
   temp <- df %>%  filter(museum == r)
